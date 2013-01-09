@@ -3,7 +3,9 @@ function [ output_args ] = twoItemGARP( item1, item2, item3, item4, amountOfItem
 %   Detailed explanation goes here
     screenNumber = max(Screen('Screens'));
     [width height] = Screen('WindowSize', screenNumber);
-    %w = Screen(screenNumber, 'OpenWindow',[],[],[],[]);   
+    
+    
+     
     
     %% Defaults --- If input arguments are not provided, these gives the default values
     
@@ -39,6 +41,9 @@ function [ output_args ] = twoItemGARP( item1, item2, item3, item4, amountOfItem
         amountOfItem4 = 4;
     end
     
+    if exist('w','var') == 0;
+        w = Screen(screenNumber, 'OpenWindow',[],[],[],[]);
+    end
     
     black = imread('black.jpg');
     
@@ -306,9 +311,9 @@ end
 v = cat(1,leftPositions,topPositions,rightPositions,bottomPositions);
 
     Screen('DrawTextures',w,draw,[],v)
-%    Screen('Flip',w);
-%    KbWait
-%    Screen('CloseAll');
+    Screen('Flip',w);
+    KbWait
+    Screen('CloseAll');
 
 end
 
