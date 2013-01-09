@@ -22,7 +22,7 @@ twoItemGARPTasks = juanset; % This is a 3D araay each (1:2,1:2,x) contains one s
 
 
 %% **Design the task orders**
-trialOrder = repeatedhistory(3,5,2,1,false); % This sets the order of the tasks
+trialOrder = repeatedhistory(4,5,2,1,false); % This sets the order of the tasks
 % trialOrder = ones(length(trialOrder),1);
 long = length(trialOrder); %The total number of trials that will be performed
 short = long/4;            %The number of each type of trial that will be performed
@@ -31,7 +31,7 @@ oneItemOrder = repeatedhistory(2,5,4,1,false); % This sets the order of the task
 scaledChoiceOrder = []; % The fixxed order that the scaled trials will be presented in. If there are more tials that need to be shown then we have, then a second list (random order) is made and concatinated on to the end of the old one.
 i = 1;
 while ceil(short/(length(scaledChoiceTasks))) >= i;
-    scaledChoiceOrder = cat(1,scaledChoiceOrder,randperm(length(scaledChoiceTasks)));
+    scaledChoiceOrder = cat(2,scaledChoiceOrder,randperm(length(scaledChoiceTasks)));
     i = i + 1;
 end
 
@@ -39,7 +39,7 @@ end
 limitGARPOrder = []; % The fixxed order that the GARP limit trials will be presented in. If there are more tials that need to be shown then we have, then a second list (random order) is made and concatinated on to the end of the old one.
 i = 1;
 while ceil(short/(length(limitGARPTasks))) >= i;
-    limitGARPOrder = cat(1,limitGARPOrder,randperm(length(limitGARPTasks)));
+    limitGARPOrder = cat(2,limitGARPOrder,randperm(length(limitGARPTasks)));
     i = i + 1;
 end
 
@@ -48,7 +48,7 @@ end
 twoItemGARPOrder = []; %The fixxed order that the 2item GARP trials will be presented in. If there are more tials that need to be shown then we have, then a second list (random order) is made and concatinated on to the end of the old one. 
 i = 1;
 while ceil(short/(length(twoItemGARPTasks))) >= i;
-    twoItemGARPOrder = cat(1,twoItemGARPOrder,randperm(length(twoItemGARPOrder)));
+    twoItemGARPOrder = cat(2,twoItemGARPOrder,randperm(length(twoItemGARPTasks)));
     i = i + 1;
 end
 
@@ -62,7 +62,7 @@ screenNumber = max(Screen('Screens'));
 [width height] = Screen('WindowSize', screenNumber);
 w = Screen(screenNumber, 'OpenWindow',[],[],[],[]);
 
-%% Saving the settings
+%% Saving the settingsf
 
 settings.recordfolder = 'records';
 settings.subjID = subjID;
@@ -89,15 +89,15 @@ mkdir(settings.recordfolder);
 recordname = [settings.recordfolder '/' num2str(subjID) '_' datestr(now,'yyyymmddTHHMMSS') '.mat'];
 % Save the settings (the results are saved later)
 save (recordname, 'settings')
-% % Restrict the keys that can be used for the Kb commands [ALL KEYS ARE
-% % ENABLED AFTER A cear all command]
-% if (ismac)
-%             RestrictKeysForKbCheck([f, j, 'ESCAPE'])
-%             escKey = KbName('ESCAPE');
-%         else
-%             RestrictKeysForKbCheck(['f', 'j', 'Esc'])
-%             escKey = KbName('Esc');
-% end
+% Restrict the keys that can be used for the Kb commands [ALL KEYS ARE
+% ENABLED AFTER A cear all command]
+if (ismac)
+            RestrictKeysForKbCheck([9, 13, 41]) %These are the key codes for f, j, and ESCSAPE respectively
+            escKey = KbName('ESCAPE');
+        else
+            RestrictKeysForKbCheck(['f', 'j', 'Esc'])
+            escKey = KbName('Esc');
+end
  
 
 % Display "READY"
@@ -118,40 +118,40 @@ twoItemGARPIndex =1;
 while i <= long;
     if trialOrder(i) == 1; %is for the one v. one choicef
         if oneItemOrder(oneItemIndex) == 1;
-           oneItemChoice(item1,item2,w);
+            twoItemGARP(item1,item1,item2,item2,1,0,1,0,w);
         else
-            oneItemChoice(item2,item1,w);
+            twoItemGARP(item2,item2,item1,item1,1,0,1,0,w);
         end
         oneItemIndex = oneItemIndex + 1;
     end
     
     if trialOrder(i) == 2; %is for the one item (same item both sides) choice
-        scaledChoice(item1, ...
-                     item1, ...
-                     scaledChoiceTasks(scaledChoiceOrder(scaledChoiceIndex),1), ...
-                     scaledChoiceTasks(scaledChoiceOrder(scaledChoiceIndex),2),w);
+        twoItemGARP(item1, item1, ...
+                     item1, item1, ...
+                     scaledChoiceTasks(scaledChoiceOrder(scaledChoiceIndex),1), 0, ...
+                     scaledChoiceTasks(scaledChoiceOrder(scaledChoiceIndex),2), 0,w);
         scaledChoiceIndex = scaledChoiceIndex  + 1 ;
     end
     
     
     if trialOrder(i) == 3; %is for the one item (per side) (different items) GARP
-        scaledChoice(item1, ...
-                     item2, ...
-                     limitGARPTasks(limitGARPOrder(limitGARPIndex),1), ...
-                     limitGARPTasks(limitGARPOrder(limitGARPIndex),2),w);
+        twoItemGARP(item1, item1, ...
+                    item2, item2,...
+                    limitGARPTasks(limitGARPOrder(limitGARPIndex),1), 0, ...
+                    limitGARPTasks(limitGARPOrder(limitGARPIndex),2), 0,w);
         limitGARPIndex = limitGARPIndex  + 1 ;        
     end
     
     
     if trialOrder(i) == 4; %is for the two item (per side) GARP
-        twoItemGARPChoice(item1, ...
-                          item2, ...
-                          item1, ...
-                          item2, ...
-                          twoItemGARPTasks(1,1,twoItemGARPOrder(twoItemGARPIndex)), ...
-                          twoItemGARPTasks(1,2,twoItemGARPOrder(twoItemGARPIndex)), ...
-                          twoItemGARPTasks(2,1,twoItemGARPOrder(twoItemGARPIndex)), ...
-                          twoItemGARPTasks(2,2,twoItemGARPOrder(twoItemGARPIndex)),w);
+        twoItemGARP(item1, ...
+                    item2, ...
+                    item1, ...f
+                    item2, ...
+                    twoItemGARPTasks(1,1,twoItemGARPOrder(twoItemGARPIndex)), ...
+                    twoItemGARPTasks(1,2,twoItemGARPOrder(twoItemGARPIndex)), ...
+                    twoItemGARPTasks(2,1,twoItemGARPOrder(twoItemGARPIndex)), ...
+                    twoItemGARPTasks(2,2,twoItemGARPOrder(twoItemGARPIndex)),w);
         twoItemGARPIndex = twoItemGARPIndex  + 1;        
     end
     
