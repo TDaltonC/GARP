@@ -113,7 +113,13 @@ oneItemIndex = 1;
 scaledChoiceIndex = 1;
 limitGARPIndex = 1;
 twoItemGARPIndex =1;
- 
+
+t = ceil(GetSecs); %Set the time keeper for the experiment
+if mod(t,2) == 1;
+    t = t+1;
+end
+
+WaitSecs('UntilTime', t)
 
 while i <= long;
     if trialOrder(i) == 1; %is for the one v. one choicef
@@ -146,7 +152,7 @@ while i <= long;
     if trialOrder(i) == 4; %is for the two item (per side) GARP
         twoItemGARP(item1, ...
                     item2, ...
-                    item1, ...f
+                    item1, ...
                     item2, ...
                     twoItemGARPTasks(1,1,twoItemGARPOrder(twoItemGARPIndex)), ...
                     twoItemGARPTasks(1,2,twoItemGARPOrder(twoItemGARPIndex)), ...
@@ -159,20 +165,38 @@ while i <= long;
         
     end
     
-    % wait till the time is right
-        % first wiat .2 secons so that they have time to stop pressing the button.
-        WaitSecs(0.2);
-        % Then wait until the next cycle of the experiment (2 second interval)
-        
-    % flip    
-    Screen('Flip',w);
     
-    % Key response
-[behavioral.secs(i,1), keyCode, behavioral.deltaSecs] = KbWait;
-behavioral.key(i,1) = KbName(keyCode);
+% flip    
+% wait till the time is right  ------ Then flip
+
+if i > 1; % So don't wait on the first lap through
+% first wiat .2 secons so that they have time to stop pressing the button.
+% Then wait until the next cycle of the experiment (2 second interval)
+    WaitSecs(0.1);
+    waitTime = ceil(GetSecs);
+    if mod(waitTime,2) == 1;
+        waitTime = waitTime+1;
+    end
+else
+    waitTime = GetSecs;
+end
+Screen('Flip',w,waitTime);
+   
+% Key response
+
+[behavioral.secs(i,1), keyCode, behavioral.deltaSecs] = KbWait([], 0, (waitTime + 4));
+
+%drawFixation
+drawFixation(w);
+
+%If a key is pressed, record that key press in the bahvioral record. 
+if sum(keyCode) == 1;
+    behavioral.key(i,1) = KbName(keyCode);
+end
+
 i = i + 1 ;
 
-drawFixation(w);
+
 
 end
 %% at the end
