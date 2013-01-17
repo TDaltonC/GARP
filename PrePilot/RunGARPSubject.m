@@ -1,4 +1,4 @@
-function [ output_args ] = RunGARPSubject( subjID )
+function [ output_args ] = RunGARPSubject( subjID, item1c, item2c, item3c )
 
 %cd ('GARP') % Sets the current directory to GARP
 
@@ -67,9 +67,33 @@ while ceil(short/(length(threeItemGARPTasks1323))) >= i;
 end
 
 %% Picking the items
-item1 = imread('juice.jpg');
-item2 = imread('chips.jpg');
-item3 = imread('chips.jpg'); 
+if item1c == 1; item1 = imread('cjuice.jpg'); end
+if item1c == 2; item1 = imread('icedtea.jpg');end
+if item1c == 3; item1 = imread('milk.jpg');   end   
+if item1c == 4; item1 = imread('ojuice.jpg'); end
+if item1c == 5; item1 = imread('4juice.jpg'); end
+
+if item2c == 1; item2 = imread('pistach.jpg');   end
+if item2c == 2; item2 = imread('hershekiss.jpg');end
+if item2c == 3; item2 = imread('doritos.jpg');   end
+if item2c == 4; item2 = imread('cheese.jpg');    end
+if item2c == 5; item2 = imread('chips.jpg');     end
+if item2c == 6; item2 = imread('lemonheads.jpg');end
+if item2c == 7; item2 = imread('pretzel.jpg');   end
+if item2c == 8; item2 = imread('oreo.jpg');      end
+if item2c == 9; item2 = imread('peanuts.jpg');   end
+if item2c == 10;item2 = imread('cheezit.jpg');   end
+
+if item3c == 1; item3 = imread('pistach.jpg');   end
+if item3c == 2; item3 = imread('hershekiss.jpg');end
+if item3c == 3; item3 = imread('doritos.jpg');   end
+if item3c == 4; item3 = imread('cheese.jpg');    end
+if item3c == 5; item3 = imread('chips.jpg');     end
+if item3c == 6; item3 = imread('lemonheads.jpg');end
+if item3c == 7; item3 = imread('pretzel.jpg');   end
+if item3c == 8; item3 = imread('oreo.jpg');      end
+if item3c == 9; item3 = imread('peanuts.jpg');   end
+if item3c == 10;item3 = imread('cheezit.jpg');   end
 
 %% Set up the screen
 
@@ -125,7 +149,7 @@ end
 % Display "READY"
 drawStart(w);
 Screen('Flip',w);
-KbWait([], 2);
+KbWait([], 3);
 
 %% during the experimentjjjfj
 % Be mindfull that only the "behavioral." data structure will be saved.
@@ -216,7 +240,7 @@ Screen('Flip',w);
    
 % Key response
 
-[behavioral.secs(i,1), keyCode, behavioral.deltaSecs] = KbWait([], 2);
+[behavioral.secs(i,1), keyCode, behavioral.deltaSecs] = KbWait([], 3);
 
 %drawFixation
 drawFixation(w);
@@ -229,7 +253,7 @@ end
 %% All of this is just of outputting the reward
     if block == 1 && i == rewardTrial;        
     
-           if trialOrder(i) == 1; %is for the one item (per side) (different items) GARP
+    if trialOrder(i) == 1; %is for the one item (per side) (different items) GARP
                left.Item = 'item1';
                left.Amount = limitGARPTasks(limitGARPOrder(limitGARPIndex),1);
                
@@ -293,7 +317,7 @@ if mod(i,blockLength) == 0; %This throws up the "break" screen between trials.
     drawBreak(w);
     Screen('Flip',w);
     WaitSecs(20);
-    KbWait; 
+    KbWait([], 3); 
     block = block +1;
 end
 
