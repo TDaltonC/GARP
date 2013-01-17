@@ -10,23 +10,23 @@ function [ output_args ] = twoItemGARP( item1, item2, item3, item4, amountOfItem
     %% Defaults --- If input arguments are not provided, these gives the default values
     
     if exist('item1','var') == 0;
-        item1 = imread('juice.jpg');
+        item1 = imread('vjuice.jpg');
     end
     if exist('item2','var') == 0;
-        item2 = imread('chips.jpg');
+        item2 = imread('icedtea.jpg');
     end
     if exist('item3','var') == 0;
-        item3 = imread('chips.jpg');
+        item3 = imread('pretzel.jpg');
     end
     if exist('item4','var') == 0;
-        item4 = imread('juice.jpg');
+        item4 = imread('milk.jpg');
     end
     
     
     
     
     if exist('amountOfItem1','var') == 0; % If 'itemitemsOnLeft' doesn't exist  . . . 
-        amountOfItem1 = 0;                % Create it and set it equal to 3 (default)
+        amountOfItem1 = 1;                % Create it and set it equal to 3 (default)
     end
 
     if exist('amountOfItem2','var') == 0; 
@@ -509,9 +509,9 @@ end
 v = cat(1,leftPositions,topPositions,rightPositions,bottomPositions);
 
     Screen('DrawTextures',w,draw,[],v)
-     %Screen('Flip',w);
-     %KbWait
-     %Screen('CloseAll');
+     Screen('Flip',w);
+     KbWait
+     Screen('CloseAll');
 
 end
 
