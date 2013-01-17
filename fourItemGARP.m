@@ -1,49 +1,47 @@
-function [ output_args ] = twoItemGARP( item1, item2, item3, item4, item5, item6, item7, item8, ...
+function [ output_args ] = fourItemGARP( item1, item2, item3, item4, item5, item6, item7, item8, ...
                                         amountOfItem1, amountOfItem2, amountOfItem3, amountOfItem4, ...
                                         amountOfItem5, amountOfItem6, amountOfItem7, amountOfItem8, w )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
     screenNumber = max(Screen('Screens'));
     [width height] = Screen('WindowSize', screenNumber);
-    
-    
-     
+   
+   
     
     %% Defaults --- If input arguments are not provided, these gives the default values
     
     if exist('item1','var') == 0;
-        item1 = imread('juice.jpg');
+        item1 = imread('pear.jpg');
     end
     if exist('item2','var') == 0;
-        item2 = imread('chips.jpg');
+        item2 = imread('apple.jpg');
     end
     if exist('item3','var') == 0;
-        item3 = imread('juice.jpg');
+        item3 = imread('banana.png');
     end
     if exist('item4','var') == 0;
-        item4 = imread('chips.jpg');
+        item4 = imread('grey.jpg');
     end
     if exist('item5','var') == 0;
-        item5 = imread('juice.jpg');
+        item5 = imread('banana.png');
     end
     if exist('item6','var') == 0;
-        item6 = imread('chips.jpg');
+        item6 = imread('apple.jpg');
     end
     if exist('item7','var') == 0;
-        item7 = imread('juice.jpg');
+        item7 = imread('pear.jpg');
     end
     if exist('item8','var') == 0;
-        item8 = imread('chips.jpg');
+        item8 = imread('grey.jpg');
     end
-    
     
     
     if exist('amountOfItem1','var') == 0; % If 'amountOfItem1' doesn't exist  . . . 
-        amountOfItem1 = 3;                % Create it and set it equal to (default)
+        amountOfItem1 = 4;                % Create it and set it equal to (default)
     end
 
     if exist('amountOfItem2','var') == 0; 
-        amountOfItem2 = 4;
+        amountOfItem2 = 5;
     end
     
     if exist('amountOfItem3','var') == 0; 
@@ -51,15 +49,15 @@ function [ output_args ] = twoItemGARP( item1, item2, item3, item4, item5, item6
     end
 
     if exist('amountOfItem4','var') == 0; 
-        amountOfItem4 = 2;
+        amountOfItem4 = 5;
     end
     
     if exist('amountOfItem5','var') == 0; 
-        amountOfItem5 = 3;                
+        amountOfItem5 = 2;                
     end
 
     if exist('amountOfItem6','var') == 0; 
-        amountOfItem6 = 4;
+        amountOfItem6 = 5;
     end
     
     if exist('amountOfItem7','var') == 0; 
@@ -67,7 +65,7 @@ function [ output_args ] = twoItemGARP( item1, item2, item3, item4, item5, item6
     end
 
     if exist('amountOfItem8','var') == 0; 
-        amountOfItem8 = 2;
+        amountOfItem8 = 5;
     end
     
     if exist('w','var') == 0;
@@ -75,6 +73,7 @@ function [ output_args ] = twoItemGARP( item1, item2, item3, item4, item5, item6
     end
     
     black = imread('black.jpg');
+    grey = imread('grey.jpg');
     
     %% Make all of the tesxtures
     item1t = Screen('MakeTexture',w,item1); 
@@ -86,6 +85,7 @@ function [ output_args ] = twoItemGARP( item1, item2, item3, item4, item5, item6
     item7t = Screen('MakeTexture',w,item7); 
     item8t = Screen('MakeTexture',w,item8);
     blackt = Screen('MakeTexture',w,black);
+    greyt = Screen('MakeTexture',w,grey);
     
     %% These are all of the position constants  
 
@@ -100,7 +100,7 @@ function [ output_args ] = twoItemGARP( item1, item2, item3, item4, item5, item6
     devLineHeight = height*.9;  % The height of the black box inthe middle of the screen
     devLineWidth  = 1;          % The width of the black box in the middle of the screen
     
-    % EVerything below here is codded in terms of the numbers above
+    % Everything below here is coded in terms of the numbers above
     
     pwl1= centerw - eccen;
     pwl2= pwl1 - itemw;
@@ -150,7 +150,7 @@ function [ output_args ] = twoItemGARP( item1, item2, item3, item4, item5, item6
     
 % Left    
 % Box 1L    
-if amountOfItem1 >= 1;  %If there is suposed to be one or more item(s) on the left, Add all on the numbers that we need to add so that a image will be drawn in the 1 position
+if amountOfItem1 >= 1;  %If there is supposed to be one or more item(s) on the left, Add all on the numbers that we need to add so that a image will be drawn in the 1 position
     draw = cat(1,draw,item1t);
     leftPositions = cat(2,leftPositions,    pwl2);
     topPositions = cat(2,topPositions,       ph5); 
@@ -316,104 +316,499 @@ end
    
 
 
-% % Box 1r    
-% if amountOfItem3 >= 1;
-%     draw = cat(1,draw,item3t);
-%     leftPositions = cat(2,leftPositions,    pwr3);
-%     topPositions = cat(2,topPositions,       ph3); 
-%     rightPositions = cat(2,rightPositions,  pwr4);
-%     bottomPositions = cat(2,bottomPositions, ph4);
-% end
-% % Box 2r    
-% if amountOfItem3 >= 2;
-%     draw = cat(1,draw,item3t);
-%     leftPositions = cat(2,leftPositions,    pwr1);
-%     topPositions = cat(2,topPositions,       ph3); 
-%     rightPositions = cat(2,rightPositions,  pwr2);
-%     bottomPositions = cat(2,bottomPositions, ph4);
-% end
-% % Box 3r    
-% if amountOfItem3 >= 3;
-%     draw = cat(1,draw,item3t);
-%     leftPositions = cat(2,leftPositions,    pwr3);
-%     topPositions = cat(2,topPositions,       ph1); 
-%     rightPositions = cat(2,rightPositions,  pwr4);
-%     bottomPositions = cat(2,bottomPositions, ph2);
-% end
-% % Box 4r    
-% if amountOfItem3 >= 4;
-%     draw = cat(1,draw,item3t);
-%     leftPositions = cat(2,leftPositions,    pwr1);
-%     topPositions = cat(2,topPositions,       ph1); 
-%     rightPositions = cat(2,rightPositions,  pwr2);
-%     bottomPositions = cat(2,bottomPositions, ph2);
-% end
-% % Box 5r    
-% if amountOfItem3 >= 5;
-%     draw = cat(1,draw,item3t);
-%     leftPositions = cat(2,leftPositions,    pwr3);
-%     topPositions = cat(2,topPositions,       ph5); 
-%     rightPositions = cat(2,rightPositions,  pwr4);
-%     bottomPositions = cat(2,bottomPositions, ph6);
-% end
-% % Box 6r    
-% if amountOfItem3 >= 6;
-%     draw = cat(1,draw,item3t);
-%     leftPositions = cat(2,leftPositions,    pwr1);
-%     topPositions = cat(2,topPositions,       ph5); 
-%     rightPositions = cat(2,rightPositions,  pwr2);
-%     bottomPositions = cat(2,bottomPositions, ph6);
-% end
+% Box 1r    
+if amountOfItem5 >= 1;
+     draw = cat(1,draw,item5t);
+     leftPositions = cat(2,leftPositions,    pwr1);
+     topPositions = cat(2,topPositions,       ph5); 
+     rightPositions = cat(2,rightPositions,  pwr2);
+     bottomPositions = cat(2,bottomPositions, ph6);
+ end
+% Box 2r    
+ if amountOfItem5 >= 2;
+     draw = cat(1,draw,item5t);
+     leftPositions = cat(2,leftPositions,    pwr1);
+     topPositions = cat(2,topPositions,       ph3); 
+     rightPositions = cat(2,rightPositions,  pwr2);
+     bottomPositions = cat(2,bottomPositions, ph4);
+ end
+ % Box 3r    
+ if amountOfItem5 >= 3;
+     draw = cat(1,draw,item5t);
+     leftPositions = cat(2,leftPositions,    pwr1);
+     topPositions = cat(2,topPositions,       ph7); 
+     rightPositions = cat(2,rightPositions,  pwr2);
+     bottomPositions = cat(2,bottomPositions, ph8);
+ end
+ % Box 4r    
+ if amountOfItem5 >= 4;
+     draw = cat(1,draw,item5t);
+     leftPositions = cat(2,leftPositions,    pwr1);
+     topPositions = cat(2,topPositions,       ph1); 
+     rightPositions = cat(2,rightPositions,  pwr2);
+     bottomPositions = cat(2,bottomPositions, ph2);
+ end
+ % Box 5r    
+ if amountOfItem5 >= 5;
+     draw = cat(1,draw,item5t);
+     leftPositions = cat(2,leftPositions,    pwr1);
+     topPositions = cat(2,topPositions,       ph9); 
+     rightPositions = cat(2,rightPositions,  pwr2);
+     bottomPositions = cat(2,bottomPositions, ph10);
+ end
+ % Box 6r    
+ if amountOfItem6 >= 1;
+     draw = cat(1,draw,item6t);
+     leftPositions = cat(2,leftPositions,    pwr3);
+     topPositions = cat(2,topPositions,       ph5); 
+     rightPositions = cat(2,rightPositions,  pwr4);
+     bottomPositions = cat(2,bottomPositions, ph6);
+ end
 % % Box 7r    
-% if amountOfItem4 >= 1;
-%     draw = cat(1,draw,item4t);
-%     leftPositions = cat(2,leftPositions,    pwr5);
-%     topPositions = cat(2,topPositions,       ph3); 
-%     rightPositions = cat(2,rightPositions,  pwr6);
-%     bottomPositions = cat(2,bottomPositions, ph4);
-% end
-% % Box 8r    
-% if amountOfItem4 >= 2;
-%     draw = cat(1,draw,item4t);
-%     leftPositions = cat(2,leftPositions,    pwr7);
-%     topPositions = cat(2,topPositions,       ph3); 
-%     rightPositions = cat(2,rightPositions,  pwr8);
-%     bottomPositions = cat(2,bottomPositions, ph4);
-% end
-% % Box 9r    
-% if amountOfItem4 >= 3;
-%     draw = cat(1,draw,item4t);
-%     leftPositions = cat(2,leftPositions,    pwr5);
-%     topPositions = cat(2,topPositions,       ph1); 
-%     rightPositions = cat(2,rightPositions,  pwr6);
-%     bottomPositions = cat(2,bottomPositions, ph2);
-% end
-% % Box10r    
-% if amountOfItem4 >= 4;
-%     draw = cat(1,draw,item4t);
-%     leftPositions = cat(2,leftPositions,    pwr7);
-%     topPositions = cat(2,topPositions,       ph1); 
-%     rightPositions = cat(2,rightPositions,  pwr8);
-%     bottomPositions = cat(2,bottomPositions, ph2);
-% end
-% % Box11r    
-% if amountOfItem4 >= 5;
-%     draw = cat(1,draw,item4t);
-%     leftPositions = cat(2,leftPositions,    pwr5);
-%     topPositions = cat(2,topPositions,       ph5); 
-%     rightPositions = cat(2,rightPositions,  pwr6);
-%     bottomPositions = cat(2,bottomPositions, ph6);
-% end
-% % Box12r    
-% if amountOfItem4 >= 6;
-%     draw = cat(1,draw,item4t);
-%     leftPositions = cat(2,leftPositions,    pwr7);
-%     topPositions = cat(2,topPositions,       ph5); 
-%     rightPositions = cat(2,rightPositions,  pwr8);
-%     bottomPositions = cat(2,bottomPositions, ph6);
-% end
+ if amountOfItem6 >= 2;
+     draw = cat(1,draw,item6t);
+     leftPositions = cat(2,leftPositions,    pwr3);
+     topPositions = cat(2,topPositions,       ph3); 
+     rightPositions = cat(2,rightPositions,  pwr4);
+     bottomPositions = cat(2,bottomPositions, ph4);
+ end
+ % Box 8r    
+ if amountOfItem6 >= 3;
+     draw = cat(1,draw,item6t);
+     leftPositions = cat(2,leftPositions,    pwr3);
+     topPositions = cat(2,topPositions,       ph7); 
+     rightPositions = cat(2,rightPositions,  pwr4);
+     bottomPositions = cat(2,bottomPositions, ph8);
+ end
+ % Box9r    
+ if amountOfItem6 >= 4;
+     draw = cat(1,draw,item6t);
+     leftPositions = cat(2,leftPositions,    pwr3);
+     topPositions = cat(2,topPositions,       ph1); 
+     rightPositions = cat(2,rightPositions,  pwr4);
+     bottomPositions = cat(2,bottomPositions, ph2);
+ end
+ % Box10r    
+ if amountOfItem6 >= 5;
+     draw = cat(1,draw,item6t);
+     leftPositions = cat(2,leftPositions,    pwr3);
+     topPositions = cat(2,topPositions,       ph9); 
+     rightPositions = cat(2,rightPositions,  pwr4);
+     bottomPositions = cat(2,bottomPositions, ph10);
+ end
+
+% Box 11r    
+if amountOfItem7 >= 1;
+     draw = cat(1,draw,item7t);
+     leftPositions = cat(2,leftPositions,    pwr5);
+     topPositions = cat(2,topPositions,       ph5); 
+     rightPositions = cat(2,rightPositions,  pwr6);
+     bottomPositions = cat(2,bottomPositions, ph6);
+ end
+% Box 12r    
+ if amountOfItem7 >= 2;
+     draw = cat(1,draw,item7t);
+     leftPositions = cat(2,leftPositions,    pwr5);
+     topPositions = cat(2,topPositions,       ph3); 
+     rightPositions = cat(2,rightPositions,  pwr6);
+     bottomPositions = cat(2,bottomPositions, ph4);
+ end
+ % Box 13r    
+ if amountOfItem7 >= 3;
+     draw = cat(1,draw,item7t);
+     leftPositions = cat(2,leftPositions,    pwr5);
+     topPositions = cat(2,topPositions,       ph7); 
+     rightPositions = cat(2,rightPositions,  pwr6);
+     bottomPositions = cat(2,bottomPositions, ph8);
+ end
+ % Box 14r    
+ if amountOfItem7 >= 4;
+     draw = cat(1,draw,item7t);
+     leftPositions = cat(2,leftPositions,    pwr5);
+     topPositions = cat(2,topPositions,       ph1); 
+     rightPositions = cat(2,rightPositions,  pwr6);
+     bottomPositions = cat(2,bottomPositions, ph2);
+ end
+ % Box 15r    
+ if amountOfItem7 >= 5;
+     draw = cat(1,draw,item7t);
+     leftPositions = cat(2,leftPositions,    pwr5);
+     topPositions = cat(2,topPositions,       ph9); 
+     rightPositions = cat(2,rightPositions,  pwr6);
+     bottomPositions = cat(2,bottomPositions, ph10);
+ end
+ % Box 16r    
+ if amountOfItem8 >= 1;
+     draw = cat(1,draw,item8t);
+     leftPositions = cat(2,leftPositions,    pwr7);
+     topPositions = cat(2,topPositions,       ph5); 
+     rightPositions = cat(2,rightPositions,  pwr8);
+     bottomPositions = cat(2,bottomPositions, ph6);
+ end
+% % Box 17r    
+ if amountOfItem8 >= 2;
+     draw = cat(1,draw,item8t);
+     leftPositions = cat(2,leftPositions,    pwr7);
+     topPositions = cat(2,topPositions,       ph3); 
+     rightPositions = cat(2,rightPositions,  pwr8);
+     bottomPositions = cat(2,bottomPositions, ph4);
+ end
+ % Box 18r    
+ if amountOfItem8 >= 3;
+     draw = cat(1,draw,item8t);
+     leftPositions = cat(2,leftPositions,    pwr7);
+     topPositions = cat(2,topPositions,       ph7); 
+     rightPositions = cat(2,rightPositions,  pwr8);
+     bottomPositions = cat(2,bottomPositions, ph8);
+ end
+ % Box19r    
+ if amountOfItem8 >= 4;
+     draw = cat(1,draw,item8t);
+     leftPositions = cat(2,leftPositions,    pwr7);
+     topPositions = cat(2,topPositions,       ph1); 
+     rightPositions = cat(2,rightPositions,  pwr8);
+     bottomPositions = cat(2,bottomPositions, ph2);
+ end
+ % Box20r    
+ if amountOfItem8 >= 5;
+     draw = cat(1,draw,item8t);
+     leftPositions = cat(2,leftPositions,    pwr7);
+     topPositions = cat(2,topPositions,       ph9); 
+     rightPositions = cat(2,rightPositions,  pwr8);
+     bottomPositions = cat(2,bottomPositions, ph10);
+ end
+ 
+ 
+%greys
+% Left    
+% Box 1L    
+if amountOfItem1 <= 1;  %If there is supposed to be one or more item(s) on the left, Add all on the numbers that we need to add so that a image will be drawn in the 1 position
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl2);
+    topPositions = cat(2,topPositions,       ph5); 
+    rightPositions = cat(2,rightPositions,  pwl1);
+    bottomPositions = cat(2,bottomPositions, ph6);
+end
+% Box 2L    
+if amountOfItem1 <= 2;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl2);
+    topPositions = cat(2,topPositions,       ph3); 
+    rightPositions = cat(2,rightPositions,  pwl1);
+    bottomPositions = cat(2,bottomPositions, ph4);
+end
+% Box 3L
+if amountOfItem1 <= 3;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl2);
+    topPositions = cat(2,topPositions,       ph7); 
+    rightPositions = cat(2,rightPositions,  pwl1);
+    bottomPositions = cat(2,bottomPositions, ph8);
+end
+% Box 4L
+if amountOfItem1 <= 4;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl2);
+    topPositions = cat(2,topPositions,       ph1); 
+    rightPositions = cat(2,rightPositions,  pwl1);
+    bottomPositions = cat(2,bottomPositions, ph2);
+end
+% Box 5L
+if amountOfItem1 <= 5;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl2);
+    topPositions = cat(2,topPositions,       ph9); 
+    rightPositions = cat(2,rightPositions,  pwl1);
+    bottomPositions = cat(2,bottomPositions, ph10);
+end
+
+% Box 6L    
+if amountOfItem2 <= 1;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl4);
+    topPositions = cat(2,topPositions,       ph5); 
+    rightPositions = cat(2,rightPositions,  pwl3);
+    bottomPositions = cat(2,bottomPositions, ph6);
+end
+% Box 7L    
+if amountOfItem2 <= 2;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl4);
+    topPositions = cat(2,topPositions,       ph3); 
+    rightPositions = cat(2,rightPositions,  pwl3);
+    bottomPositions = cat(2,bottomPositions, ph4);
+end
+% Box 8L
+if amountOfItem2 <= 3;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl4);
+    topPositions = cat(2,topPositions,       ph7); 
+    rightPositions = cat(2,rightPositions,  pwl3);
+    bottomPositions = cat(2,bottomPositions, ph8);
+end
+% Box 9L
+if amountOfItem2 <= 4;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl4);
+    topPositions = cat(2,topPositions,       ph1); 
+    rightPositions = cat(2,rightPositions,  pwl3);
+    bottomPositions = cat(2,bottomPositions, ph2);
+end
+% Box 10L
+if amountOfItem2 <= 5;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl4);
+    topPositions = cat(2,topPositions,       ph9); 
+    rightPositions = cat(2,rightPositions,  pwl3);
+    bottomPositions = cat(2,bottomPositions, ph10);
+end
+   
+% Box 11L    
+if amountOfItem3 <= 1; 
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl6);
+    topPositions = cat(2,topPositions,       ph5); 
+    rightPositions = cat(2,rightPositions,  pwl5);
+    bottomPositions = cat(2,bottomPositions, ph6);
+end
+% Box 12L    
+if amountOfItem3 <= 2;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl6);
+    topPositions = cat(2,topPositions,       ph3); 
+    rightPositions = cat(2,rightPositions,  pwl5);
+    bottomPositions = cat(2,bottomPositions, ph4);
+end
+% Box 13L
+if amountOfItem3 <= 3;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl6);
+    topPositions = cat(2,topPositions,       ph7); 
+    rightPositions = cat(2,rightPositions,  pwl5);
+    bottomPositions = cat(2,bottomPositions, ph8);
+end
+% Box 14L
+if amountOfItem3 <= 4;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl6);
+    topPositions = cat(2,topPositions,       ph1); 
+    rightPositions = cat(2,rightPositions,  pwl5);
+    bottomPositions = cat(2,bottomPositions, ph2);
+end
+% Box 15L
+if amountOfItem3 <= 5;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl6);
+    topPositions = cat(2,topPositions,       ph9); 
+    rightPositions = cat(2,rightPositions,  pwl5);
+    bottomPositions = cat(2,bottomPositions, ph10);
+end
+
+% Box 16L    
+if amountOfItem4 <= 1;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl8);
+    topPositions = cat(2,topPositions,       ph5); 
+    rightPositions = cat(2,rightPositions,  pwl7);
+    bottomPositions = cat(2,bottomPositions, ph6);
+end
+% Box 17L    
+if amountOfItem4 <= 2;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl8);
+    topPositions = cat(2,topPositions,       ph3); 
+    rightPositions = cat(2,rightPositions,  pwl7);
+    bottomPositions = cat(2,bottomPositions, ph4);
+end
+% Box 18L
+if amountOfItem4 <= 3;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl8);
+    topPositions = cat(2,topPositions,       ph7); 
+    rightPositions = cat(2,rightPositions,  pwl7);
+    bottomPositions = cat(2,bottomPositions, ph8);
+end
+% Box 19L
+if amountOfItem4 <= 4;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl8);
+    topPositions = cat(2,topPositions,       ph1); 
+    rightPositions = cat(2,rightPositions,  pwl7);
+    bottomPositions = cat(2,bottomPositions, ph2);
+end
+% Box 20L
+if amountOfItem4 <= 5;
+    draw = cat(1,draw,greyt);
+    leftPositions = cat(2,leftPositions,    pwl8);
+    topPositions = cat(2,topPositions,       ph9); 
+    rightPositions = cat(2,rightPositions,  pwl7);
+    bottomPositions = cat(2,bottomPositions, ph10);
+end
+    
+   
 
 
+% Box 1r    
+if amountOfItem5 <= 1;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr1);
+     topPositions = cat(2,topPositions,       ph5); 
+     rightPositions = cat(2,rightPositions,  pwr2);
+     bottomPositions = cat(2,bottomPositions, ph6);
+ end
+% Box 2r    
+ if amountOfItem5 <= 2;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr1);
+     topPositions = cat(2,topPositions,       ph3); 
+     rightPositions = cat(2,rightPositions,  pwr2);
+     bottomPositions = cat(2,bottomPositions, ph4);
+ end
+ % Box 3r    
+ if amountOfItem5 <= 3;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr1);
+     topPositions = cat(2,topPositions,       ph7); 
+     rightPositions = cat(2,rightPositions,  pwr2);
+     bottomPositions = cat(2,bottomPositions, ph8);
+ end
+ % Box 4r    
+ if amountOfItem5 <= 4;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr1);
+     topPositions = cat(2,topPositions,       ph1); 
+     rightPositions = cat(2,rightPositions,  pwr2);
+     bottomPositions = cat(2,bottomPositions, ph2);
+ end
+ % Box 5r    
+ if amountOfItem5 <= 5;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr1);
+     topPositions = cat(2,topPositions,       ph9); 
+     rightPositions = cat(2,rightPositions,  pwr2);
+     bottomPositions = cat(2,bottomPositions, ph10);
+ end
+ % Box 6r    
+ if amountOfItem6 <= 1;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr3);
+     topPositions = cat(2,topPositions,       ph5); 
+     rightPositions = cat(2,rightPositions,  pwr4);
+     bottomPositions = cat(2,bottomPositions, ph6);
+ end
+% % Box 7r    
+ if amountOfItem6 <= 2;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr3);
+     topPositions = cat(2,topPositions,       ph3); 
+     rightPositions = cat(2,rightPositions,  pwr4);
+     bottomPositions = cat(2,bottomPositions, ph4);
+ end
+ % Box 8r    
+ if amountOfItem6 <= 3;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr3);
+     topPositions = cat(2,topPositions,       ph7); 
+     rightPositions = cat(2,rightPositions,  pwr4);
+     bottomPositions = cat(2,bottomPositions, ph8);
+ end
+ % Box9r    
+ if amountOfItem6 <= 4;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr3);
+     topPositions = cat(2,topPositions,       ph1); 
+     rightPositions = cat(2,rightPositions,  pwr4);
+     bottomPositions = cat(2,bottomPositions, ph2);
+ end
+ % Box10r    
+ if amountOfItem6 <= 5;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr3);
+     topPositions = cat(2,topPositions,       ph9); 
+     rightPositions = cat(2,rightPositions,  pwr4);
+     bottomPositions = cat(2,bottomPositions, ph10);
+ end
+
+% Box 11r    
+if amountOfItem7 <= 1;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr5);
+     topPositions = cat(2,topPositions,       ph5); 
+     rightPositions = cat(2,rightPositions,  pwr6);
+     bottomPositions = cat(2,bottomPositions, ph6);
+ end
+% Box 12r    
+ if amountOfItem7 <= 2;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr5);
+     topPositions = cat(2,topPositions,       ph3); 
+     rightPositions = cat(2,rightPositions,  pwr6);
+     bottomPositions = cat(2,bottomPositions, ph4);
+ end
+ % Box 13r    
+ if amountOfItem7 <= 3;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr5);
+     topPositions = cat(2,topPositions,       ph7); 
+     rightPositions = cat(2,rightPositions,  pwr6);
+     bottomPositions = cat(2,bottomPositions, ph8);
+ end
+ % Box 14r    
+ if amountOfItem7 <= 4;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr5);
+     topPositions = cat(2,topPositions,       ph1); 
+     rightPositions = cat(2,rightPositions,  pwr6);
+     bottomPositions = cat(2,bottomPositions, ph2);
+ end
+ % Box 15r    
+ if amountOfItem7 <= 5;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr5);
+     topPositions = cat(2,topPositions,       ph9); 
+     rightPositions = cat(2,rightPositions,  pwr6);
+     bottomPositions = cat(2,bottomPositions, ph10);
+ end
+ % Box 16r    
+ if amountOfItem8 <= 1;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr7);
+     topPositions = cat(2,topPositions,       ph5); 
+     rightPositions = cat(2,rightPositions,  pwr8);
+     bottomPositions = cat(2,bottomPositions, ph6);
+ end
+% % Box 17r    
+ if amountOfItem8 <= 2;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr7);
+     topPositions = cat(2,topPositions,       ph3); 
+     rightPositions = cat(2,rightPositions,  pwr8);
+     bottomPositions = cat(2,bottomPositions, ph4);
+ end
+ % Box 18r    
+ if amountOfItem8 <= 3;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr7);
+     topPositions = cat(2,topPositions,       ph7); 
+     rightPositions = cat(2,rightPositions,  pwr8);
+     bottomPositions = cat(2,bottomPositions, ph8);
+ end
+ % Box19r    
+ if amountOfItem8 <= 4;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr7);
+     topPositions = cat(2,topPositions,       ph1); 
+     rightPositions = cat(2,rightPositions,  pwr8);
+     bottomPositions = cat(2,bottomPositions, ph2);
+ end
+ % Box20r    
+ if amountOfItem8 <= 5;
+     draw = cat(1,draw,greyt);
+     leftPositions = cat(2,leftPositions,    pwr7);
+     topPositions = cat(2,topPositions,       ph9); 
+     rightPositions = cat(2,rightPositions,  pwr8);
+     bottomPositions = cat(2,bottomPositions, ph10);
+ end
 v = cat(1,leftPositions,topPositions,rightPositions,bottomPositions);
 
     Screen('DrawTextures',w,draw,[],v)
@@ -422,4 +817,3 @@ v = cat(1,leftPositions,topPositions,rightPositions,bottomPositions);
      Screen('CloseAll');
 
 end
-
