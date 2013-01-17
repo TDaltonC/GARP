@@ -511,7 +511,7 @@ v = cat(1,leftPositions,topPositions,rightPositions,bottomPositions);
     Screen('DrawTextures',w,draw,[],v)
      %Screen('Flip',w);
      %KbWait
-     %Screen('CloseAll');
+     Screen('CloseAll');
 
 end
 
