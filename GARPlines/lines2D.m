@@ -6,16 +6,16 @@ cross = zeros (length(set),1);
 i = 1;
 j = 1;
 for i = 1 : length(set);
-    for j = 1 : length(set)
+    for j = 1 : length(set);
         if set(1,1,i) >= set(1,1,j) && ...
            set(2,1,i) >= set(2,1,j) && ...
            set(1,2,i) <= set(1,2,j) && ...
            set(2,2,i) <= set(2,2,j);
-            if (set(:,1,i) == set(:,1,j));
-            else
-               if (set(:,2,i) == set(:,2,j));
-               else
-                cross(i) = cross(i) + 1;
+            if (set(1,1,i) ~= set(1,1,j) ||...
+                set(2,1,i) ~= set(2,1,j));
+               if (set(1,2,i) ~= set(1,2,j) ||...
+                   set(2,2,i) ~= set(2,2,j));
+                cross(i) = cross(i)+1;
                end
             end
         
@@ -24,11 +24,11 @@ for i = 1 : length(set);
            set(2,1,i) <= set(2,1,j) && ...
            set(1,2,i) >= set(1,2,j) && ...
            set(2,2,i) >= set(2,2,j);
-            if (set(:,1,i) == set(:,1,j));
-            else
-               if (set(:,2,i) == set(:,2,j));
-               else
-                cross(i) = cross(i) + 1;
+            if (set(1,1,i) ~= set(1,1,j) ||...
+                set(2,1,i) ~= set(2,1,j));
+               if (set(1,2,i) ~= set(1,2,j) ||...
+                   set(2,2,i) ~= set(2,2,j));
+                cross(i) = cross(i)+1;
                end
             end
         end
