@@ -67,33 +67,54 @@ while ceil(short/(length(threeItemGARPTasks1323))) >= i;
 end
 
 %% Picking the items
-if item1c == 1; item1 = imread('cjuice.jpg'); end
-if item1c == 2; item1 = imread('icedtea.jpg');end
-if item1c == 3; item1 = imread('milk.jpg');   end   
-if item1c == 4; item1 = imread('ojuice.jpg'); end
-if item1c == 5; item1 = imread('4juice.jpg'); end
 
-if item2c == 1; item2 = imread('pistach.jpg');    end
-if item2c == 2; item2 = imread('hersheykiss.jpg');end
-if item2c == 3; item2 = imread('doritos.jpg');    end
-if item2c == 4; item2 = imread('cheese.jpg');     end
-if item2c == 5; item2 = imread('chips.jpg');      end
-if item2c == 6; item2 = imread('lemonheads.jpg'); end
-if item2c == 7; item2 = imread('pretzel.jpg');    end
-if item2c == 8; item2 = imread('oreo.jpg');       end
-if item2c == 9; item2 = imread('peanuts.jpg');    end
-if item2c == 10;item2 = imread('cheezit.jpg');    end
+if item1c == 1; item1 = imread('cheese.jpg');     end
+if item1c == 2; item1 = imread('cheezit.jpg');    end
+if item1c == 3; item1 = imread('cjuice.jpg');     end
+if item1c == 4; item1 = imread('doritos.jpg');    end
+if item1c == 5; item1 = imread('hersheykiss.jpg');end
+if item1c == 6; item1 = imread('icedtea.jpg');    end
+if item1c == 7; item1 = imread('lemonheads.jpg'); end
+if item1c == 8; item1 = imread('milk.jpg');       end
+if item1c == 9; item1 = imread('oreo.jpg');       end
+if item1c == 10;item1 = imread('ojuice.jpg');     end
+if item1c == 11;item1 = imread('peanuts.jpg');    end
+if item1c == 12;item1 = imread('pistach.jpg');    end
+if item1c == 13;item1 = imread('pretzel.jpg');    end
+if item1c == 14;item1 = imread('chips.jpg');      end
+if item1c == 15;item1 = imread('vjuice.jpg');     end
 
-if item3c == 1; item3 = imread('pistach.jpg');    end
-if item3c == 2; item3 = imread('hersheykiss.jpg');end
-if item3c == 3; item3 = imread('doritos.jpg');    end
-if item3c == 4; item3 = imread('cheese.jpg');     end
-if item3c == 5; item3 = imread('chips.jpg');      end
-if item3c == 6; item3 = imread('lemonheads.jpg'); end
-if item3c == 7; item3 = imread('pretzel.jpg');    end
-if item3c == 8; item3 = imread('oreo.jpg');       end
-if item3c == 9; item3 = imread('peanuts.jpg');    end
-if item3c == 10;item3 = imread('cheezit.jpg');    end
+if item2c == 1; item2 = imread('cheese.jpg');     end
+if item2c == 2; item2 = imread('cheezit.jpg');    end
+if item2c == 3; item2 = imread('cjuice.jpg');     end
+if item2c == 4; item2 = imread('doritos.jpg');    end
+if item2c == 5; item2 = imread('hersheykiss.jpg');end
+if item2c == 6; item2 = imread('icedtea.jpg');    end
+if item2c == 7; item2 = imread('lemonheads.jpg'); end
+if item2c == 8; item2 = imread('milk.jpg');       end
+if item2c == 9; item2 = imread('oreo.jpg');       end
+if item2c == 10;item2 = imread('ojuice.jpg');     end
+if item2c == 11;item2 = imread('peanuts.jpg');    end
+if item2c == 12;item2 = imread('pistach.jpg');    end
+if item2c == 13;item2 = imread('pretzel.jpg');    end
+if item2c == 14;item2 = imread('chips.jpg');      end
+if item2c == 15;item2 = imread('vjuice.jpg');     end
+
+if item3c == 1; item3 = imread('cheese.jpg');     end
+if item3c == 2; item3 = imread('cheezit.jpg');    end
+if item3c == 3; item3 = imread('cjuice.jpg');     end
+if item3c == 4; item3 = imread('doritos.jpg');    end
+if item3c == 5; item3 = imread('hersheykiss.jpg');end
+if item3c == 6; item3 = imread('icedtea.jpg');    end
+if item3c == 7; item3 = imread('lemonheads.jpg'); end
+if item3c == 8; item3 = imread('milk.jpg');       end
+if item3c == 9; item3 = imread('oreo.jpg');       end
+if item3c == 10;item3 = imread('ojuice.jpg');     end
+if item3c == 11;item3 = imread('peanuts.jpg');    end
+if item3c == 12;item3 = imread('pistach.jpg');    end
+if item3c == 13;item3 = imread('pretzel.jpg');    end
+if item3c == 14;item3 = imread('chips.jpg');      end
+if item3c == 15;item3 = imread('vjuice.jpg');     end
 
 %% Set up the screen
 
@@ -154,7 +175,7 @@ KbWait([], 3);
 %% during the experimentjjjfj
 % Be mindfull that only the "behavioral." data structure will be saved.
 
-% rewardtrial
+% reward trial
 rewardTrial = randi(blockLength);
 
 % Set all of the indexs equal to 1
@@ -171,13 +192,7 @@ while i <= long;
     
     
     
-    if trialOrder(i) == 1; %is for the one item (per side) (different items) GARP
-                       left.Item = ['item1';'item2'];
-               left.Amount = [twoItemGARPTasks(1,1,twoItemGARPOrder(twoItemGARPIndex)), ...
-                              twoItemGARPTasks(1,2,twoItemGARPOrder(twoItemGARPIndex))];
-               right.Item = ['item1';'item2'];
-               right.Amount =[twoItemGARPTasks(2,1,twoItemGARPOrder(twoItemGARPIndex)), ...
-                              twoItemGARPTasks(2,2,twoItemGARPOrder(twoItemGARPIndex))]; 
+    if trialOrder(i) == 1; %is for the one item (per side) (different items) GARP 
         twoItemGARP(item1, item1, ...
                     item2, item2,...
                     limitGARPTasks(limitGARPOrder(limitGARPIndex),1), 0, ...
