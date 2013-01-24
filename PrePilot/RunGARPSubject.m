@@ -68,59 +68,66 @@ end
 
 %% Picking the items
 
-if item1c == 1; item1 = imread('cheese.jpg');     end
-if item1c == 2; item1 = imread('cheezit.jpg');    end
-if item1c == 3; item1 = imread('cjuice.jpg');     end
-if item1c == 4; item1 = imread('doritos.jpg');    end
-if item1c == 5; item1 = imread('hersheykiss.jpg');end
-if item1c == 6; item1 = imread('icedtea.jpg');    end
-if item1c == 7; item1 = imread('lemonheads.jpg'); end
-if item1c == 8; item1 = imread('milk.jpg');       end
-if item1c == 9; item1 = imread('oreo.jpg');       end
-if item1c == 10;item1 = imread('ojuice.jpg');     end
-if item1c == 11;item1 = imread('peanuts.jpg');    end
-if item1c == 12;item1 = imread('pistach.jpg');    end
-if item1c == 13;item1 = imread('pretzel.jpg');    end
-if item1c == 14;item1 = imread('chips.jpg');      end
-if item1c == 15;item1 = imread('vjuice.jpg');     end
+if exist('item1c','var') == 0; item1c = 1; end
+if exist('item2c','var') == 0; item2c = 2; end
+if exist('item3c','var') == 0; item3c = 3; end
 
-if item2c == 1; item2 = imread('cheese.jpg');     end
-if item2c == 2; item2 = imread('cheezit.jpg');    end
-if item2c == 3; item2 = imread('cjuice.jpg');     end
-if item2c == 4; item2 = imread('doritos.jpg');    end
-if item2c == 5; item2 = imread('hersheykiss.jpg');end
-if item2c == 6; item2 = imread('icedtea.jpg');    end
-if item2c == 7; item2 = imread('lemonheads.jpg'); end
-if item2c == 8; item2 = imread('milk.jpg');       end
-if item2c == 9; item2 = imread('oreo.jpg');       end
-if item2c == 10;item2 = imread('ojuice.jpg');     end
-if item2c == 11;item2 = imread('peanuts.jpg');    end
-if item2c == 12;item2 = imread('pistach.jpg');    end
-if item2c == 13;item2 = imread('pretzel.jpg');    end
-if item2c == 14;item2 = imread('chips.jpg');      end
-if item2c == 15;item2 = imread('vjuice.jpg');     end
+if item1c == 1; item1 = imread('ajuice.jpg');     end
+if item1c == 2; item1 = imread('cheese.jpg');     end
+if item1c == 3; item1 = imread('cheezit.jpg');    end
+if item1c == 4; item1 = imread('cjuice.jpg');     end
+if item1c == 5; item1 = imread('dorito.jpg');     end
+if item1c == 6; item1 = imread('mm.jpg');         end
+if item1c == 7; item1 = imread('icedtea.jpg');    end
+if item1c == 8; item1 = imread('lemonheads.jpg'); end
+if item1c == 9; item1 = imread('milk.jpg');       end
+if item1c == 10;item1 = imread('oreo.jpg');       end
+if item1c == 11;item1 = imread('ojuice.jpg');     end
+if item1c == 12;item1 = imread('peanuts.jpg');    end
+if item1c == 13;item1 = imread('pistach.jpg');    end
+if item1c == 14;item1 = imread('pretzel.jpg');    end
+if item1c == 15;item1 = imread('chips.jpg');      end
+if item1c == 16;item1 = imread('vjuice.jpg');     end
 
-if item3c == 1; item3 = imread('cheese.jpg');     end
-if item3c == 2; item3 = imread('cheezit.jpg');    end
-if item3c == 3; item3 = imread('cjuice.jpg');     end
-if item3c == 4; item3 = imread('doritos.jpg');    end
-if item3c == 5; item3 = imread('hersheykiss.jpg');end
-if item3c == 6; item3 = imread('icedtea.jpg');    end
-if item3c == 7; item3 = imread('lemonheads.jpg'); end
-if item3c == 8; item3 = imread('milk.jpg');       end
-if item3c == 9; item3 = imread('oreo.jpg');       end
-if item3c == 10;item3 = imread('ojuice.jpg');     end
-if item3c == 11;item3 = imread('peanuts.jpg');    end
-if item3c == 12;item3 = imread('pistach.jpg');    end
-if item3c == 13;item3 = imread('pretzel.jpg');    end
-if item3c == 14;item3 = imread('chips.jpg');      end
-if item3c == 15;item3 = imread('vjuice.jpg');     end
+if item2c == 1; item2 = imread('ajuice.jpg');     end
+if item2c == 2; item2 = imread('cheese.jpg');     end
+if item2c == 3; item2 = imread('cheezit.jpg');    end
+if item2c == 4; item2 = imread('cjuice.jpg');     end
+if item2c == 5; item2 = imread('dorito.jpg');     end
+if item2c == 6; item2 = imread('mm.jpg');         end
+if item2c == 7; item2 = imread('icedtea.jpg');    end
+if item2c == 8; item2 = imread('lemonheads.jpg'); end
+if item2c == 9; item2 = imread('milk.jpg');       end
+if item2c == 10;item2 = imread('oreo.jpg');       end
+if item2c == 11;item2 = imread('ojuice.jpg');     end
+if item2c == 12;item2 = imread('peanuts.jpg');    end
+if item2c == 13;item2 = imread('pistach.jpg');    end
+if item2c == 14;item2 = imread('pretzel.jpg');    end
+if item2c == 15;item2 = imread('chips.jpg');      end
+if item2c == 16;item2 = imread('vjuice.jpg');     end
+
+if item3c == 1; item3 = imread('ajuice.jpg');     end
+if item3c == 2; item3 = imread('cheese.jpg');     end
+if item3c == 3; item3 = imread('cheezit.jpg');    end
+if item3c == 4; item3 = imread('cjuice.jpg');     end
+if item3c == 5; item3 = imread('dorito.jpg');     end
+if item3c == 6; item3 = imread('mm.jpg');         end
+if item3c == 7; item3 = imread('icedtea.jpg');    end
+if item3c == 8; item3 = imread('lemonheads.jpg'); end
+if item3c == 9; item3 = imread('milk.jpg');       end
+if item3c == 10;item3 = imread('oreo.jpg');       end
+if item3c == 11;item3 = imread('ojuice.jpg');     end
+if item3c == 12;item3 = imread('peanuts.jpg');    end
+if item3c == 13;item3 = imread('pistach.jpg');    end
+if item3c == 14;item3 = imread('pretzel.jpg');    end
+if item3c == 15;item3 = imread('chips.jpg');      end
+if item3c == 16;item3 = imread('vjuice.jpg');     end
 
 %% Set up the screen
 
 screenNumber = max(Screen('Screens'));
 [width height] = Screen('WindowSize', screenNumber);
-w = Screen(screenNumber, 'OpenWindow',[],[],[],[]);
+w = Screen('OpenWindow', screenNumber,[],[],[],[]);
 
 %% Saving the settingsf
 
@@ -293,7 +300,7 @@ end
     end
     
     if trialOrder(i) == 3; %is for the three item GARP 1-2 x 1-3
-               left.Item = [item1c,item2];
+               left.Item = [item1c,item2c];
                left.Amount = [threeItemGARPTasks1213(1,1,threeItemGARPOrder1213(threeItemGARPIndex1213)), ...
                               threeItemGARPTasks1213(1,2,threeItemGARPOrder1213(threeItemGARPIndex1213))];
                right.Item= [item1c,item3c];
@@ -314,7 +321,7 @@ end
                left.Item = [item1c,item3c];
                left.Amount = [threeItemGARPTasks1323(1,1,threeItemGARPOrder1323(threeItemGARPIndex1323)), ...
                               threeItemGARPTasks1323(1,2,threeItemGARPOrder1323(threeItemGARPIndex1323))];
-               right.Item =[item2c,item3c'];
+               right.Item =[item2c,item3c];
                right.Amount =[threeItemGARPTasks1323(2,1,threeItemGARPOrder1323(threeItemGARPIndex1323)), ...
                               threeItemGARPTasks1323(2,2,threeItemGARPOrder1323(threeItemGARPIndex1323))];
     end
@@ -351,6 +358,5 @@ end
 
 save (recordname, 'behavioral', '-append')
 Screen('CloseAll')
-quit
 end
 
