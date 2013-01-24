@@ -275,10 +275,10 @@ end
     if block == 1 && i == rewardTrial;        
     
     if trialOrder(i) == 1; %is for the one item (per side) (different items) GARP
-               left.Item = 'item1';
+               left.Item  = item1c;
                left.Amount = limitGARPTasks(limitGARPOrder(limitGARPIndex),1);
                
-               right.Item = 'item2';
+               right.Item = item2c;
                right.Amount = limitGARPTasks(limitGARPOrder(limitGARPIndex),2);
     end
     
@@ -351,5 +351,6 @@ end
 
 save (recordname, 'behavioral', '-append')
 Screen('CloseAll')
+quit
 end
 
