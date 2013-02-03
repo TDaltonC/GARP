@@ -179,7 +179,7 @@ drawStart(w);
 Screen('Flip',w);
 KbWait([], 3);
 
-%% during the experimentjjjfj
+%% during the experiment
 % Be mindfull that only the "behavioral." data structure will be saved.
 
 % reward trial
