@@ -1,7 +1,13 @@
 %Directly and Indirectly Revealed Preferences; GARP, SARP, WARP Violations;
 %Afriat Efficiency Index
 
-cd('/Users/Niree/Documents/MATLAB/preProcessed/1');
+% cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/preProcessed');
+% subjects = dir;
+% for folder = 1:length(subjects)
+%     if subjects(folder).name(1) == '.';
+%         continue
+%     end
+%     cd(subjects(folder).name);
 load('preProcessed.mat');
 
 if exist('e','var') == 0; %e is the efficiency level; if not provided, default value is set to 1
@@ -19,27 +25,14 @@ v = preProcessed.threeItemGARP1323.actualchoices;
 
 set = preProcessed.twoItemGARP.tasks;
 
-%%
-%Find prices
-p=zeros(length(preProcessed.twoItemGARP.tasks),2);
-for i = 1:length(preProcessed.twoItemGARP.tasks);
-    p(i,1) = (preProcessed.twoItemGARP.tasks(2,2,i)-preProcessed.twoItemGARP.tasks(1,2,i))/...
-        (preProcessed.twoItemGARP.tasks(1,1,i)-preProcessed.twoItemGARP.tasks(2,1,i));
-    p(i,2) = 1;
-end
 
-P=zeros(length(preProcessed.limitGARP.tasks),2);
-for i = 1:length(preProcessed.limitGARP.tasks);
-    P(i,1) = preProcessed.limitGARP.tasks(i,2)/preProcessed.limitGARP.tasks(i,1);
-    P(i,2) = 1;
-end
 %%
 %pmd and cmd are used to derive the matrix of directly revealed
 %relations
-pmdr=ones(length(P));
-for i = 1:length(P);
-    for j = 1:length(P);
-        if e*P(i,:)*r(:,i) >= P(i,:)*r(:,j)||...
+pmdr=ones(length(preProcessed.limitGARP.PriceslimitGARP));
+for i = 1:length(preProcessed.limitGARP.PriceslimitGARP);
+    for j = 1:length(preProcessed.limitGARP.PriceslimitGARP);
+        if e*preProcessed.limitGARP.PriceslimitGARP(i,:)*r(:,i) >= preProcessed.limitGARP.PriceslimitGARP(i,:)*r(:,j)||...
                 i == j
             pmdr(i,j) = 1;
         else 
@@ -48,10 +41,10 @@ for i = 1:length(P);
     end
 end
 
-pmdx=ones(length(p)); %this is a 35X35 matrix to be filled with 1's and 0's 
-for i = 1:length(p);
-    for j = 1:length(p);
-        if e*p(i,:)*x(:,i) >= p(i,:)*x(:,j)||...
+pmdx=ones(length(preProcessed.twoItemGARP.PricestwoItemGARP)); %this is a 35X35 matrix to be filled with 1's and 0's 
+for i = 1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
+    for j = 1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
+        if e*preProcessed.twoItemGARP.PricestwoItemGARP(i,:)*x(:,i) >= preProcessed.twoItemGARP.PricestwoItemGARP(i,:)*x(:,j)||...
                 i == j
             pmdx(i,j) = 1;
         else 
@@ -60,10 +53,10 @@ for i = 1:length(p);
     end
 end
 
-pmdt=ones(length(p)); %this is a 35X35 matrix to be filled with 1's and 0's 
-for i = 1:length(p);
-    for j = 1:length(p);
-        if e*p(i,:)*t(:,i) >= p(i,:)*t(:,j)||...
+pmdt=ones(length(preProcessed.threeItemGARP1213.Prices1213)); %this is a 35X35 matrix to be filled with 1's and 0's 
+for i = 1:length(preProcessed.threeItemGARP1213.Prices1213);
+    for j = 1:length(preProcessed.threeItemGARP1213.Prices1213);
+        if e*preProcessed.threeItemGARP1213.Prices1213(i,:)*t(:,i) >= preProcessed.threeItemGARP1213.Prices1213(i,:)*t(:,j)||...
                 i == j
             pmdt(i,j) = 1;
         else 
@@ -72,10 +65,10 @@ for i = 1:length(p);
     end
 end
 
-pmdu=ones(length(p)); %this is a 35X35 matrix to be filled with 1's and 0's 
-for i = 1:length(p);
-    for j = 1:length(p);
-        if e*p(i,:)*u(:,i) >= p(i,:)*u(:,j)||...
+pmdu=ones(length(preProcessed.threeItemGARP1223.Prices1223)); %this is a 35X35 matrix to be filled with 1's and 0's 
+for i = 1:length(preProcessed.threeItemGARP1223.Prices1223);
+    for j = 1:length(preProcessed.threeItemGARP1223.Prices1223);
+        if e*preProcessed.threeItemGARP1223.Prices1223(i,:)*u(:,i) >= preProcessed.threeItemGARP1223.Prices1223(i,:)*u(:,j)||...
                 i == j
             pmdu(i,j) = 1;
         else 
@@ -84,10 +77,10 @@ for i = 1:length(p);
     end
 end
 
-pmdv=ones(length(p)); %this is a 35X35 matrix to be filled with 1's and 0's 
-for i = 1:length(p);
-    for j = 1:length(p);
-        if e*p(i,:)*v(:,i) >= p(i,:)*v(:,j)||...
+pmdv=ones(length(preProcessed.threeItemGARP1323.Prices1323)); %this is a 35X35 matrix to be filled with 1's and 0's 
+for i = 1:length(preProcessed.threeItemGARP1323.Prices1323);
+    for j = 1:length(preProcessed.threeItemGARP1323.Prices1323);
+        if e*preProcessed.threeItemGARP1323.Prices1323(i,:)*v(:,i) >= preProcessed.threeItemGARP1323.Prices1323(i,:)*v(:,j)||...
                 i == j
             pmdv(i,j) = 1;
         else 
@@ -106,10 +99,10 @@ pmv = transclosure(pmdv);
 %%
 %GARP Violations%
 
-pgokr=zeros(length(P));
-for i = 1:length(P);
-    for j = 1:length(P);
-        if e*P(j,:)*r(:,j) > P(j,:)*r(:,i) &&...
+pgokr=zeros(length(preProcessed.limitGARP.PriceslimitGARP));
+for i = 1:length(preProcessed.limitGARP.PriceslimitGARP);
+    for j = 1:length(preProcessed.limitGARP.PriceslimitGARP);
+        if e*preProcessed.limitGARP.PriceslimitGARP(j,:)*r(:,j) > preProcessed.limitGARP.PriceslimitGARP(j,:)*r(:,i) &&...
                 pmr(i,j) == 1 &&...
                 r(1,i) ~= r(1,j)&&...
                 r(2,i) ~= r(2,j)
@@ -120,10 +113,10 @@ for i = 1:length(P);
     end
 end
 
-pgokx=zeros(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
-        if e*p(j,:)*x(:,j) > p(j,:)*x(:,i) &&...
+pgokx=zeros(length(preProcessed.twoItemGARP.PricestwoItemGARP));
+for i = 1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
+    for j = 1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
+        if e*preProcessed.twoItemGARP.PricestwoItemGARP(j,:)*x(:,j) > preProcessed.twoItemGARP.PricestwoItemGARP(j,:)*x(:,i) &&...
                 pmx(i,j) == 1 &&...
                 x(1,i) ~= x(1,j)&&...
                 x(2,i) ~= x(2,j)
@@ -134,10 +127,10 @@ for i = 1:length(p);
     end
 end
 
-pgokt=zeros(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
-        if e*p(j,:)*t(:,j) > p(j,:)*t(:,i) &&...
+pgokt=zeros(length(preProcessed.threeItemGARP1213.Prices1213));
+for i = 1:length(preProcessed.threeItemGARP1213.Prices1213);
+    for j = 1:length(preProcessed.threeItemGARP1213.Prices1213);
+        if e*preProcessed.threeItemGARP1213.Prices1213(j,:)*t(:,j) > preProcessed.threeItemGARP1213.Prices1213(j,:)*t(:,i) &&...
                 pmt(i,j) == 1 &&...
                 t(1,i) ~= t(1,j)&&...
                 t(2,i) ~= t(2,j)
@@ -148,10 +141,10 @@ for i = 1:length(p);
     end
 end
 
-pgoku=zeros(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
-        if e*p(j,:)*u(:,j) > p(j,:)*u(:,i) &&...
+pgoku=zeros(length(preProcessed.threeItemGARP1223.Prices1223));
+for i = 1:length(preProcessed.threeItemGARP1223.Prices1223);
+    for j = 1:length(preProcessed.threeItemGARP1223.Prices1223);
+        if e*preProcessed.threeItemGARP1223.Prices1223(j,:)*u(:,j) > preProcessed.threeItemGARP1223.Prices1223(j,:)*u(:,i) &&...
                 pmu(i,j) == 1 &&...
                 u(1,i) ~= u(1,j)&&...
                 u(2,i) ~= u(2,j)
@@ -162,10 +155,10 @@ for i = 1:length(p);
     end
 end
 
-pgokv=zeros(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
-        if e*p(j,:)*v(:,j) > p(j,:)*v(:,i) &&...
+pgokv=zeros(length(preProcessed.threeItemGARP1323.Prices1323));
+for i = 1:length(preProcessed.threeItemGARP1323.Prices1323);
+    for j = 1:length(preProcessed.threeItemGARP1323.Prices1323);
+        if e*preProcessed.threeItemGARP1323.Prices1323(j,:)*v(:,j) > preProcessed.threeItemGARP1323.Prices1323(j,:)*v(:,i) &&...
                 pmv(i,j) == 1 &&...
                 v(1,i) ~= v(1,j)&&...
                 v(2,i) ~= v(2,j)
@@ -178,76 +171,81 @@ end
 
 %%
 %SARP Violations
- psokr=ones(length(P));
-for i = 1:length(P);
-    for j = 1:length(P);
-        if pmx(i,j) == 1 &&...
+ psokr=ones(length(preProcessed.limitGARP.PriceslimitGARP));
+for i = 1:length(preProcessed.limitGARP.PriceslimitGARP);
+    for j = 1:length(preProcessed.limitGARP.PriceslimitGARP);
+        if pmr(i,j) == 1 &&...
                 r(1,i) ~= r(1,j) &&...
                 r(2,i) ~= r(2,j) &&...
-                pmv(j,i) == 1
+                pmr(j,i) == 1
                 %e*P(j,:)*r(:,j) >= P(j,:)*r(:,i)
             psokr(i,j) = 0;
+        else psokr(i,j) = 1;
         end
     end
 end
 
- psokx=ones(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
+ psokx=ones(length(preProcessed.twoItemGARP.PricestwoItemGARP));
+for i = 1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
+    for j = 1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
         if pmx(i,j) == 1 &&...
                 x(1,i) ~= x(1,j) &&...
                 x(2,i) ~= x(2,j) &&...
-                pmv(j,i) == 1
+                pmx(j,i) == 1
                % e*p(j,:)*x(:,j) >= p(j,:)*x(:,i)
             psokx(i,j) = 0;
+        else psokx(i,j) = 1;
         end
     end
 end
 
- psokt=ones(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
+ psokt=ones(length(preProcessed.threeItemGARP1213.Prices1213));
+for i = 1:length(preProcessed.threeItemGARP1213.Prices1213);
+    for j = 1:length(preProcessed.threeItemGARP1213.Prices1213);
         if pmt(i,j) == 1 &&...
                 t(1,i) ~= t(1,j) &&...
                 t(2,i) ~= t(2,j) &&...
-                pmv(j,i) == 1
+                pmt(j,i) == 1
                 %e*p(j,:)*t(:,j) >= p(j,:)*t(:,i)
             psokt(i,j) = 0;
+        else psokt(i,j) = 1;
         end
     end
 end
 
- psoku=ones(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
+ psoku=ones(length(preProcessed.threeItemGARP1223.Prices1223));
+for i = 1:length(preProcessed.threeItemGARP1223.Prices1223);
+    for j = 1:length(preProcessed.threeItemGARP1223.Prices1223);
         if pmu(i,j) == 1 &&...
                 u(1,i) ~= u(1,j) &&...
                 u(2,i) ~= u(2,j) &&...
-                pmv(j,i) == 1
+                pmu(j,i) == 1
                 %e*p(j,:)*u(:,j) >= p(j,:)*u(:,i)
             psoku(i,j) = 0;
+        else psoku(i,j) = 1;
         end
     end
 end
 
- psokv=ones(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
+ psokv=ones(length(preProcessed.threeItemGARP1323.Prices1323));
+for i = 1:length(preProcessed.threeItemGARP1323.Prices1323);
+    for j = 1:length(preProcessed.threeItemGARP1323.Prices1323);
         if pmv(i,j) == 1 &&...
                 v(1,i) ~= v(1,j) &&...
                 v(2,i) ~= v(2,j) &&...
                 pmv(j,i) == 1
                 %e*p(j,:)*v(:,j) >= p(j,:)*v(:,i)
             psokv(i,j) = 0;
+        else psokv(i,j) = 1;
         end
     end
 end
 %%
 %WARP Violations
 
-pwokr = zeros(length(P));
-for i = 1:length(P);
-    for j = 1:length(P);
+pwokr = zeros(length(preProcessed.limitGARP.PriceslimitGARP));
+for i = 1:length(preProcessed.limitGARP.PriceslimitGARP);
+    for j = 1:length(preProcessed.limitGARP.PriceslimitGARP);
         if pmdr(i,j) == 1 &&...
                 pmdr(j,i) == 1 &&...
                 r(1,i) ~= r(1,j) &&...
@@ -259,9 +257,9 @@ for i = 1:length(P);
     end
 end
 
-pwokx = zeros(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
+pwokx = zeros(length(preProcessed.twoItemGARP.PricestwoItemGARP));
+for i = 1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
+    for j = 1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
         if pmdx(i,j) == 1 &&...
                 pmdx(j,i) == 1 &&...
                 x(1,i) ~= x(1,j) &&...
@@ -273,11 +271,11 @@ for i = 1:length(p);
     end
 end
 
-pwokt = zeros(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
+pwokt = zeros(length(preProcessed.threeItemGARP1213.Prices1213));
+for i = 1:length(preProcessed.threeItemGARP1213.Prices1213);
+    for j = 1:length(preProcessed.threeItemGARP1213.Prices1213);
         if pmdt(i,j) == 1 &&...
-                pmdx(j,i) == 1 &&...
+                pmdt(j,i) == 1 &&...
                 t(1,i) ~= t(1,j) &&...
                 t(2,i) ~= t(2,j)
             pwokt(i,j) = 0;
@@ -287,9 +285,9 @@ for i = 1:length(p);
     end
 end
 
-pwoku = zeros(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
+pwoku = zeros(length(preProcessed.threeItemGARP1223.Prices1223));
+for i = 1:length(preProcessed.threeItemGARP1223.Prices1223);
+    for j = 1:length(preProcessed.threeItemGARP1223.Prices1223);
         if pmdu(i,j) == 1 &&...
                 pmdu(j,i) == 1 &&...
                 u(1,i) ~= u(1,j) &&...
@@ -301,9 +299,9 @@ for i = 1:length(p);
     end
 end
 
-pwokv = zeros(length(p));
-for i = 1:length(p);
-    for j = 1:length(p);
+pwokv = zeros(length(preProcessed.threeItemGARP1323.Prices1323));
+for i = 1:length(preProcessed.threeItemGARP1323.Prices1323);
+    for j = 1:length(preProcessed.threeItemGARP1323.Prices1323);
         if pmdv(i,j) == 1 &&...
                 pmdv(j,i) == 1 &&...
                 v(1,i) ~= v(1,j) &&...
@@ -319,9 +317,9 @@ end
 
 %1. Counting GARP Violations
 
-limitGARPviolation = zeros(length(P),1);
+limitGARPviolation = zeros(length(preProcessed.limitGARP.PriceslimitGARP),1);
 
-for i=1:length(P);
+for i=1:length(preProcessed.limitGARP.PriceslimitGARP);
     if sum(pgokr(i,:)) == 0
         limitGARPviolation(i,1) = 1;
     elseif sum(pgokr(i,:)) == 25
@@ -330,9 +328,9 @@ for i=1:length(P);
 end
 
 
-twoItemGARPviolation = zeros(length(p),1);
+twoItemGARPviolation = zeros(length(preProcessed.twoItemGARP.PricestwoItemGARP),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
     if sum(pgokx(i,:)) == 0
         twoItemGARPviolation(i,1) = 1;
     elseif sum(pgokx(i,:)) == 35
@@ -340,9 +338,9 @@ for i=1:length(p);
     end
 end
 
-threeItemGARPviolation1213 = zeros(length(p),1);
+threeItemGARPviolation1213 = zeros(length(preProcessed.threeItemGARP1213.Prices1213),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.threeItemGARP1213.Prices1213);
     if sum(pgokt(i,:)) == 0
         threeItemGARPviolation1213(i,1) = 1;
     elseif sum(pgokt(i,:)) == 35
@@ -350,9 +348,9 @@ for i=1:length(p);
     end
 end
 
-threeItemGARPviolation1223 = zeros(length(p),1);
+threeItemGARPviolation1223 = zeros(length(preProcessed.threeItemGARP1223.Prices1223),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.threeItemGARP1223.Prices1223);
     if sum(pgoku(i,:)) == 0
         threeItemGARPviolation1223(i,1) = 1;
     elseif sum(pgoku(i,:)) == 35
@@ -360,9 +358,9 @@ for i=1:length(p);
     end
 end
 
-threeItemGARPviolation1323 = zeros(length(p),1);
+threeItemGARPviolation1323 = zeros(length(preProcessed.threeItemGARP1323.Prices1323),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.threeItemGARP1323.Prices1323);
     if sum(pgokv(i,:)) == 0
         threeItemGARPviolation1323(i,1) = 1;
     elseif sum(pgokv(i,:)) == 35
@@ -377,41 +375,41 @@ NumberviolationthreeItemGARP1223 = 35-nnz(threeItemGARPviolation1223);
 NumberviolationthreeItemGARP1323 = 35-nnz(threeItemGARPviolation1323);
 
 %2. Counting SARP Violations
-limitSARPviolation = zeros(length(P),1);
+limitSARPviolation = zeros(length(preProcessed.limitGARP.PriceslimitGARP),1);
 
-for i=1:length(P);
+for i=1:length(preProcessed.limitGARP.PriceslimitGARP);
     if sum(psokr(i,:)) == 25
         limitSARPviolation (i,1) = 1;
     end
 end
 
-twoItemSARPviolation = zeros(length(p),1);
+twoItemSARPviolation = zeros(length(preProcessed.twoItemGARP.PricestwoItemGARP),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
     if sum(psokx(i,:)) == 35
         twoItemSARPviolation (i,1) = 1;
     end
 end
 
-threeItemSARPviolation1213 = zeros(length(p),1);
+threeItemSARPviolation1213 = zeros(length(preProcessed.threeItemGARP1213.Prices1213),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.threeItemGARP1213.Prices1213);
     if sum(psokt(i,:)) == 35
         threeItemSARPviolation1213(i,1) = 1;
     end
 end
 
-threeItemSARPviolation1223 = zeros(length(p),1);
+threeItemSARPviolation1223 = zeros(length(preProcessed.threeItemGARP1223.Prices1223),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.threeItemGARP1223.Prices1223);
     if sum(psoku(i,:)) == 35
         threeItemSARPviolation1223(i,1) = 1;
     end
 end
 
-threeItemSARPviolation1323 = zeros(length(p),1);
+threeItemSARPviolation1323 = zeros(length(preProcessed.threeItemGARP1323.Prices1323),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.threeItemGARP1323.Prices1323);
     if sum(psokv(i,:)) == 35
         threeItemSARPviolation1323(i,1) = 1;
     end
@@ -425,41 +423,41 @@ NumberviolationthreeItemSARP1323 = 35-nnz(threeItemSARPviolation1323);
 
 %3. Counting WARP Violations
 
-limitWARPviolation = zeros(length(P),1);
+limitWARPviolation = zeros(length(preProcessed.limitGARP.PriceslimitGARP),1);
 
-for i=1:length(P);
+for i=1:length(preProcessed.limitGARP.PriceslimitGARP);
     if sum(pwokr(i,:)) == 25
         limitWARPviolation (i,1) = 1;
     end
 end
 
-twoItemWARPviolation = zeros(length(p),1);
+twoItemWARPviolation = zeros(length(preProcessed.twoItemGARP.PricestwoItemGARP),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.twoItemGARP.PricestwoItemGARP);
     if sum(pwokx(i,:)) == 35
         twoItemWARPviolation (i,1) = 1;
     end
 end
 
-threeItemWARPviolation1213 = zeros(length(p),1);
+threeItemWARPviolation1213 = zeros(length(preProcessed.threeItemGARP1213.Prices1213),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.threeItemGARP1213.Prices1213);
     if sum(pwokt(i,:)) == 35
         threeItemWARPviolation1213(i,1) = 1;
     end
 end
 
-threeItemWARPviolation1223 = zeros(length(p),1);
+threeItemWARPviolation1223 = zeros(length(preProcessed.threeItemGARP1223.Prices1223),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.threeItemGARP1223.Prices1223);
     if sum(pwoku(i,:)) == 35
         threeItemWARPviolation1223(i,1) = 1;
     end
 end
 
-threeItemWARPviolation1323 = zeros(length(p),1);
+threeItemWARPviolation1323 = zeros(length(preProcessed.threeItemGARP1323.Prices1323),1);
 
-for i=1:length(p);
+for i=1:length(preProcessed.threeItemGARP1323.Prices1323);
     if sum(pwokv(i,:)) == 35
         threeItemWARPviolation1323(i,1) = 1;
     end
@@ -479,4 +477,4 @@ ViolationSummaryALL=cat(1,ViolationSummaryWARP,ViolationSummaryGARP,ViolationSum
 xlswrite('GARP.xls', ViolationSummaryALL);
 
 save Results.mat;
-
+%end
