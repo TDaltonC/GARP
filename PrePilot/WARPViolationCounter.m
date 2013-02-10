@@ -1,4 +1,4 @@
-cd('/Users/Niree/Documents/MATLAB/GARP/preProcessed/Subjects/');
+cd('/Users/Niree/Documents/MATLAB/GARP/preProcessed/');
 subjects = dir;
 for folder = 1:length(subjects)
     if subjects(folder).name(1) == '.';
@@ -73,8 +73,10 @@ for i = 1 : length(set);
     end
 end
 WARPviolations.limitGARP = WARPviolation;
-ViolalimitWARP = nnz(WARPviolations.limitGARP)/2;
-save('WARPviolationMatrices.mat','WARPviolation','ViolalimitWARP')
+WARPviolationcounts.limitGARP = nnz(WARPviolations.limitGARP)/2;
+save('WARPviolationMatrices.mat','WARPviolations');
+save('WARPviolationCounts.mat','WARPviolationcounts');
+
 %%
 set = preProcessed.twoItemGARP.tasks;
 choice = preProcessed.twoItemGARP.choices;
@@ -103,7 +105,7 @@ for i = 1 : length(set);
                 if choice(i) == 2 && ...
                    choice(j) == 1;
                    WARPviolation(i,j) = 1;
-                   AEIMatrix(i,j) = max(dot(Price(i,:),set(1,:,j))/dot(Price(i,:),(set(2,:,i)))-eps, dot(Price(j,:),set(2,:,i))/dot(Price(j,:),set(1,:,j))-eps);
+                   %AEIMatrix(i,j) = max(dot(Price(i,:),set(1,:,j))/dot(Price(i,:),(set(2,:,i)))-eps, dot(Price(j,:),set(2,:,i))/dot(Price(j,:),set(1,:,j))-eps);
                 end
                end
             end
@@ -195,9 +197,12 @@ for i = 1 : length(set);
         end
     end
 end
+
 WARPviolations.twoItemGARP = WARPviolation;
-ViolatwoItemWARP = nnz(WARPviolations.twoItemGARP)/2;
+WARPviolationcounts.twoItemGARP = nnz(WARPviolations.twoItemGARP)/2;
 save('WARPviolationMatrices.mat','WARPviolations');
+save('WARPviolationCounts.mat','WARPviolationcounts');
+
 %%
 set = preProcessed.threeItemGARP1213.revtasks;
 choice = preProcessed.threeItemGARP1213.choices;
@@ -242,9 +247,12 @@ for i = 1 : length(set);
         end
     end
 end
+
 WARPviolations.threeItemGARP1213 = WARPviolation;
-Viola1213WARP = nnz(WARPviolations.threeItemGARP1213)/2;
-save('WARPviolationMatrices.mat','WARPviolations')
+WARPviolationcounts.threeItemGARP1213 = nnz(WARPviolations.threeItemGARP1213)/2;
+save('WARPviolationMatrices.mat','WARPviolations');
+save('WARPviolationCounts.mat','WARPviolationcounts');
+
 %%
 set = preProcessed.threeItemGARP1223.revtasks;
 choice = preProcessed.threeItemGARP1223.choices;
@@ -290,9 +298,12 @@ for i = 1 : length(set);
         end
     end
 end
+
 WARPviolations.threeItemGARP1223 = WARPviolation;
-Viola1223WARP = nnz(WARPviolations.threeItemGARP1223)/2;
-save('WARPviolationMatrices.mat','WARPviolations')
+WARPviolationcounts.threeItemGARP1223 = nnz(WARPviolations.threeItemGARP1223)/2;
+save('WARPviolationMatrices.mat','WARPviolations');
+save('WARPviolationCounts.mat','WARPviolationcounts');
+
 %%
 set = preProcessed.threeItemGARP1323.revtasks;
 choice = preProcessed.threeItemGARP1323.choices;
@@ -337,9 +348,11 @@ for i = 1 : length(set);
         end
     end
 end
+
 WARPviolations.threeItemGARP1323 = WARPviolation;
-Viola1323WARP = nnz(WARPviolations.threeItemGARP1323)/2;
-save('WARPviolationMatrices.mat','WARPviolations')
-save('WARPViolations');
+WARPviolationcounts.threeItemGARP1323 = nnz(WARPviolations.threeItemGARP1323)/2;
+save('WARPviolationMatrices.mat','WARPviolations');
+save('WARPviolationCounts.mat','WARPviolationcounts');
+
 cd('../');
 end

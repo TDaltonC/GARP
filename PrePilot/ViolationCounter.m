@@ -1,4 +1,4 @@
-cd('/Users/Niree/Documents/MATLAB/GARP/preProcessed/Subjects/');
+cd('/Users/Niree/Documents/MATLAB/GARP/preProcessed/');
 subjects = dir;
 for folder = 1:length(subjects)
     if subjects(folder).name(1) == '.';
@@ -36,8 +36,9 @@ for i = 1 : length(set);
     end
 end
 violations.limitGARP = violation;
-ViolalimitGARP = nnz(violations.limitGARP)/2;
-save('violationMatrices.mat','violation','ViolalimitWARP')
+violationcounts.limitGARP = nnz(violations.limitGARP)/2;
+save('violationMatrices.mat','violations');
+save('violationCounts.mat','violationcounts');
 %%
 set = preProcessed.twoItemGARP.tasks;
 choice = preProcessed.twoItemGARP.choices;
@@ -92,8 +93,9 @@ for i = 1 : length(set);
     end
 end
 violations.twoItemGARP = violation;
-ViolatwoItemGARP = nnz(violations.twoItemGARP)/2;
+violationcounts.twoItemGARP = nnz(violations.twoItemGARP)/2;
 save('violationMatrices.mat','violations');
+save('violationCounts.mat','violationcounts');
 %%
 set = preProcessed.threeItemGARP1213.revtasks;
 choice = preProcessed.threeItemGARP1213.choices;
@@ -139,8 +141,9 @@ for i = 1 : length(set);
     end
 end
 violations.threeItemGARP1213 = violation;
-Viola1213GARP = nnz(violations.threeItemGARP1213)/2;
-save('violationMatrices.mat','violations')
+violationcounts.threeItemGARP1213 = nnz(violations.threeItemGARP1213)/2;
+save('violationMatrices.mat','violations');
+save('violationCounts.mat','violationcounts');
 %%
 set = preProcessed.threeItemGARP1223.revtasks;
 choice = preProcessed.threeItemGARP1223.choices;
@@ -186,8 +189,9 @@ for i = 1 : length(set);
     end
 end
 violations.threeItemGARP1223 = violation;
-Viola1223GARP = nnz(violations.threeItemGARP1223)/2;
-save('violationMatrices.mat','violations')
+violationcounts.threeItemGARP1223 = nnz(violations.threeItemGARP1223)/2;
+save('violationMatrices.mat','violations');
+save('violationCounts.mat','violationcounts');
 %%
 set = preProcessed.threeItemGARP1323.revtasks;
 choice = preProcessed.threeItemGARP1323.choices;
@@ -233,8 +237,8 @@ for i = 1 : length(set);
     end
 end
 violations.threeItemGARP1323 = violation;
-Viola1323GARP = nnz(violations.threeItemGARP1323)/2;
-save('violationMatrices.mat','violations')
-save('Violations');
+violationcounts.threeItemGARP1323 = nnz(violations.threeItemGARP1323)/2;
+save('violationMatrices.mat','violations');
+save('violationCounts.mat','violationcounts');
 cd('../');
 end
