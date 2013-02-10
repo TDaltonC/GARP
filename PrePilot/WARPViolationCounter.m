@@ -229,6 +229,38 @@ for i = 1 : length(set);
                end
             end
         end
+        if set(1,1,i) >= set(1,1,j) && ...  % Do they cross so that line 'i' is on top of line 'j' on the left side
+           set(1,2,i) >= set(1,2,j) && ...  % 
+           set(2,1,i) <= set(2,1,j) && ...  % As well as on the right side
+           set(2,3,i) <= set(2,3,j);
+            if (set(1,1,i) == set(1,1,j) &&...   %Then is first basket in 'i' equal to the first basket in 'j'
+                set(1,2,i) == set(1,2,j));
+               if (set(2,1,i) ~= set(2,1,j) ||...%Then is second basket in 'i' not equal to the second basket in 'j'
+                   set(2,3,i) ~= set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 1 && ...
+                   choice(j) == 2;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
+        if set(1,1,i) >= set(1,1,j) && ...  % Do they cross so that line 'i' is on top of line 'j' on the left side
+           set(1,2,i) >= set(1,2,j) && ...  % 
+           set(2,1,i) <= set(2,1,j) && ...  % As well as on the right side
+           set(2,3,i) <= set(2,3,j);
+            if (set(1,1,i) ~= set(1,1,j) ||...   %Then is first basket in 'i' not equal to the first basket in 'j'
+                set(1,2,i) ~= set(1,2,j));
+               if (set(2,1,i) == set(2,1,j) &&...%Then is second basket in 'i' equal to the second basket in 'j'
+                   set(2,3,i) == set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 2 && ...
+                   choice(j) == 1;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
         if set(1,1,i) <= set(1,1,j) && ...   % Vice Versa
            set(1,2,i) <= set(1,2,j) && ...
            set(2,1,i) >= set(2,1,j) && ...
@@ -237,6 +269,38 @@ for i = 1 : length(set);
                 set(1,2,i) ~= set(1,2,j));
                if (set(2,1,i) ~= set(2,1,j) ||...
                    set(2,3,i) ~= set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 1 && ...
+                   choice(j) == 2;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
+        if set(1,1,i) <= set(1,1,j) && ...   % Vice Versa
+           set(1,2,i) <= set(1,2,j) && ...
+           set(2,1,i) >= set(2,1,j) && ...
+           set(2,3,i) >= set(2,3,j);
+            if (set(1,1,i) == set(1,1,j) &&... %Then is first basket in 'i' equal to the first basket in 'j'
+                set(1,2,i) == set(1,2,j));
+               if (set(2,1,i) ~= set(2,1,j) ||... %Then is second basket in 'i' not equal to the second basket in 'j'
+                   set(2,3,i) ~= set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 2 && ...
+                   choice(j) == 1;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
+        if set(1,1,i) <= set(1,1,j) && ...   % Vice Versa
+           set(1,2,i) <= set(1,2,j) && ...
+           set(2,1,i) >= set(2,1,j) && ...
+           set(2,3,i) >= set(2,3,j);
+            if (set(1,1,i) ~= set(1,1,j) ||... %Then is first basket in 'i' not equal to the first basket in 'j'
+                set(1,2,i) ~= set(1,2,j));
+               if (set(2,1,i) == set(2,1,j) &&... %Then is second basket in 'i' equal to the second basket in 'j'
+                   set(2,3,i) == set(2,3,j));
                 cross(i,j) = 1;
                 if choice(i) == 1 && ...
                    choice(j) == 2;
@@ -280,6 +344,38 @@ for i = 1 : length(set);
                end
             end
         end
+        if set(1,1,i) >= set(1,1,j) && ...  % Do they cross so that line 'i' is on top of line 'j' on the left side
+           set(1,2,i) >= set(1,2,j) && ...  % 
+           set(2,2,i) <= set(2,2,j) && ...  % And have line 'j' above line line 'i' on the right
+           set(2,3,i) <= set(2,3,j);
+            if (set(1,1,i) == set(1,1,j) &&...   %Then is first basket in 'i' equal to the first basket in 'j'
+                set(1,2,i) == set(1,2,j));
+               if (set(2,2,i) ~= set(2,2,j) ||...%Then is second basket in 'i' not equal to the second basket in 'j'
+                   set(2,3,i) ~= set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 1 && ...
+                   choice(j) == 2;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
+        if set(1,1,i) >= set(1,1,j) && ...  % Do they cross so that line 'i' is on top of line 'j' on the left side
+           set(1,2,i) >= set(1,2,j) && ...  % 
+           set(2,2,i) <= set(2,2,j) && ...  % And have line 'j' above line line 'i' on the right
+           set(2,3,i) <= set(2,3,j);
+            if (set(1,1,i) ~= set(1,1,j) ||...   %Then is first basket in 'i' not equal to the first basket in 'j'
+                set(1,2,i) ~= set(1,2,j));
+               if (set(2,2,i) == set(2,2,j) &&...%Then is second basket in 'i' equal to the second basket in 'j'
+                   set(2,3,i) == set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 2 && ...
+                   choice(j) == 1;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
         if set(1,1,i) <= set(1,1,j) && ...   % Vice Versa
            set(1,2,i) <= set(1,2,j) && ...
            set(2,2,i) >= set(2,2,j) && ...
@@ -288,6 +384,38 @@ for i = 1 : length(set);
                 set(1,2,i) ~= set(1,2,j));
                if (set(2,2,i) ~= set(2,2,j) ||...
                    set(2,3,i) ~= set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 1 && ...
+                   choice(j) == 2;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
+        if set(1,1,i) <= set(1,1,j) && ...   % Vice Versa
+           set(1,2,i) <= set(1,2,j) && ...
+           set(2,2,i) >= set(2,2,j) && ...
+           set(2,3,i) >= set(2,3,j);
+            if (set(1,1,i) == set(1,1,j) &&... %Then is first basket in 'i' equal to the first basket in 'j'
+                set(1,2,i) == set(1,2,j));
+               if (set(2,2,i) ~= set(2,2,j) ||... %Then is second basket in 'i' not equal to the second basket in 'j'
+                   set(2,3,i) ~= set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 2 && ...
+                   choice(j) == 1;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
+        if set(1,1,i) <= set(1,1,j) && ...   % Vice Versa
+           set(1,2,i) <= set(1,2,j) && ...
+           set(2,2,i) >= set(2,2,j) && ...
+           set(2,3,i) >= set(2,3,j);
+            if (set(1,1,i) ~= set(1,1,j) ||... %Then is first basket in 'i' not equal to the first basket in 'j'
+                set(1,2,i) ~= set(1,2,j));
+               if (set(2,2,i) == set(2,2,j) &&... %Then is second basket in 'i' equal to the second basket in 'j'
+                   set(2,3,i) == set(2,3,j));
                 cross(i,j) = 1;
                 if choice(i) == 1 && ...
                    choice(j) == 2;
@@ -330,6 +458,38 @@ for i = 1 : length(set);
                end
             end
         end
+        if set(1,1,i) >= set(1,1,j) && ...  % Do they cross so that line 'i' is on top of line 'j' on the left side
+           set(1,3,i) >= set(1,3,j) && ...  % 
+           set(2,2,i) <= set(2,2,j) && ...  % And have line 'j' above line line 'i' on the right
+           set(2,3,i) <= set(2,3,j);
+            if (set(1,1,i) == set(1,1,j) &&...   %Then is first basket in 'i' equal to the first basket in 'j'
+                set(1,3,i) == set(1,3,j));
+               if (set(2,2,i) ~= set(2,2,j) ||...%Then is second basket in 'i' not equal to the second basket in 'j'
+                   set(2,3,i) ~= set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 1 && ...
+                   choice(j) == 2;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
+        if set(1,1,i) >= set(1,1,j) && ...  % Do they cross so that line 'i' is on top of line 'j' on the left side
+           set(1,3,i) >= set(1,3,j) && ...  % 
+           set(2,2,i) <= set(2,2,j) && ...  % And have line 'j' above line line 'i' on the right
+           set(2,3,i) <= set(2,3,j);
+            if (set(1,1,i) ~= set(1,1,j) ||...   %Then is first basket in 'i' not equal to the first basket in 'j'
+                set(1,3,i) ~= set(1,3,j));
+               if (set(2,2,i) == set(2,2,j) &&...%Then is second basket in 'i' equal to the second basket in 'j'
+                   set(2,3,i) == set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 2 && ...
+                   choice(j) == 1;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
         if set(1,1,i) <= set(1,1,j) && ...   % Vice Versa
            set(1,3,i) <= set(1,3,j) && ...
            set(2,2,i) >= set(2,2,j) && ...
@@ -338,6 +498,38 @@ for i = 1 : length(set);
                 set(1,3,i) ~= set(1,3,j));
                if (set(2,2,i) ~= set(2,2,j) ||...
                    set(2,3,i) ~= set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 1 && ...
+                   choice(j) == 2;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
+        if set(1,1,i) <= set(1,1,j) && ...   % Vice Versa
+           set(1,3,i) <= set(1,3,j) && ...
+           set(2,2,i) >= set(2,2,j) && ...
+           set(2,3,i) >= set(2,3,j);
+            if (set(1,1,i) == set(1,1,j) &&... %Then is first basket in 'i' equal to the first basket in 'j'
+                set(1,3,i) == set(1,3,j));
+               if (set(2,2,i) ~= set(2,2,j) ||... %Then is second basket in 'i' not equal to the second basket in 'j'
+                   set(2,3,i) ~= set(2,3,j));
+                cross(i,j) = 1;
+                if choice(i) == 2 && ...
+                   choice(j) == 1;
+                    WARPviolation(i,j) = 1;
+                end
+               end
+            end
+        end
+        if set(1,1,i) <= set(1,1,j) && ...   % Vice Versa
+           set(1,3,i) <= set(1,3,j) && ...
+           set(2,2,i) >= set(2,2,j) && ...
+           set(2,3,i) >= set(2,3,j);
+            if (set(1,1,i) ~= set(1,1,j) ||... %Then is first basket in 'i' not equal to the first basket in 'j'
+                set(1,3,i) ~= set(1,3,j));
+               if (set(2,2,i) == set(2,2,j) &&... %Then is second basket in 'i' not equal to the second basket in 'j'
+                   set(2,3,i) == set(2,3,j));
                 cross(i,j) = 1;
                 if choice(i) == 1 && ...
                    choice(j) == 2;
