@@ -1,4 +1,4 @@
-cd('/Users/Niree/Documents/MATLAB/GARP/preProcessed/');
+cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/preProcessed');
 subjects = dir;
 for folder = 1:length(subjects)
     if subjects(folder).name(1) == '.';
