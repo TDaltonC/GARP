@@ -1,7 +1,7 @@
 %For converting representations of choices (1 and 2) to actual amounts of
 %each item selected 
 
-cd('/Users/Niree/Documents/MATLAB/GARP/preProcessed/Subjects/215');
+cd('/Users/Niree/Documents/MATLAB/GARP/preProcessed/214');
 % subjects = dir;
 % for folder = 1:length(subjects)
 %     if subjects(folder).name(1) == '.';
