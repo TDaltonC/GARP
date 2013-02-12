@@ -1,0 +1,24 @@
+function [ output_args ] = Summary( input_args )
+%SUMMARY Summary of this function goes here
+%   Detailed explanation goes here
+cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/preProcessedRev/YA');
+subjects = dir;
+Summary = zeros(length(subjects),5);
+
+for folder = 1:length(subjects)
+    if subjects(folder).name(1) == '.';
+        continue
+    end
+    cd(subjects(folder).name);
+    load ('violationCounts.mat');
+    Summary(folder,1) = violationcounts.limitGARP;
+    Summary(folder,1) = violationcounts.twoItemGARP;
+    Summary(folder,1) = violationcounts.ThreeItem1213GARP;
+    Summary(folder,1) = violationcounts.ThreeItem1223GARP;
+    Summary(folder,1) = violationcounts.ThreeItem1323GARP;
+    
+    cd('../');
+end
+Summary
+save('violationSumYA.mat','violationSum');
+end
