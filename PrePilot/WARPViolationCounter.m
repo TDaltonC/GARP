@@ -1,4 +1,4 @@
-cd('/Users/Niree/Documents/MATLAB/GARP/preProcessed/');
+cd('/Users/Niree/Documents/GitHub/GARP/prePilot/preProcessedRev/');
 subjects = dir;
 for folder = 1:length(subjects)
     if subjects(folder).name(1) == '.';
@@ -545,6 +545,6 @@ WARPviolations.threeItemGARP1323 = WARPviolation;
 WARPviolationcounts.threeItemGARP1323 = nnz(WARPviolations.threeItemGARP1323)/2;
 save('WARPviolationMatrices.mat','WARPviolations');
 save('WARPviolationCounts.mat','WARPviolationcounts');
-
 cd('../');
+clearvars -except 'subjects', 'folder';
 end

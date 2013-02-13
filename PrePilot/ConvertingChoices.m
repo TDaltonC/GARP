@@ -1,18 +1,15 @@
 %For converting representations of choices (1 and 2) to actual amounts of
 %each item selected 
 
-cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/preProcessedRev');
-subjects = dir;
-
-for folder = 1:length(subjects)
-    if subjects(folder).name(1) == '.';
-        continue
-    end
-    if subjects(folder).name(1) == 'S';
-        continue
-    end
-    cd(subjects(folder).name);
+cd('/Users/Niree/Documents/GitHub/GARP/prePilot/preProcessedRev/218');
+% subjects = dir;
+% for folder = 1:length(subjects)
+%     if subjects(folder).name(1) == '.';
+%         continue
+%     end
+%     cd(subjects(folder).name);
     load('preProcessed.mat');
+ 
 % for i=1:length(preProcessed.limitGARP.tasks);
 %     if preProcessed.limitGARP.choices(i,1) == 1;
 %         preProcessed.limitGARP.actualchoices(2,i) = 0;
@@ -99,8 +96,6 @@ for folder = 1:length(subjects)
  
                   
 save('preProcessed.mat','preProcessed');
-cd('../');
-end
 
 
  
