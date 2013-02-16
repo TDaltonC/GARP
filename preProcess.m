@@ -2,8 +2,8 @@ function [ output_args ] = preProcess( input_args )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 cd ('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/records');
-subjects = dir;
-for i = 1:length(subjects)
+subjects = dir;             % count all of the subjects in the folder
+for i = 1:length(subjects)  %make sure that you're looking at a subject forlder
     if subjects(i).name(1) == '.';
         continue
     end
@@ -21,6 +21,7 @@ for i = 1:length(subjects)
             mkdir(folderName);
             cd(folderName);
     end
+    %% Bring over the tesks from the subject data files.
     preProcessed.subjID                  = settings.subjID;
     preProcessed.limitGARP.        tasks = settings.limitGARPTasks;
     preProcessed.twoItemGARP.      tasks = settings.twoItemGARPTasks;
@@ -34,6 +35,7 @@ for i = 1:length(subjects)
             choice(press) = 2;
         end
     end
+    %% Unshuffle the choices and make sure the that they get paired to the right trials 
     lgIndex = 1;
     tiIndex = 1;
     ti21Index=1;
