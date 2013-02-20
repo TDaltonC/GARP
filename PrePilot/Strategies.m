@@ -45,6 +45,7 @@ end
 
 strategy.limitGARP.mystrategy1 = mystrategy1;
 save('strategy.mat','strategy');
+strategy1deviation = nnz(strategy.limitGARP.mystrategy1);
 
 %%%% Strategy2: Maximizing Item 1 or Equivalently, Minimizing Item 2
 strategy2 = zeros(length(set),1);
@@ -80,6 +81,7 @@ end
 
 strategy.limitGARP.mystrategy2 = mystrategy2;
 save('strategy.mat','strategy');
+strategy2deviation = nnz(strategy.limitGARP.mystrategy2);
 
 %%%% Strategy3: Maximizing Item 2 or Equivalently, Minimizing Item 1
 strategy3 = zeros(length(set),1);
@@ -115,6 +117,7 @@ end
 
 strategy.limitGARP.mystrategy3 = mystrategy3;
 save('strategy.mat','strategy');
+strategy3deviation = nnz(strategy.limitGARP.mystrategy3);
 
 %%%% Strategy 4: Minimizing Absolutely
 strategy4 = zeros(length(set),1);
@@ -150,6 +153,7 @@ end
 
 strategy.limitGARP.mystrategy4 = mystrategy4;
 save('strategy.mat','strategy');
+strategy4deviation = nnz(strategy.limitGARP.mystrategy4);
 
 %%%% Strategy5: Equalizing ... note: it is impossible to differentiate between strategy4...
 % strategy5 for the limit case
@@ -186,7 +190,29 @@ end
 
 strategy.limitGARP.mystrategy5 = mystrategy5;
 save('strategy.mat','strategy');
+strategy5deviation = nnz(strategy.limitGARP.mystrategy5);
 
+mindeviation = min([strategy1deviation, strategy2deviation, strategy3deviation, strategy4deviation, strategy5deviation]);
+if mindeviation == strategy1deviation;
+    heuristic = 'strategy1';
+    deviation = strategy1deviation;
+elseif mindeviation == strategy2deviation;
+    heuristic = 'strategy2';
+    deviation = strategy2deviation;
+elseif mindeviation == strategy3deviation;
+    heuristic = 'strategy3';
+    deviation = strategy3deviation;
+elseif mindeviation == strategy4deviation;
+    heuristic = 'strategy4';
+    deviation = strategy4deviation;
+elseif mindeviation == strategy5deviation;
+    heuristic = 'strategy5';
+    deviation = strategy5deviation;
+end
+
+strategy.limitGARP.heuristic = heuristic;
+strategy.limitGARP.deviation = deviation;
+save('strategy.mat','strategy');
 %% FOR TWO ITEM TASKS
 set = preProcessed.twoItemGARP.tasks;
 choice = preProcessed.twoItemGARP.choices;
@@ -225,6 +251,7 @@ end
 
 strategy.twoItemGARP.mystrategy1 = mystrategy1;
 save('strategy.mat','strategy');
+strategy1deviation = nnz(strategy.twoItemGARP.mystrategy1);
 
 %%%% Strategy2: Maximizing Item 1 or Equivalently, Minimizing Item 2
 strategy2 = zeros(length(set),1);
@@ -260,6 +287,7 @@ end
 
 strategy.twoItemGARP.mystrategy2 = mystrategy2;
 save('strategy.mat','strategy');
+strategy2deviation = nnz(strategy.twoItemGARP.mystrategy2);
 
 %%%% Strategy3: Maximizing Item 2 or Equivalently, Minimizing Item 1
 strategy3 = zeros(length(set),1);
@@ -295,6 +323,7 @@ end
 
 strategy.twoItemGARP.mystrategy3 = mystrategy3;
 save('strategy.mat','strategy');
+strategy3deviation = nnz(strategy.twoItemGARP.mystrategy3);
 
 %%%% Strategy4: Minimizing Absolutely
 strategy4 = zeros(length(set),1);
@@ -331,6 +360,7 @@ end
 
 strategy.twoItemGARP.mystrategy4 = mystrategy4;
 save('strategy.mat','strategy');
+strategy4deviation = nnz(strategy.twoItemGARP.mystrategy4);
 
 %%%% Strategy5: Equalizing
 strategy5 = zeros(length(set),1);
@@ -365,6 +395,29 @@ for i = 1:length(set);
 end
 
 strategy.twoItemGARP.mystrategy5 = mystrategy5;
+save('strategy.mat','strategy');
+strategy5deviation = nnz(strategy.twoItemGARP.mystrategy5);
+
+mindeviation = min([strategy1deviation, strategy2deviation, strategy3deviation, strategy4deviation, strategy5deviation]);
+if mindeviation == strategy1deviation;
+    heuristic = 'strategy1';
+    deviation = strategy1deviation;
+elseif mindeviation == strategy2deviation;
+    heuristic = 'strategy2';
+    deviation = strategy2deviation;
+elseif mindeviation == strategy3deviation;
+    heuristic = 'strategy3';
+    deviation = strategy3deviation;
+elseif mindeviation == strategy4deviation;
+    heuristic = 'strategy4';
+    deviation = strategy4deviation;
+elseif mindeviation == strategy5deviation;
+    heuristic = 'strategy5';
+    deviation = strategy5deviation;
+end
+
+strategy.twoItemGARP.heuristic = heuristic;
+strategy.twoItemGARP.deviation = deviation;
 save('strategy.mat','strategy');
 
 %% FOR THREE ITEM 1213 TASKS
@@ -405,6 +458,7 @@ end
 
 strategy.threeItemGARP1213.mystrategy1 = mystrategy1;
 save('strategy.mat','strategy');
+strategy1deviation = nnz(strategy.threeItemGARP1213.mystrategy1);
 
 %%%% Strategy2: Maximizing Item 1 
 strategy2 = zeros(length(set),1);
@@ -440,6 +494,7 @@ end
 
 strategy.threeItemGARP1213.mystrategy2 = mystrategy2;
 save('strategy.mat','strategy');
+strategy2deviation = nnz(strategy.threeItemGARP1213.mystrategy2);
 
 %%%% Strategy3: Maximizing Item 2 
 strategy3 = zeros(length(set),1);
@@ -475,6 +530,7 @@ end
 
 strategy.threeItemGARP1213.mystrategy3 = mystrategy3;
 save('strategy.mat','strategy');
+strategy3deviation = nnz(strategy.threeItemGARP1213.mystrategy3);
 
 %%%% Strategy4: Minimizing Absolutely
 strategy4 = zeros(length(set),1);
@@ -510,6 +566,7 @@ end
 
 strategy.threeItemGARP1213.mystrategy4 = mystrategy4;
 save('strategy.mat','strategy');
+strategy4deviation = nnz(strategy.threeItemGARP1213.mystrategy4);
 
 %%%% Strategy5: Equalizing
 strategy5 = zeros(length(set),1);
@@ -545,6 +602,7 @@ end
 
 strategy.threeItemGARP1213.mystrategy5 = mystrategy5;
 save('strategy.mat','strategy');
+strategy5deviation = nnz(strategy.threeItemGARP1213.mystrategy5);
 
 %%%% Strategy6: Maximizing Item 3
 strategy6 = zeros(length(set),1);
@@ -580,6 +638,7 @@ end
 
 strategy.threeItemGARP1213.mystrategy6 = mystrategy6;
 save('strategy.mat','strategy');
+strategy6deviation = nnz(strategy.threeItemGARP1213.mystrategy6);
 
 %%%% Strategy7: Maximizing Item 1 + Item 2
 strategy7 = zeros(length(set),1);
@@ -615,6 +674,7 @@ end
 
 strategy.threeItemGARP1213.mystrategy7 = mystrategy7;
 save('strategy.mat','strategy');
+strategy7deviation = nnz(strategy.threeItemGARP1213.mystrategy7);
 
 %%%% Strategy8: Maximizing Item 1 + Item 3
 strategy8 = zeros(length(set),1);
@@ -650,6 +710,7 @@ end
 
 strategy.threeItemGARP1213.mystrategy8 = mystrategy8;
 save('strategy.mat','strategy');
+strategy8deviation = nnz(strategy.threeItemGARP1213.mystrategy8);
 
 %%%% Strategy9: Maximizing Item 2 + Item 3
 strategy9 = zeros(length(set),1);
@@ -684,6 +745,41 @@ for i = 1:length(set);
 end
 
 strategy.threeItemGARP1213.mystrategy9 = mystrategy9;
+save('strategy.mat','strategy');
+strategy9deviation = nnz(strategy.threeItemGARP1213.mystrategy9);
+
+mindeviation = min([strategy1deviation, strategy2deviation, strategy3deviation, strategy4deviation, strategy5deviation]);
+if mindeviation == strategy1deviation;
+    heuristic = 'strategy1';
+    deviation = strategy1deviation;
+elseif mindeviation == strategy2deviation;
+    heuristic = 'strategy2';
+    deviation = strategy2deviation;
+elseif mindeviation == strategy3deviation;
+    heuristic = 'strategy3';
+    deviation = strategy3deviation;
+elseif mindeviation == strategy4deviation;
+    heuristic = 'strategy4';
+    deviation = strategy4deviation;
+elseif mindeviation == strategy5deviation;
+    heuristic = 'strategy5';
+    deviation = strategy5deviation;
+elseif mindeviation == strategy6deviation;
+    heuristic = 'strategy6';
+    deviation = strategy6deviation;
+elseif mindeviation == strategy7deviation;
+    heuristic = 'strategy7';
+    deviation = strategy7deviation;
+elseif mindeviation == strategy8deviation;
+    heuristic = 'strategy8';
+    deviation = strategy8deviation;
+elseif mindeviation == strategy9deviation;
+    heuristic = 'strategy9';
+    deviation = strategy9deviation;
+end
+
+strategy.threeItemGARP1213.heuristic = heuristic;
+strategy.threeItemGARP1213.deviation = deviation;
 save('strategy.mat','strategy');
 
 %% FOR THREE ITEM 1223 TASKS
@@ -724,6 +820,7 @@ end
 
 strategy.threeItemGARP1223.mystrategy1 = mystrategy1;
 save('strategy.mat','strategy');
+strategy1deviation = nnz(strategy.threeItemGARP1223.mystrategy1);
 
 %%%% Strategy2: Maximizing Item 1 
 strategy2 = zeros(length(set),1);
@@ -759,6 +856,7 @@ end
 
 strategy.threeItemGARP1223.mystrategy2 = mystrategy2;
 save('strategy.mat','strategy');
+strategy2deviation = nnz(strategy.threeItemGARP1223.mystrategy2);
 
 %%%% Strategy3: Maximizing Item 2 
 strategy3 = zeros(length(set),1);
@@ -794,6 +892,7 @@ end
 
 strategy.threeItemGARP1223.mystrategy3 = mystrategy3;
 save('strategy.mat','strategy');
+strategy3deviation = nnz(strategy.threeItemGARP1223.mystrategy3);
 
 %%%% Strategy4: Minimizing Absolutely
 strategy4 = zeros(length(set),1);
@@ -829,6 +928,7 @@ end
 
 strategy.threeItemGARP1223.mystrategy4 = mystrategy4;
 save('strategy.mat','strategy');
+strategy4deviation = nnz(strategy.threeItemGARP1223.mystrategy4);
 
 %%%% Strategy5: Equalizing
 strategy5 = zeros(length(set),1);
@@ -864,6 +964,7 @@ end
 
 strategy.threeItemGARP1223.mystrategy5 = mystrategy5;
 save('strategy.mat','strategy');
+strategy5deviation = nnz(strategy.threeItemGARP1223.mystrategy5);
 
 %%%% Strategy6: Maximizing Item 3
 strategy6 = zeros(length(set),1);
@@ -899,6 +1000,7 @@ end
 
 strategy.threeItemGARP1223.mystrategy6 = mystrategy6;
 save('strategy.mat','strategy');
+strategy6deviation = nnz(strategy.threeItemGARP1223.mystrategy6);
 
 %%%% Strategy7: Maximizing Item 1 + Item 2
 strategy7 = zeros(length(set),1);
@@ -934,6 +1036,7 @@ end
 
 strategy.threeItemGARP1223.mystrategy7 = mystrategy7;
 save('strategy.mat','strategy');
+strategy7deviation = nnz(strategy.threeItemGARP1223.mystrategy7);
 
 %%%% Strategy8: Maximizing Item 1 + Item 3
 strategy8 = zeros(length(set),1);
@@ -969,6 +1072,7 @@ end
 
 strategy.threeItemGARP1223.mystrategy8 = mystrategy8;
 save('strategy.mat','strategy');
+strategy8deviation = nnz(strategy.threeItemGARP1223.mystrategy8);
 
 %%%% Strategy9: Maximizing Item 2 + Item 3
 strategy9 = zeros(length(set),1);
@@ -1003,6 +1107,41 @@ for i = 1:length(set);
 end
 
 strategy.threeItemGARP1223.mystrategy9 = mystrategy9;
+save('strategy.mat','strategy');
+strategy9deviation = nnz(strategy.threeItemGARP1223.mystrategy9);
+
+mindeviation = min([strategy1deviation, strategy2deviation, strategy3deviation, strategy4deviation, strategy5deviation]);
+if mindeviation == strategy1deviation;
+    heuristic = 'strategy1';
+    deviation = strategy1deviation;
+elseif mindeviation == strategy2deviation;
+    heuristic = 'strategy2';
+    deviation = strategy2deviation;
+elseif mindeviation == strategy3deviation;
+    heuristic = 'strategy3';
+    deviation = strategy3deviation;
+elseif mindeviation == strategy4deviation;
+    heuristic = 'strategy4';
+    deviation = strategy4deviation;
+elseif mindeviation == strategy5deviation;
+    heuristic = 'strategy5';
+    deviation = strategy5deviation;
+elseif mindeviation == strategy6deviation;
+    heuristic = 'strategy6';
+    deviation = strategy6deviation;
+elseif mindeviation == strategy7deviation;
+    heuristic = 'strategy7';
+    deviation = strategy7deviation;
+elseif mindeviation == strategy8deviation;
+    heuristic = 'strategy8';
+    deviation = strategy8deviation;
+elseif mindeviation == strategy9deviation;
+    heuristic = 'strategy9';
+    deviation = strategy9deviation;
+end
+
+strategy.threeItemGARP1223.heuristic = heuristic;
+strategy.threeItemGARP1223.deviation = deviation;
 save('strategy.mat','strategy');
 
 %% FOR THREE ITEM 1323 TASKS
@@ -1043,6 +1182,7 @@ end
 
 strategy.threeItemGARP1323.mystrategy1 = mystrategy1;
 save('strategy.mat','strategy');
+strategy1deviation = nnz(strategy.threeItemGARP1323.mystrategy1);
 
 %%%% Strategy2: Maximizing Item 1 
 strategy2 = zeros(length(set),1);
@@ -1078,6 +1218,7 @@ end
 
 strategy.threeItemGARP1323.mystrategy2 = mystrategy2;
 save('strategy.mat','strategy');
+strategy2deviation = nnz(strategy.threeItemGARP1323.mystrategy2);
 
 %%%% Strategy3: Maximizing Item 2 
 strategy3 = zeros(length(set),1);
@@ -1113,6 +1254,7 @@ end
 
 strategy.threeItemGARP1323.mystrategy3 = mystrategy3;
 save('strategy.mat','strategy');
+strategy3deviation = nnz(strategy.threeItemGARP1323.mystrategy3);
 
 %%%% Strategy4: Minimizing Absolutely
 strategy4 = zeros(length(set),1);
@@ -1148,6 +1290,7 @@ end
 
 strategy.threeItemGARP1323.mystrategy4 = mystrategy4;
 save('strategy.mat','strategy');
+strategy4deviation = nnz(strategy.threeItemGARP1323.mystrategy4);
 
 %%%% Strategy5: Equalizing
 strategy5 = zeros(length(set),1);
@@ -1183,6 +1326,7 @@ end
 
 strategy.threeItemGARP1323.mystrategy5 = mystrategy5;
 save('strategy.mat','strategy');
+strategy5deviation = nnz(strategy.threeItemGARP1323.mystrategy5);
 
 %%%% Strategy6: Maximizing Item 3
 strategy6 = zeros(length(set),1);
@@ -1218,6 +1362,7 @@ end
 
 strategy.threeItemGARP1323.mystrategy6 = mystrategy6;
 save('strategy.mat','strategy');
+strategy6deviation = nnz(strategy.threeItemGARP1323.mystrategy6);
 
 %%%% Strategy7: Maximizing Item 1 + Item 2
 strategy7 = zeros(length(set),1);
@@ -1253,6 +1398,7 @@ end
 
 strategy.threeItemGARP1323.mystrategy7 = mystrategy7;
 save('strategy.mat','strategy');
+strategy7deviation = nnz(strategy.threeItemGARP1323.mystrategy7);
 
 %%%% Strategy8: Maximizing Item 1 + Item 3
 strategy8 = zeros(length(set),1);
@@ -1288,6 +1434,7 @@ end
 
 strategy.threeItemGARP1323.mystrategy8 = mystrategy8;
 save('strategy.mat','strategy');
+strategy8deviation = nnz(strategy.threeItemGARP1323.mystrategy8);
 
 %%%% Strategy9: Maximizing Item 2 + Item 3
 strategy9 = zeros(length(set),1);
@@ -1322,6 +1469,41 @@ for i = 1:length(set);
 end
 
 strategy.threeItemGARP1323.mystrategy9 = mystrategy9;
+save('strategy.mat','strategy');
+strategy9deviation = nnz(strategy.threeItemGARP1323.mystrategy9);
+
+mindeviation = min([strategy1deviation, strategy2deviation, strategy3deviation, strategy4deviation, strategy5deviation]);
+if mindeviation == strategy1deviation;
+    heuristic = 'strategy1';
+    deviation = strategy1deviation;
+elseif mindeviation == strategy2deviation;
+    heuristic = 'strategy2';
+    deviation = strategy2deviation;
+elseif mindeviation == strategy3deviation;
+    heuristic = 'strategy3';
+    deviation = strategy3deviation;
+elseif mindeviation == strategy4deviation;
+    heuristic = 'strategy4';
+    deviation = strategy4deviation;
+elseif mindeviation == strategy5deviation;
+    heuristic = 'strategy5';
+    deviation = strategy5deviation;
+elseif mindeviation == strategy6deviation;
+    heuristic = 'strategy6';
+    deviation = strategy6deviation;
+elseif mindeviation == strategy7deviation;
+    heuristic = 'strategy7';
+    deviation = strategy7deviation;
+elseif mindeviation == strategy8deviation;
+    heuristic = 'strategy8';
+    deviation = strategy8deviation;
+elseif mindeviation == strategy9deviation;
+    heuristic = 'strategy9';
+    deviation = strategy9deviation;
+end
+
+strategy.threeItemGARP1323.heuristic = heuristic;
+strategy.threeItemGARP1323.deviation = deviation;
 save('strategy.mat','strategy');
 
 %%
