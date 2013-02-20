@@ -7,6 +7,34 @@ for folder = 1:length(subjects)
     cd(subjects(folder).name);
     load('preProcessed.mat');
 
+%% For Limit (One Item) Tasks
+set = preProcessed.limitGARP.tasks;
+choice = preProcessed.limitGARP.choices;
+
+%% Strategy1: Maximizing Absolutely
+strategy1 = zeros(length(set),1);
+for i = 1:length(set);
+    if set(i,1) > set(i,2);
+        strategy1(i) = 1;
+    elseif set(i,1) < set(i,2);
+        strategy1(i) = 2;
+    elseif set(i,1) == set(i,2);
+        strategy1(i) = 0;
+    end
+end
+
+strategy.limitGARP.strategy1 = strategy1;
+save('strategy.mat','strategy');
+
+%% Strategy2: Maximizing Item 1 or Equivalently, Minimizing Item 2
+strategy2 = zeros(length(set),1);
+for i = 1:length(set);
+    if set(i,1)
+
+strategy.limitGARP.strategy2 = strategy2;
+save('strategy.mat','strategy');
+
+%% For Two Item Tasks
 set = preProcessed.twoItemGARP.tasks;
 choice = preProcessed.twoItemGARP.choices;
 
@@ -18,12 +46,12 @@ for i = 1:length(set);
     elseif set(1,1,i) + set(1,2,i) < set(2,1,i) + set(2,2,i);
         strategy1(i) = 2;
     elseif set(1,1,i) + set(1,2,i) == set(2,1,i) + set(2,2,i);
-        strategy1(i) = 0; %0 means that both answers are acceptable 
+        strategy1(i) = 0; %0 means that either response (1 or 2) will be in compliance with the strategy
     end
 end
 
-strategy1.twoItemGARP = strategy1;
-save('strategy1.mat','strategy1');
+strategy.twoItemGARP.strategy1 = strategy1;
+save('strategy.mat','strategy');
 
 %% Strategy2: Maximizing Item 1 or Equivalently, Minimizing Item 2
 strategy2 = zeros(length(set),1);
@@ -37,8 +65,8 @@ for i = 1:length(set);
     end
 end
 
-strategy2.twoItemGARP = strategy2;
-save('strategy2.mat','strategy2');
+strategy.twoItemGARP.strategy2 = strategy2;
+save('strategy.mat','strategy');
 
 %% Strategy3: Maximizing Item 2 or Equivalently, Minimizing Item 1
 strategy3 = zeros(length(set),1);
@@ -52,21 +80,52 @@ for i = 1:length(set);
     end
 end
 
-strategy3.twoItemGARP = strategy3;
-save('strategy3.mat','strategy3');
+strategy.twoItemGARP.strategy3 = strategy3;
+save('strategy.mat','strategy');
 
 %% Strategy4: Minimizing Absolutely
 strategy4 = zeros(length(set),1);
 for i = 1:length(set);
+    if set(1,1,i) + set(1,2,i) > set(2,1,i) + set(2,2,i);
+        strategy4(i) = 2;
+    elseif set(1,1,i) + set(1,2,i) < set(2,1,i) + set(2,2,i);
+        strategy4(i) = 1;
+    elseif set(1,1,i) + set(1,2,i) == set(2,1,i) + set(2,2,i);
+        strategy4(i) = 0; %0 means that either response (1 or 2) will be in compliance with the strategy
+    end
+end
+
     
-strategy4.twoItemGARP = strategy4;
-save('strategy4.mat','strategy4');
+strategy.twoItemGARP.strategy4 = strategy4;
+save('strategy.mat','strategy');
 
 %% Strategy5: Equalizing
 strategy5 = zeros(length(set),1);
 for i = 1:length(set);
-strategy5.twoItemGARP = strategy5;
-save('strategy5.mat','strategy5');
+    if abs(set(1,1,i) - set(1,2,i)) > abs(set(2,1,i) - set(2,2,i));
+        strategy5(i) = 2;
+    elseif abs(set(1,1,i) - set(1,2,i)) < abs(set(2,1,i) - set(2,2,i));
+        strategy5(i) = 1;
+    elseif abs(set(1,1,i) - set(1,2,i)) == abs(set(2,1,i) - set(2,2,i));
+        strategy5(i) = 0;
+    end
+end
+
+strategy.twoItemGARP.strategy5 = strategy5;
+save('strategy.mat','strategy');
+
+%% For Three Item 1213 Tasks
+set = preProcessed.threeItemGARP1213.tasks;
+choice = preProcessed.threeItemGARP1213.choices;
+
+%% For Three Item 1223 Tasks
+set = preProcessed.threeItemGARP1223.tasks;
+choice = preProcessed.threeItemGARP1223.choices;
+
+%% For Three Item 1323 Tasks
+set = preProcessed.threeItemGARP1323.tasks;
+choice = preProcessed.threeItemGARP1323.choices;
+
 %%
 cd('../');
 clearvars -except 'subjects', 'folder';
