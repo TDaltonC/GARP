@@ -228,6 +228,20 @@ end
 strategy.threeItemGARP1213.strategy4 = strategy4;
 save('strategy.mat','strategy');
 
+%%%% Strategy5: Equalizing
+for i = 1:length(set);
+    if abs(set(1,1,i) - set(1,2,i)) > abs(set(2,1,i) - set(2,3,i));
+        strategy5(i) = 2;
+    elseif abs(set(1,1,i) - set(1,2,i)) < abs(set(2,1,i) - set(2,3,i));
+        strategy5(i) = 1;
+    elseif abs(set(1,1,i) - set(1,2,i)) == abs(set(2,1,i) - set(2,3,i));
+        strategy5(i) = 0;
+    end 
+end
+
+strategy.threeItemGARP1213.strategy5 = strategy5;
+save('strategy.mat','strategy');
+
 %%%% Strategy6: Maximizing Item 3
 for i = 1:length(set);
     if set(1,3,i) > set(2,3,i);
@@ -345,6 +359,20 @@ end
 strategy.threeItemGARP1223.strategy4 = strategy4;
 save('strategy.mat','strategy');
 
+%%%% Strategy5: Equalizing
+for i = 1:length(set);
+    if abs(set(1,1,i) - set(1,2,i)) > abs(set(2,2,i) - set(2,3,i));
+        strategy5(i) = 2;
+    elseif abs(set(1,1,i) - set(1,2,i)) < abs(set(2,2,i) - set(2,3,i));
+        strategy5(i) = 1;
+    elseif abs(set(1,1,i) - set(1,2,i)) == abs(set(2,2,i) - set(2,3,i));
+        strategy5(i) = 0;
+    end 
+end
+
+strategy.threeItemGARP1223.strategy5 = strategy5;
+save('strategy.mat','strategy');
+
 %%%% Strategy6: Maximizing Item 3
 for i = 1:length(set);
     if set(1,3,i) > set(2,3,i);
@@ -459,6 +487,20 @@ for i = 1:length(set);
 end
 
 strategy.threeItemGARP1323.strategy4 = strategy4;
+save('strategy.mat','strategy');
+
+%%%% Strategy5: Equalizing
+for i = 1:length(set);
+    if abs(set(1,1,i) - set(1,3,i)) > abs(set(2,2,i) - set(2,3,i));
+        strategy5(i) = 2;
+    elseif abs(set(1,1,i) - set(1,3,i)) < abs(set(2,2,i) - set(2,3,i));
+        strategy5(i) = 1;
+    elseif abs(set(1,1,i) - set(1,3,i)) == abs(set(2,2,i) - set(2,3,i));
+        strategy5(i) = 0;
+    end 
+end
+
+strategy.threeItemGARP1323.strategy5 = strategy5;
 save('strategy.mat','strategy');
 
 %%%% Strategy6: Maximizing Item 3
