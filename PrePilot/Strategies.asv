@@ -14,12 +14,12 @@ choice = preProcessed.limitGARP.choices;
 %% Strategy1: Maximizing Absolutely
 strategy1 = zeros(length(set),1);
 for i = 1:length(set);
-    if set(i,1) > set(i,2);
+    if set(1,1,i) + set(1,2,i) > set(2,1,i) + set(2,2,i);
         strategy1(i) = 1;
-    elseif set(i,1) < set(i,2);
+    elseif set(1,1,i) + set(1,2,i) < set(2,1,i) + set(2,2,i);
         strategy1(i) = 2;
-    elseif set(i,1) == set(i,2);
-        strategy1(i) = 0;
+    elseif set(1,1,i) + set(1,2,i) == set(2,1,i) + set(2,2,i);
+        strategy1(i) = 0; %0 means that either response (1 or 2) will be in compliance with the strategy
     end
 end
 
@@ -29,11 +29,34 @@ save('strategy.mat','strategy');
 %% Strategy2: Maximizing Item 1 or Equivalently, Minimizing Item 2
 strategy2 = zeros(length(set),1);
 for i = 1:length(set);
-    if set(i,1)
+    if set(1,1,i) > set(2,1,i);
+        strategy2(i) = 1;
+    elseif set(1,1,i) < set(2,1,i);
+        strategy2(i) = 2;
+    elseif set(1,1,i) == set(2,1,i);
+        strategy2(i) = 0;
+    end
+end
 
 strategy.limitGARP.strategy2 = strategy2;
 save('strategy.mat','strategy');
 
+%% Strategy3: Maximizing Item 2 or Equivalently, Minimizing Item 1
+strategy3 = zeros(length(set),1);
+for i = 1:length(set);
+    if set(1,2,i) > set(2,2,i);
+        strategy3(i) = 1;
+    elseif set(1,2,i) < set(2,2,i);
+        strategy3(i) = 2;
+    elseif set(1,2,i) == set(2,2,i);
+        strategy3(i) = 0;
+    end
+end
+
+strategy.limitGARP.strategy3 = strategy3;
+save('strategy.mat','strategy');
+
+%% Strategy 4: Minimizing Absolutely
 %% For Two Item Tasks
 set = preProcessed.twoItemGARP.tasks;
 choice = preProcessed.twoItemGARP.choices;
