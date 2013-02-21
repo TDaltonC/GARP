@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 cd('/Users/Niree/Documents/GitHub/GARP/prePilot/preProcessedRev/');
 subjects = dir;
+
 for folder = 1:length(subjects)
     if subjects(folder).name(1) == '.';
         continue
