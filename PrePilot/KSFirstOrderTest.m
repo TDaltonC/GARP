@@ -32,10 +32,28 @@ end
 for i = 1:1000;
     Data3ItemRand(i,1) = Data3Item(i,3);
 end
+%% Kolgomorov-Smirnov Test for First Order Stochastic Dominance
+hK2ItemYO = kstest2(Data2ItemYA, Data2ItemOA, 0.05, 'larger');
+hK2ItemYR = kstest2(Data2ItemYA, Data2ItemRand, 0.05, 'larger');
+hK2ItemOR = kstest2(Data2ItemOA, Data2ItemRand, 0.05, 'larger');
+hK3ItemYO = kstest2(Data3ItemYA, Data3ItemOA, 0.05, 'larger');
+hK3ItemYR = kstest2(Data3ItemYA, Data3ItemRand, 0.05, 'larger');
+hK3ItemOR = kstest2(Data3ItemOA, Data3ItemRand, 0.05, 'larger');
+hK23ItemY = kstest2(Data2ItemYA, Data3ItemYA, 0.05, 'larger');
+hK23ItemO = kstest2(Data2ItemOA, Data3ItemOA, 0.05, 'larger');
+hK23ItemRand = kstest2(Data2ItemRand, Data3ItemRand, 0.05, 'larger');
 
-h2ItemYO = kstest2(Data2ItemYA, Data2ItemOA, 0.05);
-h2ItemYR = kstest2(Data2ItemYA, Data2ItemRand, 0.05);
-h2ItemOR = kstest2(Data2ItemOA, Data2ItemRand, 0.05);
-h3ItemYO = kstest2(Data3ItemYA, Data3ItemOA, 0.05);
-h3ItemYR = kstest2(Data3ItemYA, Data3ItemRand, 0.05);
-h3ItemOR = kstest2(Data3ItemOA, Data3ItemRand, 0.05);
+%% Mann-Whitney U-Test
+[p2ItemYO,hM2ItemYO] = ranksum(Data2ItemYA, Data2ItemOA);
+[p2ItemYR,hM2ItemYR] = ranksum(Data2ItemYA, Data2ItemRand);
+[p2ItemOR,hM2ItemOR] = ranksum(Data2ItemOA, Data2ItemRand);
+[p3ItemYO,hM3ItemYO] = ranksum(Data3ItemYA, Data3ItemOA);
+[p3ItemYR,hM3ItemYR] = ranksum(Data3ItemYA, Data3ItemRand);
+[p3ItemOR,hM3ItemOR] = ranksum(Data3ItemOA, Data3ItemRand);
+[p23ItemY,hM23ItemY] = ranksum(Data2ItemYA, Data3ItemYA);
+[p23ItemO,hM23ItemO] = ranksum(Data2ItemOA, Data3ItemOA);
+[p23ItemRand,hM23ItemRand] = ranksum(Data2ItemRand, Data3ItemRand);
+
+
+
+
