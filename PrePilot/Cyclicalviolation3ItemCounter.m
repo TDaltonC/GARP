@@ -4,6 +4,12 @@ for folder = 1:length(subjects)
     if subjects(folder).name(1) == '.';
         continue
     end
+    if subjects(folder).name(1) == 'C';
+        continue
+    end
+    if subjects(folder).name(1) == 'v';
+        continue
+    end
     cd(subjects(folder).name);
     load('preProcessed.mat');
     

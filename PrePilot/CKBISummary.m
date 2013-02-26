@@ -12,6 +12,9 @@ for folder = 1:length(subjects)
     if subjects(folder).name(1) == 'v';
         continue
     end
+    if subjects(folder).name(1) == 'C';
+        continue
+    end
     cd(subjects(folder).name);
     load ('violationMatricesCKB.mat');
     load ('preProcessed.mat');
