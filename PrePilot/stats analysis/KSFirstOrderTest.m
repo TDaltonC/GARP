@@ -32,7 +32,7 @@ end
 for i = 1:1000;
     Data3ItemRand(i,1) = Data3Item(i,3);
 end
-%% Kolgomorov-Smirnov Test for First Order Stochastic Dominance
+%% Kolgomorov-Smirnov Test for First Order Stochastic Dominance (for 2 independent samples)
 hK2ItemYO = kstest2(Data2ItemYA, Data2ItemOA, 0.02);
 hK2ItemYR = kstest2(Data2ItemYA, Data2ItemRand, 0.02);
 hK2ItemOR = kstest2(Data2ItemOA, Data2ItemRand, 0.02);
@@ -43,16 +43,22 @@ hK23ItemY = kstest2(Data2ItemYA, Data3ItemYA, 0.02);
 hK23ItemO = kstest2(Data2ItemOA, Data3ItemOA, 0.02);
 hK23ItemRand = kstest2(Data2ItemRand, Data3ItemRand, 0.02);
 
-%% Mann-Whitney U-Test
+%% Mann-Whitney U-Test aka Wilcoxon Rank Sum Test (for 2 independent samples)
 [p2ItemYO,hM2ItemYO,stats2ItemYO] = ranksum(Data2ItemYA, Data2ItemOA, 0.02);
 [p2ItemYR,hM2ItemYR,stats2ItemYR] = ranksum(Data2ItemYA, Data2ItemRand, 0.02);
 [p2ItemOR,hM2ItemOR,stats2ItemOR] = ranksum(Data2ItemOA, Data2ItemRand, 0.02);
 [p3ItemYO,hM3ItemYO,stats3ItemYO] = ranksum(Data3ItemYA, Data3ItemOA, 0.02);
 [p3ItemYR,hM3ItemYR,stats3ItemYR] = ranksum(Data3ItemYA, Data3ItemRand, 0.02);
 [p3ItemOR,hM3ItemOR,stats3ItemOR] = ranksum(Data3ItemOA, Data3ItemRand, 0.02);
-[p23ItemY,hM23ItemY,stats23ItemY] = ranksum(Data2ItemYA, Data3ItemYA, 0.02);
-[p23ItemO,hM23ItemO,stats23ItemO] = ranksum(Data2ItemOA, Data3ItemOA, 0.02);
-[p23ItemRand,hM23ItemRand,stats23ItemRand] = ranksum(Data2ItemRand, Data3ItemRand, 0.02);
+% [p23ItemY,hM23ItemY,stats23ItemY] = ranksum(Data2ItemYA, Data3ItemYA, 0.02);
+% [p23ItemO,hM23ItemO,stats23ItemO] = ranksum(Data2ItemOA, Data3ItemOA, 0.02);
+% [p23ItemRand,hM23ItemRand,stats23ItemRand] = ranksum(Data2ItemRand, Data3ItemRand, 0.02);
+
+%% Wilcoxon Signed Rank Test (for paired samples)
+[p23ItemY,hM23ItemY,stats23ItemY] = signrank(Data2ItemYA, Data3ItemYA, 0.05);
+[p23ItemO,hM23ItemO,stats23ItemO] = signrank(Data2ItemOA, Data3ItemOA, 0.05);
+[p23ItemRand,hM23ItemRand,stats23ItemRand] = signrank(Data2ItemRand, Data3ItemRand, 0.05);
+
 
 
 
