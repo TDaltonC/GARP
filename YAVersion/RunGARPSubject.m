@@ -204,7 +204,7 @@ Screen('Flip',w);
 if input == 'k';
     KbWait([], 3);
 elseif input == 'm';
-    [click,x,y,wh] = GetClicks(w,0);
+    GetClicks(w,0);
 elseif input == 't';
     SetMouse(width/2, height/2 ,w);
     while true;
@@ -475,11 +475,23 @@ end
 
 
 
-if mod(i,blockLength) == 0; %This throws up the "break" screen between trials. 
+if mod(i,blockLength) == 0; %This throws up the "break" screen between trials.
     drawBreak(w);
     Screen('Flip',w);
     WaitSecs(20);
-    KbWait([], 3); 
+    if input == 'k';
+        KbWait([], 3);
+    elseif input == 'm';
+        GetClicks(w,0);
+    elseif input == 't';
+        SetMouse(width/2, height/2 ,w);
+        while true;
+            [x,y] = GetMouse(w);
+            if x ~= width/2 && y ~= height/2;
+                break;
+            end
+        end
+    end
     block = block +1;
 end
 
