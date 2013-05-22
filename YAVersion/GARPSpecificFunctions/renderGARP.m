@@ -1,4 +1,4 @@
-function [ output_args ] = twoItemGARP( item1, item2, item3, item4, amountOfItem1, amountOfItem2, amountOfItem3, amountOfItem4, w )
+function [ output_args ] = renderGARP( item1, item2, item3, item4, amountOfItem1, amountOfItem2, amountOfItem3, amountOfItem4, w )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
     screenNumber = max(Screen('Screens'));
@@ -25,16 +25,16 @@ function [ output_args ] = twoItemGARP( item1, item2, item3, item4, amountOfItem
     
     
     
-    if exist('amountOfItem1','var') == 0; % If 'amountOfItem1' doesn't exist  . . . 
-        amountOfItem1 = 1;                % Create it and set it equal to 1 (default)
+    if exist('amountOfItem1','var') == 0; % If 'itemitemsOnLeft' doesn't exist  . . . 
+        amountOfItem1 = 1;                % Create it and set it equal to 3 (default)
     end
 
     if exist('amountOfItem2','var') == 0; 
         amountOfItem2 = 5;
     end
     
-    if exist('amountOfItem3','var') == 0;
-        amountOfItem3 = 5;               
+    if exist('amountOfItem3','var') == 0; % If 'itemitemsOnLeft' doesn't exist  . . . 
+        amountOfItem3 = 5;                % Create it and set it equal to 3 (default)
     end
 
     if exist('amountOfItem4','var') == 0; 
@@ -509,9 +509,9 @@ end
 v = cat(1,leftPositions,topPositions,rightPositions,bottomPositions);
 
     Screen('DrawTextures',w,draw,[],v)
-     Screen('Flip',w);
-     KbWait
-     Screen('CloseAll');
+%      Screen('Flip',w);
+%      KbWait
+%      Screen('CloseAll');
 
 end
 
