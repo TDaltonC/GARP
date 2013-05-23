@@ -1,0 +1,59 @@
+%Written by Stephan Lewandowsky to set up experiment using Psychophysics
+%toolbox
+function screenparms = prepexp
+global ptb3
+
+warning off MATLAB:DeprecatedLogicalAPI
+
+% Open Psychtoolbox window
+
+if ptb3;
+    screenNumbers=Screen('Screens');
+    if max(screenNumbers) > 1
+        %MyRect = SetRect(0,0,1024,768);
+        [screenparms.window, screenparms.rect] = Screen('OpenWindow', 1); %,[255 255 255],MyRect,32);
+    else
+        [screenparms.window, screenparms.rect] = Screen('OpenWindow', 0);
+    end
+    ListenChar(2);                         %prevent keystrokes being passed through to MatLab
+    Screen('Preference', 'Verbosity', 0); % Suppress warnings from PTB3
+else
+    screenparms.window = Screen(0,'OpenWindow');
+    screenparms.rect   = Screen(screenparms.window,'Rect');
+end;
+
+
+ShowCursor(0);	% arrow cursor
+HideCursor;
+screenparms.white=WhiteIndex(screenparms.window);
+screenparms.black=BlackIndex(screenparms.window);
+screenparms.grey=floor((screenparms.white+screenparms.black)/2);
+screenparms.red=[255 0 0];
+screenparms.blue=[0 0 255];
+screenparms.green=[0 255 0];
+screenparms.yellow=[255 180 0];
+screenparms.violet=[255 0 128];
+screenparms.turquoise=[90 190 255];
+screenparms.orange=[255 90 0];
+
+% Choose fonts likely to be installed on this platform
+switch computer
+    case 'MAC2',
+        screenparms.serifFont = 'Bookman';
+        screenparms.sansSerifFont = 'Arial'; % or Helvetica
+        screenparms.symbolFont = 'Symbol';
+        screenparms.displayFont = 'Impact';
+    case 'PCWIN'
+        screenparms.serifFont = 'Bookman Old Style';
+        screenparms.sansSerifFont = 'Arial';
+        screenparms.symbolFont = 'Symbol';
+        screenparms.displayFont = 'Impact';
+    otherwise
+        error(['Unsupported OS: ' computer]);
+end
+
+    % make sure data directories exist
+    if ~exist('..\Data','dir') || ~exist('..\Data\SSTMDetailed','dir')
+        error('Faulty WMCBattery installation: Data Directories not found')
+    end
+ 

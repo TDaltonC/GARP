@@ -237,7 +237,7 @@ while i <= long;
     
     switch(trialOrder(i));
         case 1 %is for the one item (per side) (different items) GARP
-            if limitGARPOrder <= 23;
+            if limitGARPOrder <= 25;
                 if flipLR(i) == 0;
                     renderGARP(item1, item1, ...
                         item2, item2,...
@@ -393,6 +393,9 @@ elseif input == 't'; % 't' is for tablet
             break;
         end
     end
+    %drawFixation
+    drawFixation(w);
+    
     if x <= width/2;
         behavioral.key(i,1) = 'f'; 
     elseif x > width/2
