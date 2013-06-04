@@ -27,8 +27,8 @@ if (rect_screen(3)/rect_screen(4))>4/3%Check if widescreen is used
     p=1;%for widescreen
     for i=1:11
         if ptb3
-            Screen('DrawLine',WindowPtr,Text.Color1,LeftOriginal*AdjH1,(51+(i-1)*50)*AdjV,(LeftOriginal+500)*AdjH1,(51+(i-1)*50)*AdjV,2);
-            Screen('DrawLine',WindowPtr,Text.Color1,(LeftOriginal+(i-1)*50)*AdjH1,51*AdjV,(LeftOriginal+(i-1)*50)*AdjH1,551*AdjV,2);
+            Screen('DrawLine',WindowPtr,Text.Color1,LeftOriginal*AdjH1,(51+(i-1)*50)*AdjV,(LeftOriginal+500)*AdjH1,(51+(i-1)*50)*AdjV,1);
+            Screen('DrawLine',WindowPtr,Text.Color1,(LeftOriginal+(i-1)*50)*AdjH1,51*AdjV,(LeftOriginal+(i-1)*50)*AdjH1,551*AdjV,1);
         else
             SCREEN(WindowPtr,'DrawLine',Text.Color1,LeftOriginal*AdjH1,(51+(i-1)*50)*AdjV,(LeftOriginal+500)*AdjH1,(51+(i-1)*50)*AdjV,2,[],'patCopy');
             SCREEN(WindowPtr,'DrawLine',Text.Color1,(LeftOriginal+(i-1)*50)*AdjH1,51*AdjV,(LeftOriginal+(i-1)*50)*AdjH1,551*AdjV,2,[],'patCopy');
@@ -39,8 +39,8 @@ else
     p=0;
     for i=1:11
         if ptb3
-            Screen('DrawLine',WindowPtr,Text.Color1,151*AdjH,(51+(i-1)*50)*AdjV,651*AdjH,(51+(i-1)*50)*AdjV,2);
-            Screen('DrawLine',WindowPtr,Text.Color1,(151+(i-1)*50)*AdjH,51*AdjV,(151+(i-1)*50)*AdjH,551*AdjV,2);
+            Screen('DrawLine',WindowPtr,Text.Color1,151*AdjH,(51+(i-1)*50)*AdjV,651*AdjH,(51+(i-1)*50)*AdjV,1);
+            Screen('DrawLine',WindowPtr,Text.Color1,(151+(i-1)*50)*AdjH,51*AdjV,(151+(i-1)*50)*AdjH,551*AdjV,1);
         else
             SCREEN(WindowPtr,'DrawLine',Text.Color1,151*AdjH,(51+(i-1)*50)*AdjV,651*AdjH,(51+(i-1)*50)*AdjV,2,[],'patCopy');
             SCREEN(WindowPtr,'DrawLine',Text.Color1,(151+(i-1)*50)*AdjH,51*AdjV,(151+(i-1)*50)*AdjH,551*AdjV,2,[],'patCopy');

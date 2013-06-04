@@ -42,9 +42,12 @@ try %catch errors for entire function and all subsidiaries
    
     if nargin < 2
         screenparms = prepexp;
-        subject=getSubject(screenparms);
+        if nargin < 1
+        subject=666;
+        end
     end
-
+    
+    
     % Get the cpu time
     date=clock;
     IntDate=[int2str(date(1,1)) '/' int2str(date(1,2)) '/' int2str(date(1,3))...
@@ -199,12 +202,12 @@ end
 
 
     function shutDown
-        if ptb3, ListenChar(0); end
+        %if ptb3, ListenChar(0); end
         Screen('CloseAll');
         fclose('all');
         rmpath(fnDir);
         while KbCheck; end
-        FlushEvents('keyDown');
+        %FlushEvents('keyDown');
     end
 end
 

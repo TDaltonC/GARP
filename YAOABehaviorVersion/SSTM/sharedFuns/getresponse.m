@@ -64,4 +64,4 @@ while 1
         break;
     end
 end
-FlushEvents('keyDown');
+%FlushEvents('keyDown');

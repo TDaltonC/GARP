@@ -11,16 +11,16 @@
 % Psychophysics Toolbox version 2.54 or 3.0.8. 
 
 function screenparms = prepexp
+Screen('preference', 'SkipSyncTests',1);
 global ptb3
-
 warning off MATLAB:DeprecatedLogicalAPI
 
 % Open Psychtoolbox window
-screenNumber =max(Screen('Screens'));
+ screenNumber =max(Screen('Screens'));
 if ptb3;
     [screenparms.window, screenparms.rect] = Screen('OpenWindow', screenNumber);
 
-    ListenChar(2);                         %prevent keystrokes being passed through to MatLab
+    %ListenChar(2);                         %prevent keystrokes being passed through to MatLab
     Screen('Preference', 'Verbosity', 0); % Suppress warnings from PTB3
 else
     screenparms.window = Screen('OpenWindow',screenNumber);
