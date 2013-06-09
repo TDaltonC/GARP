@@ -9,7 +9,7 @@ screenNumber = max(Screen('Screens'));
     if exist('w','var') == 0;
         w = Screen(screenNumber, 'OpenWindow',[],[],[],[]);
     end
-Screen(w,'TextSize',25)
+Screen(w,'TextSize',70)
 DrawFormattedText(w, 'Wait for Instructions.\n\nDo not touch anything.', 'center', 'center', [0 0 0]);
 
 % Screen('Flip',w);

@@ -32,12 +32,13 @@ else
 end
 
 if nargin==3
+    SetMouse(0,0,screenparms.window);
     while 1
         [keyIsDown,timeSecs,keyCode] = KbCheck;
         if keyCode(KbName('f12'))
             error('User terminated WMCBattery');
         end
-
+        
         if keyIsDown
             c = KbName(keyCode);
             while KbCheck; end
@@ -45,6 +46,10 @@ if nargin==3
                 break;
             end
         end
+        [MPos(1,1) MPos(1,2) botton]=GetMouse(screenparms.window);
+        if MPos(1,1) ~= 0
+            break;
+        end;
     end
     cls(screenparms);
     while KbCheck; end

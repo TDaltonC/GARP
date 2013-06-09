@@ -94,8 +94,8 @@ try %catch errors for entire function and all subsidiaries
     Text.Fix='+';
     Text.Draw='Please Draw the Dots';
     Text.Next='Next';
-    practicemsg = 'Press Space Bar to Begin Practice';
-    beginmsg =    'Press Space Bar to Begin Task';
+    practicemsg = 'Wait for Instructions';
+    beginmsg =    'Wait for Instructions';
     expovermsg =  'Experiment over: Call Experimenter';
     Text.Color1=black;
     Text.Color2=white;
@@ -166,7 +166,7 @@ try %catch errors for entire function and all subsidiaries
         cls(screenparms);
         if Trial >= NumT.Pract+1
             %waitfkey(screenparms, expinfo,['This was Trial # ' int2str(Trial-NumT.Pract) ' out of ' int2str(NumT.Test)])
-            waitfkey(screenparms, expinfo, ['Press Space to Continue'])
+            waitfkey(screenparms, expinfo, ['Tap to Continue'])
         end;
     end;
 
