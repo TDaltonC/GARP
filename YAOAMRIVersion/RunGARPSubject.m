@@ -1,4 +1,4 @@
-function [ output_args ] = RunGARPSubject( subjID, item1c, item2c, item3c, item4c, item5c, input )
+function [ output_args ] = RunGARPSubject( subjID, item1c, item2c, item3c, input )
 
 % input tells you if the subject will be using a keyboard('k'), a mouse ('m'), or a windows 8 tablet('t') 
 
@@ -87,19 +87,12 @@ flipLR = flipLR(randperm(long));
 if exist('item1c','var') == 0; item1c = 1; end
 if exist('item2c','var') == 0; item2c = 2; end
 if exist('item3c','var') == 0; item3c = 3; end
-if exist('item4c','var') == 0; item4c = 4; end
-if exist('item5c','var') == 0; item5c = 5; end
 
-items = [item1c item2c item3c item4c item5c];
-itemOrder = randperm(5); 
-for i = 1:5;
-   j = itemOrder(i);
+items = [item1c item2c item3c]; 
+for i = 1:3;
    v = genvarname(strcat('item', num2str(i)));
-   eval([v '= imread(strcat(''Image'', num2str(items(j)), ''.JPG''));']);
+   eval([v '= imread(strcat(''Image'', num2str(items(i)), ''.JPG''));']);
 end
-
-catchItems = [item1c item1c item2c item2c item3c item3c item4c item4c item5c item5c];
-catchItems = catchItems(randperm(10));
 
 %% Set up the screen
 
