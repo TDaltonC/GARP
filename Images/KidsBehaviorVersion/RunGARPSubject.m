@@ -31,19 +31,11 @@ threeItemGARPTasks1323 = juanset; % This is a 3D araay each (1:2,1:2,x) contains
 
 
 
-% %% **Design the task orders** Using counter balance
-% trialOrder = repeatedhistory(5,7,1,1,false); % This sets the order of the tasks
-% % trialOrder = ones(length(trialOrder),1);
-% long = length(trialOrder); %The total number of trials that will be performed
-% blockLength = 44;
-
-%% **Design the task orders** Using random order of different number of tasks
-trials = [1*ones(1,length(catchTasks)), 2*ones(1,length(twoItemGARPTasks)), 3*ones(1,length(threeItemGARPTasks1213)), 4*ones(1,length(threeItemGARPTasks1223)), 5*ones(1,length(threeItemGARPTasks1323))]; % This sets the order of the tasks
-long = length(trials); %The total number of trials that will be performed
-trialOrder = trials(randperm(long));
-blockLength = 38;
-
-%%
+%% **Design the task orders**
+trialOrder = repeatedhistory(5,7,1,1,false); % This sets the order of the tasks
+% trialOrder = ones(length(trialOrder),1);
+long = length(trialOrder); %The total number of trials that will be performed
+blockLength = 44;
 
 catchOrder = []; % The fixxed order that the catch trials will be presented in. If there are more tials that need to be shown then we have, then a second list (random order) is made and concatinated on to the end of the old one.
 i=1;
@@ -94,20 +86,63 @@ flipLR = [zeros(1,ceil(long/2)), ones(1,floor(long/2))];
 flipLR = flipLR(randperm(long));
 
 
+
 %% Picking the items
+
 if exist('item1c','var') == 0; item1c = 1; end
 if exist('item2c','var') == 0; item2c = 2; end
 if exist('item3c','var') == 0; item3c = 3; end
-if exist('item4c','var') == 0; item4c = 4; end
-if exist('item5c','var') == 0; item5c = 5; end
 
-items = [item1c item2c item3c item4c item5c];
-itemOrder = randperm(5); 
-for i = 1:5;
-   j = itemOrder(i);
-   v = genvarname(strcat('item', num2str(i)));
-   eval([v '= imread(strcat(''Image'', num2str(items(j)), ''.JPG''));']);
-end
+if item1c == 1; item1 = imread('ajuice.jpg');     end
+if item1c == 2; item1 = imread('cheese.jpg');     end
+if item1c == 3; item1 = imread('cheezit.jpg');    end
+if item1c == 4; item1 = imread('cjuice.jpg');     end
+if item1c == 5; item1 = imread('dorito.jpg');     end
+if item1c == 6; item1 = imread('mm.jpg');         end
+if item1c == 7; item1 = imread('icedtea.jpg');    end
+if item1c == 8; item1 = imread('lemonheads.jpg'); end
+if item1c == 9; item1 = imread('milk.jpg');       end
+if item1c == 10;item1 = imread('oreo.jpg');       end
+if item1c == 11;item1 = imread('ojuice.jpg');     end
+if item1c == 12;item1 = imread('peanuts.jpg');    end
+if item1c == 13;item1 = imread('pistach.jpg');    end
+if item1c == 14;item1 = imread('pretzel.jpg');    end
+if item1c == 15;item1 = imread('chips.jpg');      end
+if item1c == 16;item1 = imread('vjuice.jpg');     end
+
+if item2c == 1; item2 = imread('ajuice.jpg');     end
+if item2c == 2; item2 = imread('cheese.jpg');     end
+if item2c == 3; item2 = imread('cheezit.jpg');    end
+if item2c == 4; item2 = imread('cjuice.jpg');     end
+if item2c == 5; item2 = imread('dorito.jpg');     end
+if item2c == 6; item2 = imread('mm.jpg');         end
+if item2c == 7; item2 = imread('icedtea.jpg');    end
+if item2c == 8; item2 = imread('lemonheads.jpg'); end
+if item2c == 9; item2 = imread('milk.jpg');       end
+if item2c == 10;item2 = imread('oreo.jpg');       end
+if item2c == 11;item2 = imread('ojuice.jpg');     end
+if item2c == 12;item2 = imread('peanuts.jpg');    end
+if item2c == 13;item2 = imread('pistach.jpg');    end
+if item2c == 14;item2 = imread('pretzel.jpg');    end
+if item2c == 15;item2 = imread('chips.jpg');      end
+if item2c == 16;item2 = imread('vjuice.jpg');     end
+
+if item3c == 1; item3 = imread('ajuice.jpg');     end
+if item3c == 2; item3 = imread('cheese.jpg');     end
+if item3c == 3; item3 = imread('cheezit.jpg');    end
+if item3c == 4; item3 = imread('cjuice.jpg');     end
+if item3c == 5; item3 = imread('dorito.jpg');     end
+if item3c == 6; item3 = imread('mm.jpg');         end
+if item3c == 7; item3 = imread('icedtea.jpg');    end
+if item3c == 8; item3 = imread('lemonheads.jpg'); end
+if item3c == 9; item3 = imread('milk.jpg');       end
+if item3c == 10;item3 = imread('oreo.jpg');       end
+if item3c == 11;item3 = imread('ojuice.jpg');     end
+if item3c == 12;item3 = imread('peanuts.jpg');    end
+if item3c == 13;item3 = imread('pistach.jpg');    end
+if item3c == 14;item3 = imread('pretzel.jpg');    end
+if item3c == 15;item3 = imread('chips.jpg');      end
+if item3c == 16;item3 = imread('vjuice.jpg');     end
 
 %% Set up the screen
 
@@ -202,6 +237,7 @@ while i <= long;
     
     switch(trialOrder(i));
         case 1 %is for the one item (per side) (different items) GARP
+            if limitGARPOrder <= 25;
                 if flipLR(i) == 0;
                     renderGARP(item1, item1, ...
                         item2, item2,...
@@ -214,6 +250,18 @@ while i <= long;
                         limitGARPTasks(limitGARPOrder(limitGARPIndex),1), 0,w);
                 end
                 limitGARPIndex = limitGARPIndex  + 1 ;
+            elseif limitGARPOrder > 25; %% we'll have the same item on both sides (different amounts)
+                if flipLR(i) == 0;
+                    renderGARP(item1, item1, item1, item1, ...
+                        catchTasks(catchOrder(catchIndex),1), 0, ...
+                        catchTasks(catchOrder(catchIndex),2), 0,w);
+                elseif flipLR(i) == 1;
+                    renderGARP(item1, item1, item1, item1, ...
+                        catchTasks(catchOrder(catchIndex),1), 0, ...
+                        catchTasks(catchOrder(catchIndex),2), 0,w);
+                end
+                catchIndex = catchIndex  + 1 ;
+            end
             
             
         case 2 %is for the two item (per side) GARP
@@ -303,20 +351,6 @@ while i <= long;
                 threeItemGARPTasks1323(1,2,threeItemGARPOrder1323(threeItemGARPIndex1323)),w);
             end
             threeItemGARPIndex1323 = threeItemGARPIndex1323  + 1;
-            
-        case 6 %is for the one item (per side) (different items) GARP
-            item = imread(strcat('Image', num2str(catchItems(catchIndex)), '.JPG'));
-            if flipLR(i) == 0;
-                renderGARP(item, item, item, item, ...
-                    catchTasks(catchOrder(catchIndex),1), 0, ...
-                    catchTasks(catchOrder(catchIndex),2), 0,w);
-            elseif flipLR(i) == 1;
-                renderGARP(item, item, item, item, ...
-                    catchTasks(catchOrder(catchIndex),2), 0, ...
-                    catchTasks(catchOrder(catchIndex),1), 0,w);
-            end
-            catchIndex = catchIndex  + 1 ;
-        
     end
    
     
@@ -417,15 +451,6 @@ if block == 1 && i == rewardTrial;
         right.Item =[item2c,item3c];
         right.Amount =[threeItemGARPTasks1323(2,1,threeItemGARPOrder1323(threeItemGARPIndex1323)), ...
             threeItemGARPTasks1323(2,2,threeItemGARPOrder1323(threeItemGARPIndex1323))];
-    end
-    
-        
-    if trialOrder(i) == 6; %is for the one item (per side) (different items) GARP
-        left.Item  = catchItems(catchIndex);
-        left.Amount = catchTasks(catchOrder(catchIndex),1);
-        
-        right.Item = catchItems(catchIndex);
-        right.Amount = catchTasks(catchOrder(catchIndex),2);
     end
     
     
