@@ -123,8 +123,8 @@ settings.threeItemGARPOrder1323 =threeItemGARPOrder1323;
 settings.item1 = item1;
 settings.item2 = item2;
 settings.item3 = item3;
-settings.item4 = item4;
-settings.item5 = item5;
+% settings.item4 = item4;
+% settings.item5 = item5;
 
 settings.screenNumber = screenNumber;
 settings.width = width;
