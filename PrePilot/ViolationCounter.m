@@ -1,5 +1,6 @@
 
-cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/preProcessedRev');
+% cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/preProcessedRev');
+cd('C:/Users/Niree/Documents/GitHub/GARP/PrePilot/preProcessedRev');
 subjects = dir;
 
 for folder = 1:length(subjects)
@@ -20,6 +21,7 @@ choice = preProcessed.limitGARP.choices;
 
 cross = zeros (length(set));
 violation = zeros (length(set));
+violationbychoice = zeros(length(set),1);
 i = 1;
 j = 1;
 for i = 1 : length(set);
@@ -42,10 +44,13 @@ for i = 1 : length(set);
                 end
         end
     end
+    violationbychoice(i,1) = nnz(violation(i,:));
 end
 violations.limitGARP = violation;
+violationperchoice.limitGARP = violationbychoice;
 violationcounts.limitGARP = nnz(violations.limitGARP)/2;
 save('violationMatrices.mat','violations');
+save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
 set = preProcessed.twoItemGARP.tasks;
@@ -59,6 +64,7 @@ end
 
 cross = zeros (length(set));
 violation = zeros (length(set));
+violationbychoice = zeros(length(set),1);
 i = 1;
 j = 1;
 for i = 1 : length(set);
@@ -99,10 +105,13 @@ for i = 1 : length(set);
             end
         end
     end
+    violationbychoice(i,1) = nnz(violation(i,:));
 end
 violations.twoItemGARP = violation;
+violationperchoice.twoItemGARP = violationbychoice;
 violationcounts.twoItemGARP = nnz(violations.twoItemGARP)/2;
 save('violationMatrices.mat','violations');
+save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
 set = preProcessed.threeItemGARP1213.revtasks;
@@ -110,6 +119,7 @@ choice = preProcessed.threeItemGARP1213.choices;
 
 cross = zeros (length(set));
 violation = zeros (length(set));
+violationbychoice = zeros(length(set),1);
 i = 1;
 j = 1;
 for i = 1 : length(set);
@@ -147,10 +157,13 @@ for i = 1 : length(set);
             end
         end
     end
+    violationbychoice(i,1) = nnz(violation(i,:));
 end
 violations.threeItemGARP1213 = violation;
+violationperchoice.threeItemGARP1213 = violationbychoice;
 violationcounts.threeItemGARP1213 = nnz(violations.threeItemGARP1213)/2;
 save('violationMatrices.mat','violations');
+save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
 set = preProcessed.threeItemGARP1223.revtasks;
@@ -158,6 +171,7 @@ choice = preProcessed.threeItemGARP1223.choices;
 
 cross = zeros (length(set));
 violation = zeros (length(set));
+violationbychoice = zeros(length(set),1);
 i = 1;
 j = 1;
 for i = 1 : length(set);
@@ -195,10 +209,13 @@ for i = 1 : length(set);
             end
         end
     end
+    violationbychoice(i,1) = nnz(violation(i,:));
 end
 violations.threeItemGARP1223 = violation;
+violationperchoice.threeItemGARP1223 = violationbychoice;
 violationcounts.threeItemGARP1223 = nnz(violations.threeItemGARP1223)/2;
 save('violationMatrices.mat','violations');
+save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
 set = preProcessed.threeItemGARP1323.revtasks;
@@ -206,6 +223,7 @@ choice = preProcessed.threeItemGARP1323.choices;
 
 cross = zeros (length(set));
 violation = zeros (length(set));
+violationbychoice = zeros(length(set),1);
 i = 1;
 j = 1;
 for i = 1 : length(set);
@@ -243,10 +261,13 @@ for i = 1 : length(set);
             end
         end
     end
+    violationbychoice(i,1) = nnz(violation(i,:));
 end
 violations.threeItemGARP1323 = violation;
+violationperchoice.threeItemGARP1323 = violationbychoice;
 violationcounts.threeItemGARP1323 = nnz(violations.threeItemGARP1323)/2;
 save('violationMatrices.mat','violations');
+save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
 %Cyclical Violation Counter
@@ -311,11 +332,14 @@ for i = 1 : length(set1);
             end
         end
     end
+    violationbychoice(i,1) = nnz(violation(i,:,:));
 end
 
 violations.threeItemCyclical = violation;
+violationperchoice.threeItemCyclical = violationbychoice;
 violationcounts.threeItemCyclical = nnz(violations.threeItemCyclical);  %Do we divide by 3 here? or by 2? or something else!?
 save('violationMatrices.mat','violations');
+save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
 cd('../');
