@@ -36,7 +36,13 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
             choice(press) = 2;
         end
     end
-    %% Unshuffle the choices and make sure the that they get paired to the right trials 
+    
+    %% Find response time for each choice
+    for j = 1:(length(behavioral.secs(:,1)) - 1)
+        behavioral.secs(1,2) = behavioral.secs(1,1);
+        behavioral.secs(j+1,2) = behavioral.secs(j+1,1) - behavioral.secs(j,1);
+    end
+    %% Unshuffle the choices, and corresponding response times, and make sure the that they get paired to the right trials 
     lgIndex = 1;
     tiIndex = 1;
     ti21Index=1;
