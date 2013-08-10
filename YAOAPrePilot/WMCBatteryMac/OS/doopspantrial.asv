@@ -1,0 +1,72 @@
+%this function performs a complete ops-span trial and returns
+%responses.
+
+function [resps, rts, senresps, sentrts] = doopspantrial(screenparms, expinfo, trial)
+global ptb3
+senresps =  zeros(1,length(trial.list));
+sentrts =
+rts =
+resps = repmat(' ',1,length(trial.list))
+
+%fixation point
+centertext (screenparms, expinfo, '+', 1);
+WaitSecs(1.5);
+cls;
+
+for i=1:length(trial.list)
+    %present equation & get judgment
+    centertext (screenparms, expinfo, trial.sentences{i}, 1);
+    [tempr, sr] = noblinkgetresponse(screenparms, expinfo);
+    cls;
+    switch tempr
+        case expinfo.yeskey
+            senresps(i) = 1;
+        case expinfo.nokey
+            senresps(i) = 0;
+        otherwise
+            senresps(i)=-9;
+    end
+    sentrts(i)=sr;
+
+    %now present TBR item
+    centertext (screenparms, expinfo, trial.list(i), 1);
+    WaitSecs (expinfo.Presentationduration);
+    cls;
+    if i < length(trial.list), WaitSecs(expinfo.iii); end
+end
+
+%commence retrieval
+for i=1:length(trial.list)
+    expinfo.leftofcenter = 5;              %print prompt
+    centertext (screenparms, expinfo, '? ', 1);
+    expinfo.leftofcenter = 0;
+
+    %activate only letter keys
+    resps(i) = ' ';
+    while ~any(strcmp(resps(i),{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'}));
+
+    [resps(i), rts(i)]= getresponse(screenparms);
+    end
+    expinfo.leftofcenter = 5;              %briefly present response
+    centertext (screenparms, expinfo, '? ', 1);
+    expinfo.leftofcenter = 0;
+    if ptb3;
+        Screen('DrawText',screenparms.window, upper(resps(i)));
+        Screen('Flip', screenparms.window);
+    else
+        Screen(screenparms.window,'DrawText', upper(resps(i)));
+    end;
+    WaitSecs(expinfo.responsevisible);
+    cls;
+end
+cls;
+
+    function cls %embedded function to clear screen
+        if ptb3;
+            Screen('FillRect',screenparms.window, screenparms.white);
+            Screen('Flip', screenparms.window); %may not always be needed
+        else
+            Screen(screenparms.window,'FillRect');
+        end;
+    end
+end

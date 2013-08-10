@@ -16,14 +16,14 @@ end
 %rng(subjID);
 %Load all of the task lists
 load('catchTasks.mat');
-load('juanset.mat'); % This is a 3D araay each (1:2,1:2,x) contains one set of numbers to use for a single GARP presentation
+load('juanset.mat'); % This is a 3D array each (1:2,1:2,x) contains one set of numbers to use for a single GARP presentation
 
     
 catchTasks = catchTasks;
 twoItemGARPTasks = juanset; % This is a 3D araay each (1:2,1:2,x) contains one set of numbers to use for a single GARP presentation
-threeItemGARPTasks1213 = juanset; % This is a 3D araay each (1:2,1:2,x) contains one set of numbers to use for a single GARP presentation
-threeItemGARPTasks1223 = juanset; % This is a 3D araay each (1:2,1:2,x) contains one set of numbers to use for a single GARP presentation
-threeItemGARPTasks1323 = juanset; % This is a 3D araay each (1:2,1:2,x) contains one set of numbers to use for a single GARP presentation
+threeItemGARPTasks1213 = juanset; % This is a 3D array each (1:2,1:2,x) contains one set of numbers to use for a single GARP presentation
+threeItemGARPTasks1223 = juanset; % This is a 3D array each (1:2,1:2,x) contains one set of numbers to use for a single GARP presentation
+threeItemGARPTasks1323 = juanset; % This is a 3D array each (1:2,1:2,x) contains one set of numbers to use for a single GARP presentation
 
 
 
@@ -308,7 +308,7 @@ if input  == 'k';% 'k' for for Keyboard
     %drawFixation
     drawFixation(w);
     
-    %If a key is pressed, record that key press in the bahvioral record.
+    %If a key is pressed, record that key press in the behavioral record.
     if sum(keyCode) == 1;
         behavioral.key(i,1) = KbName(keyCode);
     end
@@ -318,7 +318,7 @@ elseif input == 'm'; % 'm' is for mouse
     %drawFixation
     drawFixation(w);
     
-    %Record where the click happend and which side it was on
+    %Record where the click happened and which side it was on
     if x <= width/2;
         behavioral.key(i,1) = 'f'; 
     elseif x > width/2;
