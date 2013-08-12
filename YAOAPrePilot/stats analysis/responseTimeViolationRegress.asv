@@ -1,0 +1,78 @@
+% % cd('/Users/Niree/Documents/GitHub/GARP/prePilot/preProcessedRev/');
+% cd('/Users/Niree/Documents/GitHub/GARP/YAOAPrePilot/preProcessedRev/');
+% subjects = dir;
+% 
+% for folder = 1:length(subjects)
+%     if subjects(folder).name(1) == '.';
+%         continue
+%     end
+%     
+%     if subjects(folder).name(1) == 'C';
+%         break 
+%         
+%     cd(subjects(folder).name);
+%     load('preProcessed.mat');
+%     load('violationPerChoice.mat');
+%     
+%     x = preProcessed.twoItemGARP.responseTimes(:,1); %sets response times as x variable for regression
+%     y = violationperchoice.twoItemGARP; %sets violations per choice as y variable for regression
+%     
+%     stats = regstats(y,x);
+%    
+%     alpha1 = 0.01;
+%     alpha2 = 0.05;
+%     alpha3 = 0.10;
+%     
+%     if stats.fstat.pval < alpha1
+%         significance = 99;
+%     elseif stats.fstat.pval > alpha1 && stats.fstat.pval < alpha2
+%         significance = 95;
+%     elseif stats.fstat.pval > alpha2 && stats.fstat.pval < alpha3
+%         signficance = 90;
+%     elseif stats.fstat.pval > alpha3
+%         significance = 0;
+%     end
+% 
+% cd('../');
+% 
+%     end
+% 
+% end
+% cd('/Users/Niree/Documents/GitHub/GARP/prePilot/preProcessedRev/');
+cd('/Users/Niree/Documents/GitHub/GARP/YAOAPrePilot/preProcessedRev/');
+subjects = dir;
+
+for folder = 1:length(subjects)
+    if subjects(folder).name(1) == '.';
+        continue
+    end
+    
+    if subjects(folder).name(1) == 'C';
+        break
+    end
+    cd(subjects(folder).name);
+    load('preProcessed.mat');
+    load('violationPerChoice.mat');
+    
+    trialArray = {'limitGARP', 'twoItemGARP', 'threeItemGARP1213', 'threeItemGARP1223', 'threeItemGARP1323'};
+    regressionResults = zeros((length(subjects)-3),11);
+    
+    for i = 1:5;
+       x = preProcessed.(trialArray{i}).responseTimes(:,1); %sets response times as x variable for regression
+       y = violationperchoice.(trialArray{i}); %sets violations per choice as y variable for regression
+       stats = regstats(y,x);
+       f = stats.fstat.f;
+       pVal = stats.fstat.pval;
+       regressionResults(folder,1) = preProcessed.subjID;
+       regressionResults(folder,(2*i)) = f;
+       regressionResults(folder,(2*i+1)) = pVal;
+    end
+    
+save('regressionResults.mat', 'regressionResults')
+cd('../');
+
+ 
+end
+
+
+

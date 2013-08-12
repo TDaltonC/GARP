@@ -115,8 +115,8 @@ save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
-set = preProcessed.threeItemGARP1213.revtasks;
-choice = preProcessed.threeItemGARP1213.choices;
+set = preProcessed.threeItemGARP3435.revtasks;
+choice = preProcessed.threeItemGARP3435.choices;
 
 cross = zeros (length(set));
 violation = zeros (length(set));
@@ -160,15 +160,15 @@ for i = 1 : length(set);
     end
     violationbychoice(i,1) = nnz(violation(i,:));
 end
-violations.threeItemGARP1213 = violation;
-violationperchoice.threeItemGARP1213 = violationbychoice;
-violationcounts.threeItemGARP1213 = nnz(violations.threeItemGARP1213)/2;
+violations.threeItemGARP3435 = violation;
+violationperchoice.threeItemGARP3435 = violationbychoice;
+violationcounts.threeItemGARP3435 = nnz(violations.threeItemGARP3435)/2;
 save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
-set = preProcessed.threeItemGARP1223.revtasks;
-choice = preProcessed.threeItemGARP1223.choices;
+set = preProcessed.threeItemGARP3445.revtasks;
+choice = preProcessed.threeItemGARP3445.choices;
 
 cross = zeros (length(set));
 violation = zeros (length(set));
@@ -212,15 +212,15 @@ for i = 1 : length(set);
     end
     violationbychoice(i,1) = nnz(violation(i,:));
 end
-violations.threeItemGARP1223 = violation;
-violationperchoice.threeItemGARP1223 = violationbychoice;
-violationcounts.threeItemGARP1223 = nnz(violations.threeItemGARP1223)/2;
+violations.threeItemGARP3445 = violation;
+violationperchoice.threeItemGARP3445 = violationbychoice;
+violationcounts.threeItemGARP3445 = nnz(violations.threeItemGARP3445)/2;
 save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
-set = preProcessed.threeItemGARP1323.revtasks;
-choice = preProcessed.threeItemGARP1323.choices;
+set = preProcessed.threeItemGARP3545.revtasks;
+choice = preProcessed.threeItemGARP3545.choices;
 
 cross = zeros (length(set));
 violation = zeros (length(set));
@@ -264,20 +264,20 @@ for i = 1 : length(set);
     end
     violationbychoice(i,1) = nnz(violation(i,:));
 end
-violations.threeItemGARP1323 = violation;
-violationperchoice.threeItemGARP1323 = violationbychoice;
-violationcounts.threeItemGARP1323 = nnz(violations.threeItemGARP1323)/2;
+violations.threeItemGARP3545 = violation;
+violationperchoice.threeItemGARP3545 = violationbychoice;
+violationcounts.threeItemGARP3545 = nnz(violations.threeItemGARP3545)/2;
 save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
 %Cyclical Violation Counter
-set1 = preProcessed.threeItemGARP1213.revtasks;
-choice1 = preProcessed.threeItemGARP1213.choices;
-set2 = preProcessed.threeItemGARP1223.revtasks;
-choice2 = preProcessed.threeItemGARP1223.choices;
-set3 = preProcessed.threeItemGARP1323.revtasks;
-choice3 = preProcessed.threeItemGARP1323.choices;
+set1 = preProcessed.threeItemGARP3435.revtasks;
+choice1 = preProcessed.threeItemGARP3435.choices;
+set2 = preProcessed.threeItemGARP3445.revtasks;
+choice2 = preProcessed.threeItemGARP3445.choices;
+set3 = preProcessed.threeItemGARP3545.revtasks;
+choice3 = preProcessed.threeItemGARP3545.choices;
 
 cross = zeros (length(set1),length(set1),length(set1));
 violation = zeros(length(set1),length(set1),length(set1));

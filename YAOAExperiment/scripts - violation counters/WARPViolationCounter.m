@@ -205,8 +205,8 @@ save('WARPviolationMatrices.mat','WARPviolations');
 save('WARPviolationCounts.mat','WARPviolationcounts');
 
 %%
-set = preProcessed.threeItemGARP1213.revtasks;
-choice = preProcessed.threeItemGARP1213.choices;
+set = preProcessed.threeItemGARP3435.revtasks;
+choice = preProcessed.threeItemGARP3435.choices;
 
 cross = zeros (length(set));
 WARPviolation = zeros (length(set));
@@ -313,14 +313,14 @@ for i = 1 : length(set);
     end
 end
 
-WARPviolations.threeItemGARP1213 = WARPviolation;
-WARPviolationcounts.threeItemGARP1213 = nnz(WARPviolations.threeItemGARP1213)/2;
+WARPviolations.threeItemGARP3435 = WARPviolation;
+WARPviolationcounts.threeItemGARP3435 = nnz(WARPviolations.threeItemGARP3435)/2;
 save('WARPviolationMatrices.mat','WARPviolations');
 save('WARPviolationCounts.mat','WARPviolationcounts');
 
 %%
-set = preProcessed.threeItemGARP1223.revtasks;
-choice = preProcessed.threeItemGARP1223.choices;
+set = preProcessed.threeItemGARP3445.revtasks;
+choice = preProcessed.threeItemGARP3445.choices;
 
 cross = zeros (length(set));
 WARPviolation = zeros (length(set));
@@ -428,14 +428,14 @@ for i = 1 : length(set);
     end
 end
 
-WARPviolations.threeItemGARP1223 = WARPviolation;
-WARPviolationcounts.threeItemGARP1223 = nnz(WARPviolations.threeItemGARP1223)/2;
+WARPviolations.threeItemGARP3445 = WARPviolation;
+WARPviolationcounts.threeItemGARP3445 = nnz(WARPviolations.threeItemGARP3445)/2;
 save('WARPviolationMatrices.mat','WARPviolations');
 save('WARPviolationCounts.mat','WARPviolationcounts');
 
 %%
-set = preProcessed.threeItemGARP1323.revtasks;
-choice = preProcessed.threeItemGARP1323.choices;
+set = preProcessed.threeItemGARP3545.revtasks;
+choice = preProcessed.threeItemGARP3545.choices;
 
 cross = zeros (length(set));
 WARPviolation = zeros (length(set));
@@ -542,8 +542,8 @@ for i = 1 : length(set);
     end
 end
 
-WARPviolations.threeItemGARP1323 = WARPviolation;
-WARPviolationcounts.threeItemGARP1323 = nnz(WARPviolations.threeItemGARP1323)/2;
+WARPviolations.threeItemGARP3545 = WARPviolation;
+WARPviolationcounts.threeItemGARP3545 = nnz(WARPviolations.threeItemGARP3545)/2;
 save('WARPviolationMatrices.mat','WARPviolations');
 save('WARPviolationCounts.mat','WARPviolationcounts');
 cd('../');

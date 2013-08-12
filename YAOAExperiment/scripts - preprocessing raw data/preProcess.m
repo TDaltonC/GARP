@@ -28,9 +28,9 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
     preProcessed.subjID                  = settings.subjID;
     preProcessed.catch.        tasks = settings.catchTasks;
     preProcessed.twoItemGARP.      tasks = settings.twoItemGARPTasks;
-    preProcessed.threeItemGARP1213.tasks = settings.threeItemGARPTasks1213;
-    preProcessed.threeItemGARP1223.tasks = settings.threeItemGARPTasks1223;
-    preProcessed.threeItemGARP1323.tasks = settings.threeItemGARPTasks1323;
+    preProcessed.threeItemGARP3435.tasks = settings.threeItemGARPTasks1213;
+    preProcessed.threeItemGARP3445.tasks = settings.threeItemGARPTasks1223;
+    preProcessed.threeItemGARP3545.tasks = settings.threeItemGARPTasks1323;
     for press = 1: length(behavioral.key)
         if behavioral.key(press) == 'f';
              choice(press) = 1;
@@ -49,12 +49,12 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
 %     preProcessed.catch.responseTimes = zeros(length(preProcessed.catch.tasks),2);
     preProcessed.twoItemGARP.choices = zeros(length(preProcessed.twoItemGARP.tasks),2);
 %     preProcessed.twoItemGARP.responseTimes = zeros(length(preProcessed.twoItemGARP.tasks),2);
-    preProcessed.threeItemGARP1213.choices = zeros(length(preProcessed.threeItemGARP1213.tasks),2);
-%     preProcessed.threeItemGARP1213.responseTimes = zeros(length(preProcessed.threeItemGARP1213.tasks),2);
-    preProcessed.threeItemGARP1223.choices = zeros(length(preProcessed.threeItemGARP1223.tasks),2);
-%     preProcessed.threeItemGARP1223.responseTimes = zeros(length(preProcessed.threeItemGARP1223.tasks),2);
-    preProcessed.threeItemGARP1323.choices = zeros(length(preProcessed.threeItemGARP1323.tasks),2);
-%     preProcessed.threeItemGARP1323.responseTimes = zeros(length(preProcessed.threeItemGARP1323.tasks),2);
+    preProcessed.threeItemGARP3435.choices = zeros(length(preProcessed.threeItemGARP3435.tasks),2);
+%     preProcessed.threeItemGARP3435.responseTimes = zeros(length(preProcessed.threeItemGARP3435.tasks),2);
+    preProcessed.threeItemGARP3445.choices = zeros(length(preProcessed.threeItemGARP3445.tasks),2);
+%     preProcessed.threeItemGARP3445.responseTimes = zeros(length(preProcessed.threeItemGARP3445.tasks),2);
+    preProcessed.threeItemGARP3545.choices = zeros(length(preProcessed.threeItemGARP3545.tasks),2);
+%     preProcessed.threeItemGARP3545.responseTimes = zeros(length(preProcessed.threeItemGARP3545.tasks),2);
     for tn=1 : length(settings.trialOrder)
     switch settings.trialOrder(tn)
         case 1
@@ -79,32 +79,32 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
             tiIndex = tiIndex + 1;
         case 3
             reorder = settings.threeItemGARPOrder1213(ti21Index);
-            if preProcessed.threeItemGARP1213.choices(reorder) == 0 
-                preProcessed.threeItemGARP1213.choices(reorder) = choice(tn);
-%                 preProcessed.threeItemGARP1213.responseTimes(reorder) = behavioral.secs(tn,2);
+            if preProcessed.threeItemGARP3435.choices(reorder) == 0 
+                preProcessed.threeItemGARP3435.choices(reorder) = choice(tn);
+%                 preProcessed.threeItemGARP3435.responseTimes(reorder) = behavioral.secs(tn,2);
             else
-                preProcessed.threeItemGARP1213.choices(reorder,2) = choice(tn);
-%                 preProcessed.threeItemGARP1213.responseTimes(reorder,2) = behavioral.secs(tn,2);
+                preProcessed.threeItemGARP3435.choices(reorder,2) = choice(tn);
+%                 preProcessed.threeItemGARP3435.responseTimes(reorder,2) = behavioral.secs(tn,2);
             end
             ti21Index=ti21Index+1;
         case 4
             reorder = settings.threeItemGARPOrder1223(ti22Index);
-            if preProcessed.threeItemGARP1223.choices(reorder) == 0 
-                preProcessed.threeItemGARP1223.choices(reorder) = choice(tn);
-%                 preProcessed.threeItemGARP1223.responseTimes(reorder) = behavioral.secs(tn,2);
+            if preProcessed.threeItemGARP3445.choices(reorder) == 0 
+                preProcessed.threeItemGARP3445.choices(reorder) = choice(tn);
+%                 preProcessed.threeItemGARP3445.responseTimes(reorder) = behavioral.secs(tn,2);
             else
-                preProcessed.threeItemGARP1223.choices(reorder,2) = choice(tn);
-%                 preProcessed.threeItemGARP1223.responseTimes(reorder,2) = behavioral.secs(tn,2);
+                preProcessed.threeItemGARP3445.choices(reorder,2) = choice(tn);
+%                 preProcessed.threeItemGARP3445.responseTimes(reorder,2) = behavioral.secs(tn,2);
             end
             ti22Index = ti22Index + 1;
         case 5
             reorder = settings.threeItemGARPOrder1323(ti32Index);
-            if preProcessed.threeItemGARP1323.choices(reorder) == 0 
-                preProcessed.threeItemGARP1323.choices(reorder) = choice(tn);
-%                 preProcessed.threeItemGARP1323.responseTimes(reorder) = behavioral.secs(tn,2);
+            if preProcessed.threeItemGARP3545.choices(reorder) == 0 
+                preProcessed.threeItemGARP3545.choices(reorder) = choice(tn);
+%                 preProcessed.threeItemGARP3545.responseTimes(reorder) = behavioral.secs(tn,2);
             else
-                preProcessed.threeItemGARP1323.choices(reorder,2) = choice(tn);
-%                 preProcessed.threeItemGARP1323.responseTimes(reorder,2) = behavioral.secs(tn,2);
+                preProcessed.threeItemGARP3545.choices(reorder,2) = choice(tn);
+%                 preProcessed.threeItemGARP3545.responseTimes(reorder,2) = behavioral.secs(tn,2);
             end
             ti32Index = ti32Index + 1;
     end
