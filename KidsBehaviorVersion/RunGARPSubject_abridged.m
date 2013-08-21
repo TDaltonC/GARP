@@ -28,10 +28,10 @@ threeItemGARPTasks1323 = juanset; % This is a 3D array each (1:2,1:2,x) contains
 
 
 %% **Design the task orders**
-trials = [1*ones(1,length(limitGARPTasks)), 2*ones(1,length(twoItemGARPTasks)), 3*ones(1,length(threeItemGARPTasks1213)), 4*ones(1,length(threeItemGARPTasks1223)), 5*ones(1,length(threeItemGARPTasks1323))]; % This sets the order of the tasks
+trials = [1*ones(1,length(limitGARPTasks)), 2*ones(1,length(twoItemGARPTasks)), 3*ones(1,length(threeItemGARPTasks1213))];% 4*ones(1,length(threeItemGARPTasks1223)), 5*ones(1,length(threeItemGARPTasks1323))]; % This sets the order of the tasks
 long = length(trials); %The total number of trials that will be performed
 trialOrder = trials(randperm(long));
-blockLength = 38;
+blockLength = 25;
 
 limitGARPOrder = []; % The fixxed order that the catch trials will be presented in. If there are more tials that need to be shown then we have, then a second list (random order) is made and concatinated on to the end of the old one.
 i=1;
@@ -438,25 +438,25 @@ end
 % up at the end of setings we created a file to hold all of our important data
 % Now we will save all of the behavioural data in the same -.mat file
 
-save (recordname, 'behavioral', '-append')
-cd('D:/YAOABehaviorVersion/SSTM/SSTM');
-drawStop(w);
-Screen('Flip',w);
-WaitSecs(20);
-if input == 'k';
-    KbWait([], 3);
-elseif input == 'm';
-    GetClicks(w,0);
-elseif input == 't';
-    SetMouse(width/2, height/2 ,w);
-    while true;
-        [x,y] = GetMouse(w);
-        if x ~= width/2 && y ~= height/2;
-            break;
-        end
-    end
-end
-SSTM(subjID);
+save (recordname, 'behavioral', '-append');
+% cd('D:/YAOABehaviorVersion/SSTM/SSTM');
+% drawStop(w);
+% Screen('Flip',w);
+% WaitSecs(20);
+% if input == 'k';
+%     KbWait([], 3);
+% elseif input == 'm';
+%     GetClicks(w,0);
+% elseif input == 't';
+%     SetMouse(width/2, height/2 ,w);
+%     while true;
+%         [x,y] = GetMouse(w);
+%         if x ~= width/2 && y ~= height/2;
+%             break;
+%         end
+%     end
+% end
+% SSTM(subjID);
 Screen('CloseAll');
 end
 
