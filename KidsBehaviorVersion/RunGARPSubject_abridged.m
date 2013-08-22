@@ -130,7 +130,7 @@ settings.height = height;
 % if the records folder doesn't exist, create it. 
 mkdir(settings.recordfolder);
 % creat the file name for this run of this subject
-recordname = [settings.recordfolder '/' num2str(subjID) '_' datestr(now,'yyyymmddTHHMMSS') '.mat'];
+recordname = [settings.recordfolder '/' num2str(subjID) '_GARP_' datestr(now,'yyyymmddTHHMMSS') '.mat'];
 % Save the settings (the results are saved later)
 save (recordname, 'settings')
 % Restrict the keys that can be used for the Kb commands [ALL KEYS ARE
@@ -326,6 +326,7 @@ elseif input == 't'; % 't' is for tablet
             break;
         end
     end
+    behavioral.secs(i,1) = now;
     %drawFixation
     drawFixation(w);
     

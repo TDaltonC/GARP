@@ -332,6 +332,7 @@ elseif input == 't'; % 't' is for tablet
             break;
         end
     end
+    behavioral.secs(i,1) = now;
     %drawFixation
     drawFixation(w);
     
