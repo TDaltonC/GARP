@@ -10,6 +10,11 @@ for folder = 1:length(subjects)
     if subjects(folder).name(1) == '.';
         continue
     end
+    
+    if subjects(folder).name(1) == 'v';
+        continue
+    end
+    
     cd(subjects(folder).name);
     load ('strategy.mat');
     load ('preProcessed.mat');
