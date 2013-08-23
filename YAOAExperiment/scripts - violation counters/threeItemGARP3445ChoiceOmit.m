@@ -1,4 +1,4 @@
-function [ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, violations ] = threeItemGARP3445ChoiceOmit(violation, violationbychoice, set);
+function [ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, seventhMax, violations ] = threeItemGARP3445ChoiceOmit(violation, violationbychoice, set);
 %UNTITLED7 Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -116,6 +116,29 @@ for t = 1:length(set)
 end
 
 sixthMax = max(violationbychoiceRev5);
+
+indexMax6 = find(sixthMax == violationbychoiceRev5);
+
+if length(indexMax6) > 1
+    indexMax6 = indexMax6(1);
+end
+violationsRev6.threeItemGARP3445 = violationsRev5.threeItemGARP3445;
+for t = 1:length(violationsRev6.threeItemGARP3445)
+    if violationsRev6.threeItemGARP3445(indexMax6,t) ~= 0
+        violationsRev6.threeItemGARP3445(indexMax6,t) = violationsRev6.threeItemGARP3445(indexMax6,t) - 1;
+    end
+end
+for t = 1:length(violationsRev6.threeItemGARP3445)
+    if violationsRev6.threeItemGARP3445(t,indexMax6) ~= 0
+        violationsRev6.threeItemGARP3445(t,indexMax6) = violationsRev6.threeItemGARP3445(t,indexMax6) - 1;
+    end
+end
+violationbychoiceRev6 = zeros(length(set),1);
+for t = 1:length(set)
+    violationbychoiceRev6(t,1) = nnz(violationsRev6.threeItemGARP3445(t,:));
+end
+
+seventhMax = max(violationbychoiceRev6);
 
 violations = violations.threeItemGARP3445;
 end

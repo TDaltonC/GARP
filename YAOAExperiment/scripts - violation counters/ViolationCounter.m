@@ -16,7 +16,7 @@ choice = preProcessed.catch.choices;
 
 [violation, violationbychoice] = limitGARPViolationCounter(set,choice);
 
-[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, violations ] = catchGARPChoiceOmit( violation, violationbychoice, set );
+[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, seventhMax, violations ] = catchGARPChoiceOmit( violation, violationbychoice, set );
 
 violations.catch = violations;
 violationcounts.catch = nnz(violations.catch)/2;
@@ -27,6 +27,7 @@ severity.catch(1,3) = (firstMax + secondMax + thirdMax)/violationcounts.catch;
 severity.catch(1,4) = (firstMax + secondMax + thirdMax + fourthMax)/violationcounts.catch;
 severity.catch(1,5) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax)/violationcounts.catch;
 severity.catch(1,6) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax)/violationcounts.catch;
+severity.catch(1,7) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax + seventhMax)/violationcounts.catch;
 violationperchoice.catch = violationbychoice;
 
 save('violationSeverity.mat','severity');
@@ -48,7 +49,7 @@ end
 violations.twoItemGARP = violation;
 violationcounts.twoItemGARP = nnz(violations.twoItemGARP)/2;
 
-[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, violations ] = twoItemGARPChoiceOmit( violation, violationbychoice, set );
+[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, seventhMax, violations ] = twoItemGARPChoiceOmit( violation, violationbychoice, set );
 
 violations.twoItemGARP = violations;
 violationcounts.twoItemGARP = nnz(violations.twoItemGARP)/2;
@@ -59,6 +60,7 @@ severity.twoItemGARP(1,3) = (firstMax + secondMax + thirdMax)/violationcounts.tw
 severity.twoItemGARP(1,4) = (firstMax + secondMax + thirdMax + fourthMax)/violationcounts.twoItemGARP;
 severity.twoItemGARP(1,5) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax)/violationcounts.twoItemGARP;
 severity.twoItemGARP(1,6) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax)/violationcounts.twoItemGARP;
+severity.twoItemGARP(1,7) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax + seventhMax)/violationcounts.twoItemGARP;
 violationperchoice.twoItemGARP = violationbychoice;
 
 save('violationSeverity.mat','severity');
@@ -74,7 +76,7 @@ choice = preProcessed.threeItemGARP3435.choices;
 violations.threeItemGARP3435 = violation;
 violationcounts.threeItemGARP3435 = nnz(violations.threeItemGARP3435)/2;
 
-[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, violations ] = threeItemGARP3435ChoiceOmit( violation, violationbychoice, set );
+[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, seventhMax, violations ] = threeItemGARP3435ChoiceOmit( violation, violationbychoice, set );
 
 violations.threeItemGARP3435 = violations;
 violationcounts.threeItemGARP3435 = nnz(violations.threeItemGARP3435)/2;
@@ -85,6 +87,7 @@ severity.threeItemGARP3435(1,3) = (firstMax + secondMax + thirdMax)/violationcou
 severity.threeItemGARP3435(1,4) = (firstMax + secondMax + thirdMax + fourthMax)/violationcounts.threeItemGARP3435;
 severity.threeItemGARP3435(1,5) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax)/violationcounts.threeItemGARP3435;
 severity.threeItemGARP3435(1,6) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax)/violationcounts.threeItemGARP3435;
+severity.threeItemGARP3435(1,7) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax + seventhMax)/violationcounts.threeItemGARP3435;
 violationperchoice.threeItemGARP3435 = violationbychoice;
 
 save('violationSeverity.mat','severity');
@@ -100,7 +103,7 @@ choice = preProcessed.threeItemGARP3445.choices;
 violations.threeItemGARP3445 = violation;
 violationcounts.threeItemGARP3445 = nnz(violations.threeItemGARP3445)/2;
 
-[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, violations ] = threeItemGARP3445ChoiceOmit( violation, violationbychoice, set );
+[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, seventhMax, violations ] = threeItemGARP3445ChoiceOmit( violation, violationbychoice, set );
 
 violations.threeItemGARP3445 = violations;
 violationcounts.threeItemGARP3445 = nnz(violations.threeItemGARP3445)/2;
@@ -111,6 +114,7 @@ severity.threeItemGARP3445(1,3) = (firstMax + secondMax + thirdMax)/violationcou
 severity.threeItemGARP3445(1,4) = (firstMax + secondMax + thirdMax + fourthMax)/violationcounts.threeItemGARP3445;
 severity.threeItemGARP3445(1,5) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax)/violationcounts.threeItemGARP3445;
 severity.threeItemGARP3445(1,6) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax)/violationcounts.threeItemGARP3445;
+severity.threeItemGARP3445(1,7) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax + seventhMax)/violationcounts.threeItemGARP3445;
 violationperchoice.threeItemGARP3445 = violationbychoice;
 
 save('violationSeverity.mat','severity');
@@ -121,15 +125,15 @@ save('violationCounts.mat','violationcounts');
 set = preProcessed.threeItemGARP3545.revtasks;
 choice = preProcessed.threeItemGARP3545.choices;
 
-[violation, violationbychoice] = threeItemGARP1223ViolationCounter(set,choice);
+[violation, violationbychoice] = threeItemGARP1323ViolationCounter(set,choice);
 
 violations.threeItemGARP3545 = violation;
 violationcounts.threeItemGARP3545 = nnz(violations.threeItemGARP3545)/2;
 
-[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, violations ] = threeItemGARP3545ChoiceOmit( violation, violationbychoice, set );
+[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, seventhMax, violations ] = threeItemGARP3545ChoiceOmit( violation, violationbychoice, set );
 
-violations.threeItemGARP3435 = violations;
-violationcounts.threeItemGARP3435 = nnz(violations.threeItemGARP3435)/2;
+violations.threeItemGARP3545 = violations;
+violationcounts.threeItemGARP3545 = nnz(violations.threeItemGARP3545)/2;
 
 severity.threeItemGARP3545(1,1) = firstMax/(violationcounts.threeItemGARP3545); %calculates how many violations remain when the choice that makes the most number of violations is removed
 severity.threeItemGARP3545(1,2) = (firstMax + secondMax)/violationcounts.threeItemGARP3545;
@@ -137,6 +141,7 @@ severity.threeItemGARP3545(1,3) = (firstMax + secondMax + thirdMax)/violationcou
 severity.threeItemGARP3545(1,4) = (firstMax + secondMax + thirdMax + fourthMax)/violationcounts.threeItemGARP3545;
 severity.threeItemGARP3545(1,5) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax)/violationcounts.threeItemGARP3545;
 severity.threeItemGARP3545(1,6) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax)/violationcounts.threeItemGARP3545;
+severity.threeItemGARP3545(1,7) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax + seventhMax)/violationcounts.threeItemGARP3545;
 violationperchoice.threeItemGARP3545 = violationbychoice;
 
 save('violationSeverity.mat','severity');
@@ -237,30 +242,35 @@ for folder = 1:length(subjects)
     violationSeveritySummary(folder,5) = severity.catch(4);
     violationSeveritySummary(folder,6) = severity.catch(5);
     violationSeveritySummary(folder,7) = severity.catch(6);
-    violationSeveritySummary(folder,8) = severity.twoItemGARP(1);
-    violationSeveritySummary(folder,9) = severity.twoItemGARP(2);
-    violationSeveritySummary(folder,10) = severity.twoItemGARP(3);
-    violationSeveritySummary(folder,11) = severity.twoItemGARP(4);
-    violationSeveritySummary(folder,12) = severity.twoItemGARP(5);
-    violationSeveritySummary(folder,13) = severity.twoItemGARP(6);
-    violationSeveritySummary(folder,14) = severity.threeItemGARP3435(1);
-    violationSeveritySummary(folder,15) = severity.threeItemGARP3435(2);
-    violationSeveritySummary(folder,16) = severity.threeItemGARP3435(3);
-    violationSeveritySummary(folder,17) = severity.threeItemGARP3435(4);
-    violationSeveritySummary(folder,18) = severity.threeItemGARP3435(5);
-    violationSeveritySummary(folder,19) = severity.threeItemGARP3435(6);
-    violationSeveritySummary(folder,20) = severity.threeItemGARP3445(1);
-    violationSeveritySummary(folder,21) = severity.threeItemGARP3445(2);
-    violationSeveritySummary(folder,22) = severity.threeItemGARP3445(3);
-    violationSeveritySummary(folder,23) = severity.threeItemGARP3445(4);
-    violationSeveritySummary(folder,24) = severity.threeItemGARP3445(5);
-    violationSeveritySummary(folder,25) = severity.threeItemGARP3445(6);
-    violationSeveritySummary(folder,26) = severity.threeItemGARP3545(1);
-    violationSeveritySummary(folder,27) = severity.threeItemGARP3545(2);
-    violationSeveritySummary(folder,28) = severity.threeItemGARP3545(3);
-    violationSeveritySummary(folder,29) = severity.threeItemGARP3545(4); 
-    violationSeveritySummary(folder,30) = severity.threeItemGARP3545(5);
-    violationSeveritySummary(folder,31) = severity.threeItemGARP3545(6);
+    violationSeveritySummary(folder,8) = severity.catch(7);
+    violationSeveritySummary(folder,9) = severity.twoItemGARP(1);
+    violationSeveritySummary(folder,10) = severity.twoItemGARP(2);
+    violationSeveritySummary(folder,11) = severity.twoItemGARP(3);
+    violationSeveritySummary(folder,12) = severity.twoItemGARP(4);
+    violationSeveritySummary(folder,13) = severity.twoItemGARP(5);
+    violationSeveritySummary(folder,14) = severity.twoItemGARP(6);
+    violationSeveritySummary(folder,15) = severity.twoItemGARP(7);
+    violationSeveritySummary(folder,16) = severity.threeItemGARP3435(1);
+    violationSeveritySummary(folder,17) = severity.threeItemGARP3435(2);
+    violationSeveritySummary(folder,18) = severity.threeItemGARP3435(3);
+    violationSeveritySummary(folder,19) = severity.threeItemGARP3435(4);
+    violationSeveritySummary(folder,20) = severity.threeItemGARP3435(5);
+    violationSeveritySummary(folder,21) = severity.threeItemGARP3435(6);
+    violationSeveritySummary(folder,22) = severity.threeItemGARP3435(7);
+    violationSeveritySummary(folder,23) = severity.threeItemGARP3445(1);
+    violationSeveritySummary(folder,24) = severity.threeItemGARP3445(2);
+    violationSeveritySummary(folder,25) = severity.threeItemGARP3445(3);
+    violationSeveritySummary(folder,26) = severity.threeItemGARP3445(4);
+    violationSeveritySummary(folder,27) = severity.threeItemGARP3445(5);
+    violationSeveritySummary(folder,28) = severity.threeItemGARP3445(6);
+    violationSeveritySummary(folder,29) = severity.threeItemGARP3445(7);
+    violationSeveritySummary(folder,30) = severity.threeItemGARP3545(1);
+    violationSeveritySummary(folder,31) = severity.threeItemGARP3545(2);
+    violationSeveritySummary(folder,32) = severity.threeItemGARP3545(3);
+    violationSeveritySummary(folder,33) = severity.threeItemGARP3545(4); 
+    violationSeveritySummary(folder,34) = severity.threeItemGARP3545(5);
+    violationSeveritySummary(folder,35) = severity.threeItemGARP3545(6);
+    violationSeveritySummary(folder,36) = severity.threeItemGARP3545(7);
     
     cd('../');
 end
