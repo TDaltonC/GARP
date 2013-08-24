@@ -19,6 +19,14 @@ for folder = 1:length(subjects)
         continue
     end
     
+    if subjects(folder).name(1) == 'r';
+        continue
+    end
+    
+    if subjects(folder).name(1) == 'C';
+        continue
+    end
+    
     cd(subjects(folder).name);
     load ('violationCounts.mat');
     load('preProcessed.mat');
