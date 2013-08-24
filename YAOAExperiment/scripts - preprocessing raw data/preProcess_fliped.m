@@ -1,14 +1,9 @@
-% This script takes all of the subject data from the /RawData forlder and
-% preprocesses it (unscramples the order and adds quantities to all of the
-% choices) and places it in the /PreProcessed folder
-
 function [ output_args ] = preProcess( input_args )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
-% cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/records');
+% cd ('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/records');
 % cd('C:/Users/Niree/Documents/GitHub/GARP/PrePilot/records');
-% cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/records');
-cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/KidsBehaviorAnalysis/RawData');
+cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/records');
 
 subjects = dir;             % count all of the subjects in the folder
 for i = 1:length(subjects)  %make sure that you're looking at a subject folder
@@ -31,7 +26,7 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
     end
     %% Bring over the tasks from the subject data files.
     preProcessed.subjID                  = settings.subjID;
-    preProcessed.limitGARP.        tasks = settings.limitGARPTasks;
+    preProcessed.catch.            tasks = settings.catchTasks;
     preProcessed.twoItemGARP.      tasks = settings.twoItemGARPTasks;
     preProcessed.threeItemGARP3435.tasks = settings.threeItemGARPTasks1213;
     preProcessed.threeItemGARP3445.tasks = settings.threeItemGARPTasks1223;
@@ -58,8 +53,8 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
     ti21Index=1;
     ti22Index=1;
     ti32Index=1;
-    preProcessed.limitGARP.choices = zeros(length(preProcessed.limitGARP.tasks),2);
-%     preProcessed.limitGARP.responseTimes = zeros(length(preProcessed.limitGARP.tasks),2);
+    preProcessed.catch.choices = zeros(length(preProcessed.catch.tasks),2);
+%     preProcessed.catch.responseTimes = zeros(length(preProcessed.catch.tasks),2);
     preProcessed.twoItemGARP.choices = zeros(length(preProcessed.twoItemGARP.tasks),2);
 %     preProcessed.twoItemGARP.responseTimes = zeros(length(preProcessed.twoItemGARP.tasks),2);
     preProcessed.threeItemGARP3435.choices = zeros(length(preProcessed.threeItemGARP3435.tasks),2);
@@ -71,13 +66,13 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
     for tn=1 : length(settings.trialOrder)
     switch settings.trialOrder(tn)
         case 1
-            reorder = settings.limitGARPOrder(lgIndex);
-            if preProcessed.limitGARP.choices(reorder) == 0 
-                preProcessed.limitGARP.choices(reorder) = choice(tn);
-%                 preProcessed.limitGARP.responseTimes(reorder) = behavioral.secs(tn,2);
+            reorder = settings.catchOrder(lgIndex);
+            if preProcessed.catch.choices(reorder) == 0 
+                preProcessed.catch.choices(reorder) = choice(tn);
+%                 preProcessed.catch.responseTimes(reorder) = behavioral.secs(tn,2);
             else
-                preProcessed.limitGARP.choices(reorder,2) = choice(tn);
-%                 preProcessed.limitGARP.responseTimes(reorder,2) = behavioral.secs(tn,2);
+                preProcessed.catch.choices(reorder,2) = choice(tn);
+%                 preProcessed.catch.responseTimes(reorder,2) = behavioral.secs(tn,2);
             end
             lgIndex = lgIndex + 1;
         case 2
@@ -126,64 +121,9 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
 
 
 %Right before the end of the loop
-cd('../../RawData');
+cd('../../records');
 clearvars -except i subjects
 %End of the loop
-end
-
-%%Convert the choices from 1's and 2's to the amouts of goods that those
-%%code for
-cd('../PreProcessed');
-subjects = dir;
-for folder = 1:length(subjects)
-    if subjects(folder).name(1) == '.';
-        continue
-    end
-    cd(subjects(folder).name);
-    load('preProcessed.mat');
- 
-  for i=1:length(preProcessed.threeItemGARP3435.tasks);
-      preProcessed.threeItemGARP3435.revtasks(1,1,i) = preProcessed.threeItemGARP3435.tasks(1,1,i);
-      preProcessed.threeItemGARP3435.revtasks(1,2,i) = preProcessed.threeItemGARP3435.tasks(1,2,i);
-      preProcessed.threeItemGARP3435.revtasks(1,3,i) = 0;
-      preProcessed.threeItemGARP3435.revtasks(2,1,i) = preProcessed.threeItemGARP3435.tasks(2,1,i);
-      preProcessed.threeItemGARP3435.revtasks(2,2,i) = 0;
-      preProcessed.threeItemGARP3435.revtasks(2,3,i) = preProcessed.threeItemGARP3435.tasks(2,2,i);
-  end
-    
-  for i=1:length(preProcessed.threeItemGARP3445.tasks);
-      preProcessed.threeItemGARP3445.revtasks(1,1,i) = preProcessed.threeItemGARP3445.tasks(1,1,i);
-      preProcessed.threeItemGARP3445.revtasks(1,2,i) = preProcessed.threeItemGARP3445.tasks(1,2,i);
-      preProcessed.threeItemGARP3445.revtasks(1,3,i) = 0;
-      preProcessed.threeItemGARP3445.revtasks(2,1,i) = 0;
-      preProcessed.threeItemGARP3445.revtasks(2,2,i) = preProcessed.threeItemGARP3445.tasks(2,1,i);
-      preProcessed.threeItemGARP3445.revtasks(2,3,i) = preProcessed.threeItemGARP3445.tasks(2,2,i);
-  end
- 
-  for i=1:length(preProcessed.threeItemGARP3545.tasks);
-      preProcessed.threeItemGARP3545.revtasks(1,1,i) = preProcessed.threeItemGARP3545.tasks(1,1,i);
-      preProcessed.threeItemGARP3545.revtasks(1,2,i) = 0;
-      preProcessed.threeItemGARP3545.revtasks(1,3,i) = preProcessed.threeItemGARP3545.tasks(1,2,i);
-      preProcessed.threeItemGARP3545.revtasks(2,1,i) = 0;
-      preProcessed.threeItemGARP3545.revtasks(2,2,i) = preProcessed.threeItemGARP3545.tasks(2,1,i);
-      preProcessed.threeItemGARP3545.revtasks(2,3,i) = preProcessed.threeItemGARP3545.tasks(2,2,i);
-  end
-  
-  for i=1:length(preProcessed.limitGARP.tasks);
-      preProcessed.limitGARP.revtasks(1,1,i) = preProcessed.limitGARP.tasks(i,1);
-      preProcessed.limitGARP.revtasks(1,2,i) = 0;
-      preProcessed.limitGARP.revtasks(2,1,i) = 0;
-      preProcessed.limitGARP.revtasks(2,2,i) = preProcessed.limitGARP.tasks(i,2);
-  end
-  
-save('preProcessed.mat','preProcessed');
-
-cd('../');
-
-
 
 end
-end
-
-
 
