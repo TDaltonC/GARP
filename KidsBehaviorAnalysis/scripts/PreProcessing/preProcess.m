@@ -31,7 +31,7 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
     end
     %% Bring over the tasks from the subject data files.
     preProcessed.subjID                  = settings.subjID;
-    preProcessed.catch.        tasks = settings.catchTasks;
+    preProcessed.limitGARP.        tasks = settings.limitGARPTasks;
     preProcessed.twoItemGARP.      tasks = settings.twoItemGARPTasks;
     preProcessed.threeItemGARP3435.tasks = settings.threeItemGARPTasks1213;
     preProcessed.threeItemGARP3445.tasks = settings.threeItemGARPTasks1223;
@@ -50,8 +50,8 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
     ti21Index=1;
     ti22Index=1;
     ti32Index=1;
-    preProcessed.catch.choices = zeros(length(preProcessed.catch.tasks),2);
-%     preProcessed.catch.responseTimes = zeros(length(preProcessed.catch.tasks),2);
+    preProcessed.limitGARP.choices = zeros(length(preProcessed.limitGARP.tasks),2);
+%     preProcessed.limitGARP.responseTimes = zeros(length(preProcessed.limitGARP.tasks),2);
     preProcessed.twoItemGARP.choices = zeros(length(preProcessed.twoItemGARP.tasks),2);
 %     preProcessed.twoItemGARP.responseTimes = zeros(length(preProcessed.twoItemGARP.tasks),2);
     preProcessed.threeItemGARP3435.choices = zeros(length(preProcessed.threeItemGARP3435.tasks),2);
@@ -63,13 +63,13 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
     for tn=1 : length(settings.trialOrder)
     switch settings.trialOrder(tn)
         case 1
-            reorder = settings.catchOrder(lgIndex);
-            if preProcessed.catch.choices(reorder) == 0 
-                preProcessed.catch.choices(reorder) = choice(tn);
-%                 preProcessed.catch.responseTimes(reorder) = behavioral.secs(tn,2);
+            reorder = settings.limitGARPOrder(lgIndex);
+            if preProcessed.limitGARP.choices(reorder) == 0 
+                preProcessed.limitGARP.choices(reorder) = choice(tn);
+%                 preProcessed.limitGARP.responseTimes(reorder) = behavioral.secs(tn,2);
             else
-                preProcessed.catch.choices(reorder,2) = choice(tn);
-%                 preProcessed.catch.responseTimes(reorder,2) = behavioral.secs(tn,2);
+                preProcessed.limitGARP.choices(reorder,2) = choice(tn);
+%                 preProcessed.limitGARP.responseTimes(reorder,2) = behavioral.secs(tn,2);
             end
             lgIndex = lgIndex + 1;
         case 2
@@ -161,11 +161,11 @@ for folder = 1:length(subjects)
       preProcessed.threeItemGARP3545.revtasks(2,3,i) = preProcessed.threeItemGARP3545.tasks(2,2,i);
   end
   
-  for i=1:length(preProcessed.catch.tasks);
-      preProcessed.catch.revtasks(1,1,i) = preProcessed.catch.tasks(i,1);
-      preProcessed.catch.revtasks(1,2,i) = 0;
-      preProcessed.catch.revtasks(2,1,i) = 0;
-      preProcessed.catch.revtasks(2,2,i) = preProcessed.catch.tasks(i,2);
+  for i=1:length(preProcessed.limitGARP.tasks);
+      preProcessed.limitGARP.revtasks(1,1,i) = preProcessed.limitGARP.tasks(i,1);
+      preProcessed.limitGARP.revtasks(1,2,i) = 0;
+      preProcessed.limitGARP.revtasks(2,1,i) = 0;
+      preProcessed.limitGARP.revtasks(2,2,i) = preProcessed.limitGARP.tasks(i,2);
   end
   
 save('preProcessed.mat','preProcessed');

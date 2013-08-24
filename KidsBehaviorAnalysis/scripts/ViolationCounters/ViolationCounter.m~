@@ -2,6 +2,7 @@
 % cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/preProcessedRev');
 % cd('C:/Users/Niree/Documents/GitHub/GARP/PrePilot/preProcessedRev');
 % cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/preProcessedRev');
+cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/KidsBehaviorAnalysis/PreProcessed/');
 subjects = dir;
 
 for folder = 1:length(subjects)
@@ -17,8 +18,8 @@ for folder = 1:length(subjects)
     cd(subjects(folder).name);
     load('preProcessed.mat');
 
-set = preProcessed.catch.tasks;
-choice = preProcessed.catch.choices;
+set = preProcessed.limitGARP.tasks;
+choice = preProcessed.limitGARP.choices;
 
 cross = zeros (length(set));
 violation = zeros (length(set));
@@ -47,9 +48,9 @@ for i = 1 : length(set);
     end
     violationbychoice(i,1) = nnz(violation(i,:));
 end
-violations.catch = violation;
-violationperchoice.catch = violationbychoice;
-violationcounts.catch = nnz(violations.catch)/2;
+violations.limitGARP = violation;
+violationperchoice.limitGARP = violationbychoice;
+violationcounts.limitGARP = nnz(violations.limitGARP)/2;
 save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
