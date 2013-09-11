@@ -142,4 +142,5 @@ end
 %% Saving
 save (recordname, 'behavioral', '-append');
 Screen('CloseAll');
+% choiceRanking;
 end

@@ -1,7 +1,8 @@
 %SUMMARY Summary of this function goes here
 %   Detailed explanation goes here
 % cd('/Users/Niree/Documents/GitHub/GARP/PrePilot/preProcessedRev');
-cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/preProcessedRev');
+% cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/preProcessedRev');
+cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/KidsBehaviorAnalysis/PreProcessed/');
 
 subjects = dir;
 StrategySummary = zeros(length(subjects)+1,11);
@@ -16,8 +17,8 @@ for folder = 1:length(subjects)
     
         
     StrategySummary(folder,1) = preProcessed.subjID;
-    StrategySummary(folder,2) = strategy.catch.heuristic;
-    StrategySummary(folder,3) = strategy.catch.deviation;
+    StrategySummary(folder,2) = strategy.limitGARP.heuristic;
+    StrategySummary(folder,3) = strategy.limitGARP.deviation;
     StrategySummary(folder,4) = strategy.twoItemGARP.heuristic;
     StrategySummary(folder,5) = strategy.twoItemGARP.deviation;
     StrategySummary(folder,6) = strategy.threeItemGARP3435.heuristic;

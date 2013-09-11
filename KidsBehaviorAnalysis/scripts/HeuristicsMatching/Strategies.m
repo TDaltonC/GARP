@@ -10,8 +10,8 @@ for folder = 1:length(subjects)
     load('preProcessed.mat');
 
 %% FOR LIMIT (ONE ITEM) TASKS
-set = preProcessed.catch.revtasks;
-choice = preProcessed.catch.choices;
+set = preProcessed.limitGARP.revtasks;
+choice = preProcessed.limitGARP.choices;
 
 %%%% Strategy1: Maximizing Absolutely
 strategy1 = zeros(length(set),1);
@@ -25,7 +25,7 @@ for i = 1:length(set);
     end
 end
 
-strategy.catch.strategy1 = strategy1;
+strategy.limitGARP.strategy1 = strategy1;
 save('strategy.mat','strategy');
 
 mystrategy1 = zeros(length(set),1);
@@ -45,9 +45,9 @@ for i = 1:length(set);
     end
 end
 
-strategy.catch.mystrategy1 = mystrategy1;
+strategy.limitGARP.mystrategy1 = mystrategy1;
 save('strategy.mat','strategy');
-strategy1deviation = nnz(strategy.catch.mystrategy1);
+strategy1deviation = nnz(strategy.limitGARP.mystrategy1);
 
 %%%% Strategy2: Maximizing Item 1 or Equivalently, Minimizing Item 2
 strategy2 = zeros(length(set),1);
@@ -61,7 +61,7 @@ for i = 1:length(set);
     end
 end
 
-strategy.catch.strategy2 = strategy2;
+strategy.limitGARP.strategy2 = strategy2;
 save('strategy.mat','strategy');
 
 mystrategy2 = zeros(length(set),1);
@@ -81,9 +81,9 @@ for i = 1:length(set);
     end
 end
 
-strategy.catch.mystrategy2 = mystrategy2;
+strategy.limitGARP.mystrategy2 = mystrategy2;
 save('strategy.mat','strategy');
-strategy2deviation = nnz(strategy.catch.mystrategy2);
+strategy2deviation = nnz(strategy.limitGARP.mystrategy2);
 
 %%%% Strategy3: Maximizing Item 2 or Equivalently, Minimizing Item 1
 strategy3 = zeros(length(set),1);
@@ -97,7 +97,7 @@ for i = 1:length(set);
     end
 end
 
-strategy.catch.strategy3 = strategy3;
+strategy.limitGARP.strategy3 = strategy3;
 save('strategy.mat','strategy');
 
 mystrategy3 = zeros(length(set),1);
@@ -117,9 +117,9 @@ for i = 1:length(set);
     end
 end
 
-strategy.catch.mystrategy3 = mystrategy3;
+strategy.limitGARP.mystrategy3 = mystrategy3;
 save('strategy.mat','strategy');
-strategy3deviation = nnz(strategy.catch.mystrategy3);
+strategy3deviation = nnz(strategy.limitGARP.mystrategy3);
 
 %%%% Strategy 4: Minimizing Absolutely
 strategy4 = zeros(length(set),1);
@@ -133,7 +133,7 @@ for i = 1:length(set);
     end
 end
 
-strategy.catch.strategy4 = strategy4;
+strategy.limitGARP.strategy4 = strategy4;
 save('strategy.mat','strategy');
 
 mystrategy4 = zeros(length(set),1);
@@ -153,9 +153,9 @@ for i = 1:length(set);
     end
 end
 
-strategy.catch.mystrategy4 = mystrategy4;
+strategy.limitGARP.mystrategy4 = mystrategy4;
 save('strategy.mat','strategy');
-strategy4deviation = nnz(strategy.catch.mystrategy4);
+strategy4deviation = nnz(strategy.limitGARP.mystrategy4);
 
 %%%% Strategy5: Equalizing ... note: it is impossible to differentiate between strategy4...
 % strategy5 for the limit case
@@ -170,7 +170,7 @@ for i = 1:length(set);
     end
 end
 
-strategy.catch.strategy5 = strategy5;
+strategy.limitGARP.strategy5 = strategy5;
 save('strategy.mat','strategy');
 
 mystrategy5 = zeros(length(set),1);
@@ -190,9 +190,9 @@ for i = 1:length(set);
     end
 end
 
-strategy.catch.mystrategy5 = mystrategy5;
+strategy.limitGARP.mystrategy5 = mystrategy5;
 save('strategy.mat','strategy');
-strategy5deviation = nnz(strategy.catch.mystrategy5);
+strategy5deviation = nnz(strategy.limitGARP.mystrategy5);
 
 mindeviation = min([strategy1deviation, strategy2deviation, strategy3deviation, strategy4deviation, strategy5deviation]);
 if mindeviation == strategy1deviation;
@@ -212,8 +212,8 @@ elseif mindeviation == strategy5deviation;
     deviation = strategy5deviation;
 end
 
-strategy.catch.heuristic = heuristic;
-strategy.catch.deviation = deviation;
+strategy.limitGARP.heuristic = heuristic;
+strategy.limitGARP.deviation = deviation;
 save('strategy.mat','strategy');
 %% FOR TWO ITEM TASKS
 set = preProcessed.twoItemGARP.tasks;
