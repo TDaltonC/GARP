@@ -4,7 +4,7 @@ cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAPrePilot/preProcessedRev');
 subjects = dir;
 
 for folder = 1:length(subjects)
-    if ismember((subjects(folder).name(1)), {'.','C','r','S','v'});
+    if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V'});
         continue
     end
    
@@ -162,66 +162,23 @@ choice2 = preProcessed.threeItemGARP1223.choices;
 set3 = preProcessed.threeItemGARP1323.revtasks;
 choice3 = preProcessed.threeItemGARP1323.choices;
 
-cross = zeros (length(set1),length(set1),length(set1));
-violation = zeros(length(set1),length(set1),length(set1));
-i = 1;
-j = 1;
-k = 1;
-for i = 1 : length(set1);
-    for j = 1 : length(set2);
-        for k = 1: length(set3);
-            if set1(2,1,i) >= set3(1,1,k) && ... %This is condition + from Brocas' notes
-                    set1(2,3,i) >= set3(1,3,k) && ...
-                    set3(2,2,k) >= set2(2,2,j) && ...
-                    set3(2,3,k) >= set2(2,3,j) && ...
-                    set2(1,1,j) >= set1(1,1,i) && ...
-                    set2(1,2,j) >= set1(1,2,i);
-                if (set1(1,1,i) ~= set2(1,1,j) ||... %Then is first bundle in set1 different than the first bundle in set2
-                        set1(1,2,i) ~= set2(1,2,j));
-                    if (set1(2,1,i) ~= set3(1,1,k) ||... %Then is second bundle in set1 different than the first bundle in set3
-                            set1(2,3,i) ~= set3(1,3,k)); 
-                        if (set2(2,2,j) ~= set3(2,2,k) ||... %Then is second bundle in set2 different than the second bundle in set3
-                                set2(2,3,j) ~= set3(2,3,k));
-                            cross(i,j,k) = 1; %Then, there is a possible contradiction
-                            if choice1(i) == 1 && ... 
-                                    choice2(j) == 2 && ...
-                                    choice3(k) == 1;
-                                violation(i,j,k) = 1;
-                            end
-                        end
-                    end
-                end
-            end
-        end
-        if set1(2,1,i) <= set3(1,1,k) && ... %This is condition ++ from Brocas' notes
-                set1(2,3,i) <= set3(1,3,k) && ...
-                set3(2,2,k) <= set2(2,2,j) && ...
-                set3(2,3,k) <= set2(2,3,j) && ...
-                set2(1,1,j) <= set1(1,1,i) && ...
-                set2(1,2,j) <= set1(1,2,i);
-            if (set1(1,1,i) ~= set2(1,1,j) ||... %Then is first bundle in set1 different than the first bundle in set2
-                    set1(1,2,i) ~= set2(1,2,j));
-                if (set1(2,1,i) ~= set3(1,1,k) ||... %Then is second bundle in set1 different than the first bundle in set3
-                        set1(2,3,i) ~= set3(1,3,k));
-                    if (set2(2,2,j) ~= set3(2,2,k) ||... %Then is second bundle in set2 different than the second bundle in set3
-                            set2(2,3,j) ~= set3(2,3,k));
-                        cross(i,j,k) = 1; %Then, there is a possible contradiction
-                        if choice1(i) == 2 && ...
-                                choice2(j) == 1 && ...
-                                choice3(k) == 2;
-                            violation(i,j,k) = 1;
-                        end
-                    end
-                end
-            end
-        end
-    end
-    violationbychoice(i,1) = nnz(violation(i,:,:));
-end
+[violation, violationbychoice] = threeItemCyclicalViolationCounter(set1, choice1, set2, choice2, set3, choice3);
+
+[ firstMax, secondMax, thirdMax, fourthMax, fifthMax, sixthMax, violations ] = threeItemCyclicalChoiceOmit( violation, violationbychoice, set1, choice1, set2, choice2, set3, choice3 );
 
 violations.threeItemCyclical = violation;
-violationperchoice.threeItemCyclical = violationbychoice;
 violationcounts.threeItemCyclical = nnz(violations.threeItemCyclical);  %Do we divide by 3 here? or by 2? or something else!?
+
+severity.threeItemCyclical(1,1) = firstMax/(violationcounts.threeItemCyclical); %calculates how many violations remain when the choice that makes the most number of violations is removed
+severity.threeItemCyclical(1,2) = (firstMax + secondMax)/violationcounts.threeItemCyclical;
+severity.threeItemCyclical(1,3) = (firstMax + secondMax + thirdMax)/violationcounts.threeItemCyclical;
+severity.threeItemCyclical(1,4) = (firstMax + secondMax + thirdMax + fourthMax)/violationcounts.threeItemCyclical;
+severity.threeItemCyclical(1,5) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax)/violationcounts.threeItemCyclical;
+severity.threeItemCyclical(1,6) = (firstMax + secondMax + thirdMax + fourthMax + fifthMax + sixthMax)/violationcounts.threeItemCyclical;
+violationperchoice.threeItemCyclical = violationbychoice;
+
+
+save('violationSeverity.mat','severity');
 save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
@@ -233,7 +190,7 @@ end
 cd('/Users/Niree/Documents/GitHub/GARP/YAOAPrePilot/preProcessedRev');
 
 for folder = 1:length(subjects)
-    if ismember((subjects(folder).name(1)), {'.','C','r','S','v'});
+    if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V'});
         continue
     end
     cd(subjects(folder).name);
@@ -271,6 +228,12 @@ for folder = 1:length(subjects)
     violationSeveritySummary(folder,29) = severity.threeItemGARP1323(4); 
     violationSeveritySummary(folder,30) = severity.threeItemGARP1323(5);
     violationSeveritySummary(folder,31) = severity.threeItemGARP1323(6);
+    violationSeveritySummary(folder,32) = severity.threeItemCyclical(1);
+    violationSeveritySummary(folder,33) = severity.threeItemCyclical(2);
+    violationSeveritySummary(folder,34) = severity.threeItemCyclical(3);
+    violationSeveritySummary(folder,35) = severity.threeItemCyclical(4); 
+    violationSeveritySummary(folder,36) = severity.threeItemCyclical(5);
+    violationSeveritySummary(folder,37) = severity.threeItemCyclical(6);
     
     cd('../');
 end
