@@ -1,8 +1,12 @@
 %For converting representations of choices (1 and 2) to actual amounts of
 %each item selected 
 
-% cd('/Users/Niree/Documents/GitHub/GARP/prePilot/preProcessedRev/');
-cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/preProcessedRev/');
+% if running for YA
+cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev');
+
+% if running for OA
+% cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev');
+
 subjects = dir;
 for folder = 1:length(subjects)
     if subjects(folder).name(1) == '.';

@@ -1,7 +1,11 @@
 %SUMMARY Summary of this function goes here
 %   Detailed explanation goes here
-% cd('/Users/Niree/Documents/GitHub/GARP/PrePilot/preProcessedRev');
-cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/preProcessedRev');
+
+% if running for YA
+cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
+
+% if running for OA
+% cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/');
 
 subjects = dir;
 ViolationSummary = zeros(length(subjects)+1,8);
@@ -28,16 +32,16 @@ for folder = 1:length(subjects)
     %three item GARP along with cyclical three item violations
     
     ViolationSummary(folder,1) = preProcessed.subjID;
-    ViolationSummary(folder,2) = violationcounts.catch;
-    ViolationSummary(folder,3) = violationcounts.twoItemGARP;
-    ViolationSummary(folder,4) = violationcounts.threeItemGARP3435;
-    ViolationSummary(folder,5) = violationcounts.threeItemGARP3445;
-    ViolationSummary(folder,6) = violationcounts.threeItemGARP3545;
-    ViolationSummary(folder,7) = violationcounts.threeItemCyclical;
+%     ViolationSummary(folder,2) = violationcounts.catch;
+    ViolationSummary(folder,2) = violationcounts.twoItemGARP;
+    ViolationSummary(folder,3) = violationcounts.threeItemGARP3435;
+    ViolationSummary(folder,4) = violationcounts.threeItemGARP3445;
+    ViolationSummary(folder,5) = violationcounts.threeItemGARP3545;
+    ViolationSummary(folder,6) = violationcounts.threeItemCyclical;
     x = [violationcounts.threeItemGARP3435, violationcounts.threeItemGARP3445, ...
         violationcounts.threeItemGARP3545, violationcounts.threeItemCyclical];
     sum3ItemViolations = sum(x,2);
-    ViolationSummary(folder,8) = sum3ItemViolations;
+    ViolationSummary(folder,7) = sum3ItemViolations;
 
     
     cd('../');

@@ -1,5 +1,10 @@
 % cd('/Users/Niree/Documents/GitHub/GARP/prePilot/preProcessedRev/');
-cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/preProcessedRev/');
+% if running for YA
+cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
+
+% if running for OA
+% cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/');
+
 subjects = dir;
 for folder = 1:length(subjects)
     if subjects(folder).name(1) == '.';

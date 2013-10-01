@@ -4,7 +4,7 @@ function [ maxes ] = threeItemGARP3545ChoiceOmit(violation, violationbychoice, s
     
 violations.threeItemGARP3545 = violation;
 
-for i = 1:10
+for i = 1:20
     maxes(i) = max(violationbychoice);
     indexMax = find(maxes(i) == violationbychoice);
     if length(indexMax) > 1

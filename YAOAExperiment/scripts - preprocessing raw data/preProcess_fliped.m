@@ -2,8 +2,12 @@ function [ output_args ] = preProcess( input_args )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 % cd ('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/records');
-% cd('C:/Users/Niree/Documents/GitHub/GARP/PrePilot/records');
-cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/records');
+
+% if running for YA
+cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/records');
+
+% if running for OA
+% cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/records');
 
 subjects = dir;             % count all of the subjects in the folder
 for i = 1:length(subjects)  %make sure that you're looking at a subject folder

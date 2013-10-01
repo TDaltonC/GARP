@@ -1,6 +1,11 @@
 
 % cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/preProcessedRev');
-cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/preProcessedRev');
+% if running for YA
+cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
+
+% if running for OA
+% cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/');
+
 subjects = dir;
 
 for folder = 1:length(subjects)
@@ -31,18 +36,18 @@ violationcounts.twoItemGARP = nnz(violations.twoItemGARP)/2;
 denom = violationcounts.twoItemGARP;
 
 severity.twoItemGARP(1,1) = maxes(1)/denom; %calculates how many violations remain when the choice that makes the most number of violations is removed
-severity.twoItemGARP(1,2) = severity.twoItemGARP(1,1) + maxes(2)/denom;
-severity.twoItemGARP(1,3) = severity.twoItemGARP(1,2) + maxes(3)/denom;
-severity.twoItemGARP(1,4) = severity.twoItemGARP(1,3) + maxes(4)/denom;
-severity.twoItemGARP(1,5) = severity.twoItemGARP(1,4) + maxes(5)/denom;
-severity.twoItemGARP(1,6) = severity.twoItemGARP(1,5) + maxes(6)/denom;
-severity.twoItemGARP(1,7) = severity.twoItemGARP(1,6) + maxes(7)/denom;
-severity.twoItemGARP(1,8) = severity.twoItemGARP(1,7) + maxes(8)/denom;
-severity.twoItemGARP(1,9) = severity.twoItemGARP(1,8) + maxes(9)/denom;
-severity.twoItemGARP(1,10) = severity.twoItemGARP(1,9) + maxes(10)/denom;
+severityRev.twoItemGARP(1,1) = denom - maxes(1);
+
+for i = 2:20
+    index = i - 1;
+    severity.twoItemGARP(1,i) = severity.twoItemGARP(1,index) + maxes(i)/denom;
+    severityRev.twoItemGARP(1,i) = severityRev.twoItemGARP(1,index) - maxes(i);
+end
+
 violationperchoice.twoItemGARP = violationbychoice;
 
 save('violationSeverity.mat','severity');
+save('violationSeverityRev.mat','severityRev');
 save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
@@ -60,18 +65,18 @@ violationcounts.threeItemGARP3435 = nnz(violations.threeItemGARP3435)/2;
 denom = violationcounts.threeItemGARP3435; 
 
 severity.threeItemGARP3435(1,1) = maxes(1)/denom; %calculates how many violations remain when the choice that makes the most number of violations is removed
-severity.threeItemGARP3435(1,2) = severity.threeItemGARP3435(1,1) + maxes(2)/denom;
-severity.threeItemGARP3435(1,3) = severity.threeItemGARP3435(1,2) + maxes(3)/denom;
-severity.threeItemGARP3435(1,4) = severity.threeItemGARP3435(1,3) + maxes(4)/denom;
-severity.threeItemGARP3435(1,5) = severity.threeItemGARP3435(1,4) + maxes(5)/denom;
-severity.threeItemGARP3435(1,6) = severity.threeItemGARP3435(1,5) + maxes(6)/denom;
-severity.threeItemGARP3435(1,7) = severity.threeItemGARP3435(1,6) + maxes(7)/denom;
-severity.threeItemGARP3435(1,8) = severity.threeItemGARP3435(1,7) + maxes(8)/denom;
-severity.threeItemGARP3435(1,9) = severity.threeItemGARP3435(1,8) + maxes(9)/denom;
-severity.threeItemGARP3435(1,10) = severity.threeItemGARP3435(1,9) + maxes(10)/denom;
+severityRev.threeItemGARP3435(1,1) = denom - maxes(1);
+
+for i = 2:20
+    index = i -1;
+    severity.threeItemGARP3435(1,i) = severity.threeItemGARP3435(1,index) + maxes(i)/denom;
+    severityRev.threeItemGARP3435(1,i) = severityRev.threeItemGARP3435(1,index) - maxes(i);
+end
+
 violationperchoice.threeItemGARP3435 = violationbychoice;
 
 save('violationSeverity.mat','severity');
+save('violationSeverityRev.mat','severityRev');
 save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
@@ -89,18 +94,18 @@ violationcounts.threeItemGARP3445 = nnz(violations.threeItemGARP3445)/2;
 denom = violationcounts.threeItemGARP3445;
 
 severity.threeItemGARP3445(1,1) = maxes(1)/denom; %calculates how many violations remain when the choice that makes the most number of violations is removed
-severity.threeItemGARP3445(1,2) = severity.threeItemGARP3445(1,1) + maxes(2)/denom;
-severity.threeItemGARP3445(1,3) = severity.threeItemGARP3445(1,2) + maxes(3)/denom;
-severity.threeItemGARP3445(1,4) = severity.threeItemGARP3445(1,3) + maxes(4)/denom;
-severity.threeItemGARP3445(1,5) = severity.threeItemGARP3445(1,4) + maxes(5)/denom;
-severity.threeItemGARP3445(1,6) = severity.threeItemGARP3445(1,5) + maxes(6)/denom;
-severity.threeItemGARP3445(1,7) = severity.threeItemGARP3445(1,6) + maxes(7)/denom;
-severity.threeItemGARP3445(1,8) = severity.threeItemGARP3445(1,7) + maxes(8)/denom;
-severity.threeItemGARP3445(1,9) = severity.threeItemGARP3445(1,8) + maxes(9)/denom;
-severity.threeItemGARP3445(1,10) = severity.threeItemGARP3445(1,9) + maxes(10)/denom;
+severityRev.threeItemGARP3445(1,1) = denom - maxes(1);
+
+for i = 2:20
+    index = i -1;
+    severity.threeItemGARP3445(1,i) = severity.threeItemGARP3445(1,index) + maxes(i)/denom;
+    severityRev.threeItemGARP3445(1,i) = severityRev.threeItemGARP3445(1,index) - maxes(i);
+end
+
 violationperchoice.threeItemGARP3445 = violationbychoice;
 
 save('violationSeverity.mat','severity');
+save('violationSeverityRev.mat','severityRev');
 save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
@@ -118,18 +123,18 @@ violationcounts.threeItemGARP3545 = nnz(violations.threeItemGARP3545)/2;
 denom = violationcounts.threeItemGARP3545;
 
 severity.threeItemGARP3545(1,1) = maxes(1)/denom; %calculates how many violations remain when the choice that makes the most number of violations is removed
-severity.threeItemGARP3545(1,2) = severity.threeItemGARP3545(1,1) + maxes(2)/denom;
-severity.threeItemGARP3545(1,3) = severity.threeItemGARP3545(1,2) + maxes(3)/denom;
-severity.threeItemGARP3545(1,4) = severity.threeItemGARP3545(1,3) + maxes(4)/denom;
-severity.threeItemGARP3545(1,5) = severity.threeItemGARP3545(1,4) + maxes(5)/denom;
-severity.threeItemGARP3545(1,6) = severity.threeItemGARP3545(1,5) + maxes(6)/denom;
-severity.threeItemGARP3545(1,7) = severity.threeItemGARP3545(1,6) + maxes(7)/denom;
-severity.threeItemGARP3545(1,8) = severity.threeItemGARP3545(1,7) + maxes(8)/denom;
-severity.threeItemGARP3545(1,9) = severity.threeItemGARP3545(1,8) + maxes(9)/denom;
-severity.threeItemGARP3545(1,10) = severity.threeItemGARP3545(1,9) + maxes(10)/denom;
+severityRev.threeItemGARP3545(1,1) = denom - maxes(1);
+
+for i = 2:20
+    index = i -1;
+    severity.threeItemGARP3545(1,i) = severity.threeItemGARP3545(1,index) + maxes(i)/denom;
+    severityRev.threeItemGARP3545(1,i) = severityRev.threeItemGARP3545(1,index) - maxes(i);
+end
+
 violationperchoice.threeItemGARP3545 = violationbychoice;
 
 save('violationSeverity.mat','severity');
+save('violationSeverityRev.mat','severityRev');
 save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
@@ -152,19 +157,19 @@ violationcounts.threeItemCyclical = nnz(violations.threeItemCyclical);
 denom = violationcounts.threeItemCyclical; 
 
 severity.threeItemCyclical(1,1) = maxes(1)/denom; %calculates how many violations remain when the choice that makes the most number of violations is removed
-severity.threeItemCyclical(1,2) = severity.threeItemCyclical(1,1) + maxes(2)/denom;
-severity.threeItemCyclical(1,3) = severity.threeItemCyclical(1,2) + maxes(3)/denom;
-severity.threeItemCyclical(1,4) = severity.threeItemCyclical(1,3) + maxes(4)/denom;
-severity.threeItemCyclical(1,5) = severity.threeItemCyclical(1,4) + maxes(5)/denom;
-severity.threeItemCyclical(1,6) = severity.threeItemCyclical(1,5) + maxes(6)/denom;
-severity.threeItemCyclical(1,7) = severity.threeItemCyclical(1,6) + maxes(7)/denom;
-severity.threeItemCyclical(1,8) = severity.threeItemCyclical(1,7) + maxes(8)/denom;
-severity.threeItemCyclical(1,9) = severity.threeItemCyclical(1,8) + maxes(9)/denom;
-severity.threeItemCyclical(1,10) = severity.threeItemCyclical(1,9) + maxes(10)/denom;
+severityRev.threeItemCyclical(1,1) = denom - maxes(1);
+
+for i = 2:20
+    index = i -1;
+    severity.threeItemCyclical(1,i) = severity.threeItemCyclical(1,index) + maxes(i)/denom;
+    severityRev.threeItemCyclical(1,i) = severityRev.threeItemCyclical(1,index) - maxes(i);
+end
+
 violationperchoice.threeItemCyclical = violationbychoice;
 
 
 save('violationSeverity.mat','severity');
+save('violationSeverityRev.mat','severityRev');
 save('violationMatrices.mat','violations');
 save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
@@ -173,47 +178,80 @@ cd('../');
 clearvars -except 'subjects', 'folder';
 end
 
-cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/preProcessedRev');
+% if running for YA
+cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
+
+% if running for OA
+% cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/');
 
 for folder = 1:length(subjects)
     if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V'});
         continue
     end
     cd(subjects(folder).name);
-    load ('violationSeverity.mat');
+    load('violationSeverity.mat');
+    load('violationSeverityRev.mat');
     load('preProcessed.mat');
 
 
 violationSeveritySummary(folder,1) = preProcessed.subjID;
 
-for i = 2:11
+for i = 2:21
     index = i - 1;
     violationSeveritySummary(folder,i) = severity.twoItemGARP(1,index);
 end
 
-for i = 12:21
-    index = i - 11;
+for i = 22:41
+    index = i - 21;
     violationSeveritySummary(folder,i) = severity.threeItemGARP3435(1,index);
 end
 
-for i = 22:31
-    index = i - 21;
+for i = 42:61
+    index = i - 41;
     violationSeveritySummary(folder,i) = severity.threeItemGARP3445(1,index);
 end
 
-for i = 32:41
-    index = i - 31;
+for i = 62:81
+    index = i - 61;
     violationSeveritySummary(folder,i) = severity.threeItemGARP3545(1,index);
 end
 
-for i = 42:51
-    index = i - 41;
+for i = 82:101
+    index = i - 81;
     violationSeveritySummary(folder,i) = severity.threeItemCyclical(1,index);
 end
 
+
+violationSeverityRevSummary(folder,1) = preProcessed.subjID;
+
+for i = 2:21
+    index = i - 1;
+    violationSeverityRevSummary(folder,i) = severityRev.twoItemGARP(1,index);
+end
+
+for i = 22:41
+    index = i - 21;
+    violationSeverityRevSummary(folder,i) = severityRev.threeItemGARP3435(1,index);
+end
+
+for i = 42:61
+    index = i - 41;
+    violationSeverityRevSummary(folder,i) = severityRev.threeItemGARP3445(1,index);
+end
+
+for i = 62:81
+    index = i - 61;
+    violationSeverityRevSummary(folder,i) = severityRev.threeItemGARP3545(1,index);
+end
+
+for i = 82:101
+    index = i - 81;
+    violationSeverityRevSummary(folder,i) = severityRev.threeItemCyclical(1,index);
+end
 
 
     cd('../');
 end
 
 save('violationSeveritySummary.mat','violationSeveritySummary');
+save('violationSeverityRevSummary.mat','violationSeverityRevSummary');

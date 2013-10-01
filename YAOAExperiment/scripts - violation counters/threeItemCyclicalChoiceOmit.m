@@ -4,8 +4,7 @@ function [maxes ] = threeItemCyclicalChoiceOmit(violation, violationbychoice, se
 
 violations.threeItemCyclical = violation;
 
-
-for i = 1:10
+for i = 1:20
     maxes(i) = max(violationbychoice);
     indexMax = find(maxes(i) == violationbychoice);
     if length(indexMax) > 1

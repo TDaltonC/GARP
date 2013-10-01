@@ -1,7 +1,12 @@
 %SUMMARY Summary of this function goes here
 %   Detailed explanation goes here
 % cd('/Users/Niree/Documents/GitHub/GARP/PrePilot/preProcessedRev');
-cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/preProcessedRev');
+
+% if running for YA
+cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
+
+% if running for OA
+% cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/');
 
 subjects = dir;
 StrategySummary = zeros(length(subjects)+1,11);
