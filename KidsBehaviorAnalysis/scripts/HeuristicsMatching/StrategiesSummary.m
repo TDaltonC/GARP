@@ -30,7 +30,7 @@ for folder = 1:length(subjects)
     
     cd('../');
 end
-
+cd('../Summaries');
 save('StrategySummary.mat','StrategySummary');
 
 
