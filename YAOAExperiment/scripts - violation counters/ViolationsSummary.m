@@ -11,15 +11,8 @@ subjects = dir;
 ViolationSummary = zeros(length(subjects)+1,8);
 
 for folder = 1:length(subjects)
-    if subjects(folder).name(1) == '.';
-        continue
-    end
-    
-    if subjects(folder).name(1) == 'v';
-        continue
-    end
-    
-    if subjects(folder).name(1) == 'S';
+
+    if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V','s'});
         continue
     end
     

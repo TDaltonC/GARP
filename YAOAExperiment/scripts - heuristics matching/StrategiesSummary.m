@@ -12,18 +12,9 @@ subjects = dir;
 StrategySummary = zeros(length(subjects)+1,11);
 
 for folder = 1:length(subjects)
-    if subjects(folder).name(1) == '.';
+    if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V','s'});
         continue
     end
-    
-    if subjects(folder).name(1) == 'v';
-        continue
-    end
-    
-    if subjects(folder).name(1) == 'V';
-        continue
-    end
-    
     cd(subjects(folder).name);
     load ('strategy.mat');
     load ('preProcessed.mat');

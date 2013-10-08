@@ -7,7 +7,7 @@ cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
 
 subjects = dir;
 for folder = 1:length(subjects)
-    if subjects(folder).name(1) == '.';
+    if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V','s'});
         continue
     end
     cd(subjects(folder).name);

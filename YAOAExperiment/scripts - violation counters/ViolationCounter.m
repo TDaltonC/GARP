@@ -9,7 +9,7 @@ cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
 subjects = dir;
 
 for folder = 1:length(subjects)
-    if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V'});
+    if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V','s'});
         continue
     end
    
@@ -284,7 +284,7 @@ cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
 % cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/');
 
 for folder = 1:length(subjects)
-    if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V'});
+    if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V','s'});
         continue
     end
     cd(subjects(folder).name);
