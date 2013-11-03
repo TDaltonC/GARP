@@ -58,65 +58,65 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
     ti22Index=1;
     ti32Index=1;
     preProcessed.catch.choices = zeros(length(preProcessed.catch.tasks),2);
-%     preProcessed.catch.responseTimes = zeros(length(preProcessed.catch.tasks),2);
+    preProcessed.catch.responseTimes = zeros(length(preProcessed.catch.tasks),2);
     preProcessed.twoItemGARP.choices = zeros(length(preProcessed.twoItemGARP.tasks),2);
-%     preProcessed.twoItemGARP.responseTimes = zeros(length(preProcessed.twoItemGARP.tasks),2);
+    preProcessed.twoItemGARP.responseTimes = zeros(length(preProcessed.twoItemGARP.tasks),2);
     preProcessed.threeItemGARP3435.choices = zeros(length(preProcessed.threeItemGARP3435.tasks),2);
-%     preProcessed.threeItemGARP3435.responseTimes = zeros(length(preProcessed.threeItemGARP3435.tasks),2);
+    preProcessed.threeItemGARP3435.responseTimes = zeros(length(preProcessed.threeItemGARP3435.tasks),2);
     preProcessed.threeItemGARP3445.choices = zeros(length(preProcessed.threeItemGARP3445.tasks),2);
-%     preProcessed.threeItemGARP3445.responseTimes = zeros(length(preProcessed.threeItemGARP3445.tasks),2);
+    preProcessed.threeItemGARP3445.responseTimes = zeros(length(preProcessed.threeItemGARP3445.tasks),2);
     preProcessed.threeItemGARP3545.choices = zeros(length(preProcessed.threeItemGARP3545.tasks),2);
-%     preProcessed.threeItemGARP3545.responseTimes = zeros(length(preProcessed.threeItemGARP3545.tasks),2);
+    preProcessed.threeItemGARP3545.responseTimes = zeros(length(preProcessed.threeItemGARP3545.tasks),2);
     for tn=1 : length(settings.trialOrder)
     switch settings.trialOrder(tn)
-        case 1
+        case 1 % this means we are dealing with the case that task = catch trials
             reorder = settings.catchOrder(lgIndex);
             if preProcessed.catch.choices(reorder) == 0 
                 preProcessed.catch.choices(reorder) = choice(tn);
-%                 preProcessed.catch.responseTimes(reorder) = behavioral.secs(tn,2);
+                preProcessed.catch.responseTimes(reorder) = behavioral.secs(tn,2);
             else
                 preProcessed.catch.choices(reorder,2) = choice(tn);
-%                 preProcessed.catch.responseTimes(reorder,2) = behavioral.secs(tn,2);
+                preProcessed.catch.responseTimes(reorder,2) = behavioral.secs(tn,2);
             end
             lgIndex = lgIndex + 1;
-        case 2
+        case 2 % case that task = two Item GARP
             reorder = settings.twoItemGARPOrder(tiIndex);
             if preProcessed.twoItemGARP.choices(reorder) == 0 
                 preProcessed.twoItemGARP.choices(reorder) = choice(tn);
-%                 preProcessed.twoItemGARP.responseTimes(reorder) = behavioral.secs(tn,2);
+                preProcessed.twoItemGARP.responseTimes(reorder) = behavioral.secs(tn,2);
             else
                 preProcessed.twoItemGARP.choices(reorder,2) = choice(tn);
-%                 preProcessed.twoItemGARP.responseTimes(reorder,2) = behavioral.secs(tn,2);
+                preProcessed.twoItemGARP.responseTimes(reorder,2) = behavioral.secs(tn,2);
             end
             tiIndex = tiIndex + 1;
-        case 3
+        case 3 % case that task = first type of three Item GARP
             reorder = settings.threeItemGARPOrder1213(ti21Index);
             if preProcessed.threeItemGARP3435.choices(reorder) == 0 
                 preProcessed.threeItemGARP3435.choices(reorder) = choice(tn);
-%                 preProcessed.threeItemGARP3435.responseTimes(reorder) = behavioral.secs(tn,2);
+                preProcessed.threeItemGARP3435.responseTimes(reorder) = behavioral.secs(tn,2);
             else
                 preProcessed.threeItemGARP3435.choices(reorder,2) = choice(tn);
-%                 preProcessed.threeItemGARP3435.responseTimes(reorder,2) = behavioral.secs(tn,2);
+                preProcessed.threeItemGARP3435.responseTimes(reorder,2) = behavioral.secs(tn,2);
             end
             ti21Index=ti21Index+1;
-        case 4
+        case 4 % case that task = second type of three Item GARP
             reorder = settings.threeItemGARPOrder1223(ti22Index);
             if preProcessed.threeItemGARP3445.choices(reorder) == 0 
                 preProcessed.threeItemGARP3445.choices(reorder) = choice(tn);
-%                 preProcessed.threeItemGARP3445.responseTimes(reorder) = behavioral.secs(tn,2);
+                preProcessed.threeItemGARP3445.responseTimes(reorder) = behavioral.secs(tn,2);
             else
                 preProcessed.threeItemGARP3445.choices(reorder,2) = choice(tn);
-%                 preProcessed.threeItemGARP3445.responseTimes(reorder,2) = behavioral.secs(tn,2);
+                preProcessed.threeItemGARP3445.responseTimes(reorder,2) = behavioral.secs(tn,2);
             end
             ti22Index = ti22Index + 1;
-        case 5
+        case 5 % case that task = third type of three Item GARP
             reorder = settings.threeItemGARPOrder1323(ti32Index);
             if preProcessed.threeItemGARP3545.choices(reorder) == 0 
                 preProcessed.threeItemGARP3545.choices(reorder) = choice(tn);
-%                 preProcessed.threeItemGARP3545.responseTimes(reorder) = behavioral.secs(tn,2);
+                preProcessed.threeItemGARP3545.responseTimes(reorder) = behavioral.secs(tn,2);
             else
                 preProcessed.threeItemGARP3545.choices(reorder,2) = choice(tn);
-%                 preProcessed.threeItemGARP3545.responseTimes(reorder,2) = behavioral.secs(tn,2);
+                preProcessed.threeItemGARP3545.responseTimes(reorder,2) = behavioral.secs(tn,2);
             end
             ti32Index = ti32Index + 1;
     end

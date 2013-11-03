@@ -1,4 +1,14 @@
 
+% Description: this script calls on subscripts that count violations (i.e.
+% threeItemGARP1213ViolationCounter.m) as well as subscripts designed to
+% count the number of choice removals necessary to obtain perfect
+% consistency (i.e. twoItemGARPChoiceOmit.m). The script creates several
+% .mat files for each subject containing their violation counts, choice
+% removals for consistency, and CKB severity index, all by task type.
+
+% Caution: if running this for OA, need to "uncomment" script lines at two
+% locations 
+
 % cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/preProcessedRev');
 % if running for YA
 cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
@@ -26,7 +36,15 @@ choice = preProcessed.twoItemGARP.choices;
 %     Price(i,2) = 1;
 % end
 
-[violation, violationbychoice] = twoItemGARPViolationCounter(set,choice);
+[violation, violationbychoice, CKB, CKBbychoice] = twoItemGARPViolationCounter(set,choice);
+
+severityCKB.twoItemGARP = CKB;
+if nnz(CKBbychoice) ~= 0
+    severityIndexCKB.twoItemGARP = sum(CKBbychoice)/nnz(CKBbychoice);
+else
+    severityIndexCKB.twoItemGARP = 0;
+end
+severityCKBbychoice.twoItemGARP = CKBbychoice;
 
 violations.twoItemGARP = violation;
 violationcounts.twoItemGARP = nnz(violations.twoItemGARP)/2;
@@ -65,6 +83,9 @@ end
         
 violationperchoice.twoItemGARP = violationbychoice;
 
+save('severityIndexCKB.mat','severityIndexCKB');
+save('severityCKBbychoice.mat','severityCKBbychoice');
+save('severityCKB.mat','severityCKB');
 save('violationSeverity.mat','severity');
 save('violationSeverityRev.mat','severityRev');
 save('severityIndex.mat','severityIndex');
@@ -75,7 +96,15 @@ save('violationCounts.mat','violationcounts');
 set = preProcessed.threeItemGARP3435.revtasks;
 choice = preProcessed.threeItemGARP3435.choices;
 
-[violation, violationbychoice] = threeItemGARP1213ViolationCounter(set,choice);
+[violation, violationbychoice, CKB, CKBbychoice] = threeItemGARP1213ViolationCounter(set,choice);
+
+severityCKB.threeItemGARP3435 = CKB;
+if nnz(CKBbychoice) ~= 0
+    severityIndexCKB.threeItemGARP3435 = sum(CKBbychoice)/nnz(CKBbychoice);
+else
+    severityIndexCKB.threeItemGARP3435 = 0;
+end
+severityCKBbychoice.threeItemGARP3435 = CKBbychoice;
 
 violations.threeItemGARP3435 = violation;
 violationcounts.threeItemGARP3435 = nnz(violations.threeItemGARP3435)/2;
@@ -114,6 +143,9 @@ end
 
 violationperchoice.threeItemGARP3435 = violationbychoice;
 
+save('severityIndexCKB.mat','severityIndexCKB');
+save('severityCKBbychoice.mat','severityCKBbychoice');
+save('severityCKB.mat','severityCKB');
 save('violationSeverity.mat','severity');
 save('violationSeverityRev.mat','severityRev');
 save('severityIndex.mat','severityIndex');
@@ -124,7 +156,15 @@ save('violationCounts.mat','violationcounts');
 set = preProcessed.threeItemGARP3445.revtasks;
 choice = preProcessed.threeItemGARP3445.choices;
 
-[violation, violationbychoice] = threeItemGARP1223ViolationCounter(set,choice);
+[violation, violationbychoice, CKB, CKBbychoice] = threeItemGARP1223ViolationCounter(set,choice);
+
+severityCKB.threeItemGARP3445 = CKB;
+if nnz(CKBbychoice) ~= 0
+    severityIndexCKB.threeItemGARP3445 = sum(CKBbychoice)/nnz(CKBbychoice);
+else
+    severityIndexCKB.threeItemGARP3445 = 0;
+end
+severityCKBbychoice.threeItemGARP3445 = CKBbychoice;
 
 violations.threeItemGARP3445 = violation;
 violationcounts.threeItemGARP3445 = nnz(violations.threeItemGARP3445)/2;
@@ -163,6 +203,9 @@ end
 
 violationperchoice.threeItemGARP3445 = violationbychoice;
 
+save('severityIndexCKB.mat','severityIndexCKB');
+save('severityCKBbychoice.mat','severityCKBbychoice');
+save('severityCKB.mat','severityCKB');
 save('violationSeverity.mat','severity');
 save('violationSeverityRev.mat','severityRev');
 save('severityIndex.mat','severityIndex');
@@ -173,7 +216,15 @@ save('violationCounts.mat','violationcounts');
 set = preProcessed.threeItemGARP3545.revtasks;
 choice = preProcessed.threeItemGARP3545.choices;
 
-[violation, violationbychoice] = threeItemGARP1323ViolationCounter(set,choice);
+[violation, violationbychoice, CKB, CKBbychoice] = threeItemGARP1323ViolationCounter(set,choice);
+
+severityCKB.threeItemGARP3545 = CKB;
+if nnz(CKBbychoice) ~= 0
+    severityIndexCKB.threeItemGARP3545 = sum(CKBbychoice)/nnz(CKBbychoice);
+else
+    severityIndexCKB.threeItemGARP3545 = 0;
+end
+severityCKBbychoice.threeItemGARP3545 = CKBbychoice;
 
 violations.threeItemGARP3545 = violation;
 violationcounts.threeItemGARP3545 = nnz(violations.threeItemGARP3545)/2;
@@ -212,6 +263,9 @@ end
 
 violationperchoice.threeItemGARP3545 = violationbychoice;
 
+save('severityIndexCKB.mat','severityIndexCKB');
+save('severityCKBbychoice.mat','severityCKBbychoice');
+save('severityCKB.mat','severityCKB');
 save('violationSeverity.mat','severity');
 save('violationSeverityRev.mat','severityRev');
 save('severityIndex.mat','severityIndex');
@@ -227,7 +281,15 @@ choice2 = preProcessed.threeItemGARP3445.choices;
 set3 = preProcessed.threeItemGARP3545.revtasks;
 choice3 = preProcessed.threeItemGARP3545.choices;
 
-[violation, violationbychoice] = threeItemCyclicalViolationCounter(set1, choice1, set2, choice2, set3, choice3);
+[violation, violationbychoice, CKB, CKBbychoice] = threeItemCyclicalViolationCounter(set1, choice1, set2, choice2, set3, choice3);
+
+severityCKB.threeItemCyclical = CKB;
+if nnz(CKBbychoice) ~= 0
+    severityIndexCKB.threeItemCyclical = sum(CKBbychoice)/nnz(CKBbychoice);
+else
+    severityIndexCKB.threeItemCyclical = 0;
+end
+severityCKBbychoice.threeItemCyclical = CKBbychoice;
 
 violations.threeItemCyclical = violation;
 violationcounts.threeItemCyclical = nnz(violations.threeItemCyclical);
@@ -266,6 +328,9 @@ end
 
 violationperchoice.threeItemCyclical = violationbychoice;
 
+save('severityIndexCKB.mat','severityIndexCKB');
+save('severityCKBbychoice.mat','severityCKBbychoice');
+save('severityCKB.mat','severityCKB');
 save('violationSeverity.mat','severity');
 save('violationSeverityRev.mat','severityRev');
 save('severityIndex.mat','severityIndex');
@@ -292,6 +357,7 @@ for folder = 1:length(subjects)
     load('violationSeverityRev.mat');
     load('preProcessed.mat');
     load('severityIndex.mat');
+    load('severityIndexCKB.mat');
 
 violationSeveritySummary(folder,1) = preProcessed.subjID;
 
@@ -356,9 +422,17 @@ severityIndexSummary(folder,5) = severityIndex.threeItemGARP3545;
 severityIndexSummary(folder,6) = severityIndex.threeItemCyclical;
 
 
+severityIndexCKBSummary(folder,1) = preProcessed.subjID;
+severityIndexCKBSummary(folder,2) = severityIndexCKB.twoItemGARP;
+severityIndexCKBSummary(folder,3) = severityIndexCKB.threeItemGARP3435;
+severityIndexCKBSummary(folder,4) = severityIndexCKB.threeItemGARP3445;
+severityIndexCKBSummary(folder,5) = severityIndexCKB.threeItemGARP3545;
+severityIndexCKBSummary(folder,6) = severityIndexCKB.threeItemCyclical;
+
     cd('../');
 end
 
 save('violationSeveritySummary.mat','violationSeveritySummary');
 save('violationSeverityRevSummary.mat','violationSeverityRevSummary');
 save('severityIndexSummary.mat','severityIndexSummary');
+save('severityIndexCKBSummary.mat','severityIndexCKBSummary');
