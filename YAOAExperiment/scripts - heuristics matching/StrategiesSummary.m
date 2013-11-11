@@ -21,16 +21,16 @@ for folder = 1:length(subjects)
     
         
     StrategySummary(folder,1) = preProcessed.subjID;
-    StrategySummary(folder,2) = strategy.catch.heuristic;
-    StrategySummary(folder,3) = strategy.catch.deviation;
-    StrategySummary(folder,4) = strategy.twoItemGARP.heuristic;
-    StrategySummary(folder,5) = strategy.twoItemGARP.deviation;
-    StrategySummary(folder,6) = strategy.threeItemGARP3435.heuristic;
-    StrategySummary(folder,7) = strategy.threeItemGARP3435.deviation;
-    StrategySummary(folder,8) = strategy.threeItemGARP3445.heuristic;
-    StrategySummary(folder,9) = strategy.threeItemGARP3445.deviation;
-    StrategySummary(folder,10) = strategy.threeItemGARP3545.heuristic;
-    StrategySummary(folder,11) = strategy.threeItemGARP3545.deviation;
+%     StrategySummary(folder,2) = strategy.catch.heuristic;
+%     StrategySummary(folder,3) = strategy.catch.deviation;
+    StrategySummary(folder,2) = strategy.twoItemGARP.heuristic;
+    StrategySummary(folder,3) = strategy.twoItemGARP.deviation;
+    StrategySummary(folder,4) = strategy.threeItemGARP3435.heuristic;
+    StrategySummary(folder,5) = strategy.threeItemGARP3435.deviation;
+    StrategySummary(folder,6) = strategy.threeItemGARP3445.heuristic;
+    StrategySummary(folder,7) = strategy.threeItemGARP3445.deviation;
+    StrategySummary(folder,8) = strategy.threeItemGARP3545.heuristic;
+    StrategySummary(folder,9) = strategy.threeItemGARP3545.deviation;
     
     cd('../');
 end

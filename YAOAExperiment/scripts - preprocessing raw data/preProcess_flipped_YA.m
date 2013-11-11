@@ -6,9 +6,6 @@ function [ output_args ] = preProcess( input_args )
 % if running for YA
 cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/records');
 
-% if running for OA
-% cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/records');
-
 subjects = dir;             % count all of the subjects in the folder
 for i = 1:length(subjects)  %make sure that you're looking at a subject folder
     if subjects(i).name(1) == '.';
@@ -130,4 +127,7 @@ clearvars -except i subjects
 %End of the loop
 
 end
+
+
+
 

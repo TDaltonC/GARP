@@ -38,12 +38,13 @@ choice = preProcessed.twoItemGARP.choices;
 
 [violation, violationbychoice, CKB, CKBbychoice] = twoItemGARPViolationCounter(set,choice);
 
-severityCKB.twoItemGARP = CKB;
-if nnz(CKBbychoice) ~= 0
-    severityIndexCKB.twoItemGARP = sum(CKBbychoice)/nnz(CKBbychoice);
+if nnz(CKB) ~= 0
+    severityIndexCKB.twoItemGARP = sum(sum(CKB))/nnz(CKB);
 else
     severityIndexCKB.twoItemGARP = 0;
 end
+
+severityCKB.twoItemGARP = CKB;
 severityCKBbychoice.twoItemGARP = CKBbychoice;
 
 violations.twoItemGARP = violation;
@@ -98,12 +99,13 @@ choice = preProcessed.threeItemGARP3435.choices;
 
 [violation, violationbychoice, CKB, CKBbychoice] = threeItemGARP1213ViolationCounter(set,choice);
 
-severityCKB.threeItemGARP3435 = CKB;
-if nnz(CKBbychoice) ~= 0
-    severityIndexCKB.threeItemGARP3435 = sum(CKBbychoice)/nnz(CKBbychoice);
+if nnz(CKB) ~= 0
+    severityIndexCKB.threeItemGARP3435 = sum(sum(CKB))/nnz(CKB);
 else
     severityIndexCKB.threeItemGARP3435 = 0;
 end
+
+severityCKB.threeItemGARP3435 = CKB;
 severityCKBbychoice.threeItemGARP3435 = CKBbychoice;
 
 violations.threeItemGARP3435 = violation;
@@ -158,12 +160,13 @@ choice = preProcessed.threeItemGARP3445.choices;
 
 [violation, violationbychoice, CKB, CKBbychoice] = threeItemGARP1223ViolationCounter(set,choice);
 
-severityCKB.threeItemGARP3445 = CKB;
-if nnz(CKBbychoice) ~= 0
-    severityIndexCKB.threeItemGARP3445 = sum(CKBbychoice)/nnz(CKBbychoice);
+if nnz(CKB) ~= 0
+    severityIndexCKB.threeItemGARP3445 = sum(sum(CKB))/nnz(CKB);
 else
     severityIndexCKB.threeItemGARP3445 = 0;
 end
+
+severityCKB.threeItemGARP3445 = CKB;
 severityCKBbychoice.threeItemGARP3445 = CKBbychoice;
 
 violations.threeItemGARP3445 = violation;
@@ -218,12 +221,13 @@ choice = preProcessed.threeItemGARP3545.choices;
 
 [violation, violationbychoice, CKB, CKBbychoice] = threeItemGARP1323ViolationCounter(set,choice);
 
-severityCKB.threeItemGARP3545 = CKB;
-if nnz(CKBbychoice) ~= 0
-    severityIndexCKB.threeItemGARP3545 = sum(CKBbychoice)/nnz(CKBbychoice);
+if nnz(CKB) ~= 0
+    severityIndexCKB.threeItemGARP3545 = sum(sum(CKB))/nnz(CKB);
 else
     severityIndexCKB.threeItemGARP3545 = 0;
 end
+
+severityCKB.threeItemGARP3545 = CKB;
 severityCKBbychoice.threeItemGARP3545 = CKBbychoice;
 
 violations.threeItemGARP3545 = violation;

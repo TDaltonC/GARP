@@ -25,11 +25,12 @@ for i = 1 : length(set);
                         dLeft = pdist(left,'euclidean'); % computes the euclidean distance between the left bundles
                         right = [set(2,2,i),set(2,3,i);set(2,2,j),set(2,3,j)]; % defines the right bundles
                         dRight = pdist(right,'euclidean'); % computes the euclidean distance between the right bundles
-                        CKB(i,j) = (dLeft+dRight)/2; % sum of distances is the CKB severity index
                         if i ~= j
                             violation(i,j) = 1;
+                            CKB(i,j) = (dLeft+dRight)/2; % sum of distances is the CKB severity index
                         elseif i == j
                             violation(i,j) = 2;
+                            CKB(i,j) = dLeft+dRight;
                         end
                     end
                 end
@@ -50,11 +51,12 @@ for i = 1 : length(set);
                         dLeft = pdist(left,'euclidean');
                         right = [set(2,2,i),set(2,3,i);set(2,2,j),set(2,3,j)];
                         dRight = pdist(right,'euclidean');
-                        CKB(i,j) = (dLeft+dRight)/2;
                         if i ~= j
                             violation(i,j) = 1;
+                            CKB(i,j) = (dLeft+dRight)/2;
                         elseif i == j
                             violation(i,j) = 2;
+                            CKB(i,j) = dLeft+dRight;
                         end
                     end
                 end
