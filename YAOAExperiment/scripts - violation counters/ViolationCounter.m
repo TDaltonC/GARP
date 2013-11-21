@@ -27,6 +27,15 @@ for folder = 1:length(subjects)
     load('preProcessed.mat');
 
 %%
+set = preProcessed.catch.tasks; 
+choice = preProcessed.catch.choices;
+
+[violation] = catchViolationCounter(set,choice);
+
+violationcounts.catch = violation;
+save('violationCounts.mat','violationcounts');
+
+%% 
 set = preProcessed.twoItemGARP.tasks;
 choice = preProcessed.twoItemGARP.choices;
 

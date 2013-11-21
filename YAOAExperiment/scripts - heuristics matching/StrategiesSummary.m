@@ -21,8 +21,6 @@ for folder = 1:length(subjects)
     
         
     StrategySummary(folder,1) = preProcessed.subjID;
-%     StrategySummary(folder,2) = strategy.catch.heuristic;
-%     StrategySummary(folder,3) = strategy.catch.deviation;
     StrategySummary(folder,2) = strategy.twoItemGARP.heuristic;
     StrategySummary(folder,3) = strategy.twoItemGARP.deviation;
     StrategySummary(folder,4) = strategy.threeItemGARP3435.heuristic;
