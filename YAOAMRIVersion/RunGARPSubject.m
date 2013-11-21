@@ -107,9 +107,9 @@ settings.subjID = subjID;
 settings.trialOrder = trialOrder;
 settings.flipLR = flipLR; %if '0', don't flip. If '1' flip the left basker for the right basket
 settings.twoItemGARPTasks =twoItemGARPTasks;
-settings.twoItemGARPOrder =twoItemGARPOrderType1;
-settings.twoItemGARPOrder =twoItemGARPOrderType2;
-settings.twoItemGARPOrder =twoItemGARPOrderType3;
+settings.twoItemGARPOrder1 =twoItemGARPOrderType1;
+settings.twoItemGARPOrder2 =twoItemGARPOrderType2;
+settings.twoItemGARPOrder3 =twoItemGARPOrderType3;
 settings.threeItemGARPTasks1213 =threeItemGARPTasks1213;
 settings.threeItemGARPOrder1213 =threeItemGARPOrder1213;
 settings.threeItemGARPTasks1223 =threeItemGARPTasks1223;
@@ -135,7 +135,7 @@ mkdir(settings.recordfolder);
 % creat the file name for this run of this subject
 recordname = [settings.recordfolder '/' num2str(subjID) '_' datestr(now,'yyyymmddTHHMMSS') '.mat'];
 % Save the settings (the results are saved later)
-save (recordname, 'settings')
+
 % Restrict the keys that can be used for the 12 commands [ALL KEYS ARE
 % ENABLED AFTER A cear all command]
 % if (ismac)
@@ -156,7 +156,7 @@ Screen('Flip',w);
         break
     end
  end
-
+save (recordname, 'settings');
 % RestrictKeysForKbCheck([89, 90, 91, 92]);
  
 %% during the experiment

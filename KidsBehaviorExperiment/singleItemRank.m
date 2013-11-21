@@ -55,6 +55,7 @@ settings.recordfolder = 'records';
 settings.subjID       = subjID;
 settings.itemsInOrder = itemsInOrder;
 settings.flipLR       = flipLR;
+settings.trialOrder   = trialOrder;
 
 % Display settings
 settings.screenNumber = screenNumber;
@@ -72,8 +73,8 @@ save (recordname, 'settings');
 
 %% BEGIN!
 for i = 1:long;
-    itemLeft = trials(trialOrder(i),1);
-    itemRight= trials(trialOrder(i),2);
+    itemLeft = itemsInOrder(trials(trialOrder(i),1));
+    itemRight= itemsInOrder(trials(trialOrder(i),2));
     
     v = genvarname(strcat('image', 'Left'));
     eval([v '= imread(strcat(''Image'', num2str(itemLeft), ''.JPG''));']);

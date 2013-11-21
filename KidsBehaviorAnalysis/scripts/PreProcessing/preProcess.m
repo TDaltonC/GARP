@@ -8,15 +8,16 @@ function [ output_args ] = preProcess( input_args )
 % cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/records');
 % cd('C:/Users/Niree/Documents/GitHub/GARP/PrePilot/records');
 % cd('C:/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/records');
-cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/KidsBehaviorAnalysis/RawData');
+cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/KidsBehaviorAnalysis/RawData/GARP');
 
 subjects = dir;             % count all of the subjects in the folder
 for i = 1:length(subjects)  %make sure that you're looking at a subject folder
     if subjects(i).name(1) == '.';
         continue
     end
+    clear behavioral settings;
     load(subjects(i).name);
-    cd ('../preProcessed');
+    cd ('../../PreProcessed');
     folderName = num2str(settings.subjID);
     switch length(folderName)
         case 1
@@ -126,14 +127,14 @@ for i = 1:length(subjects)  %make sure that you're looking at a subject folder
 
 
 %Right before the end of the loop
-cd('../../RawData');
+cd('../../RawData/GARP');
 clearvars -except i subjects
 %End of the loop
 end
 
 %%Convert the choices from 1's and 2's to the amouts of goods that those
 %%code for
-cd('../PreProcessed');
+cd('../../PreProcessed');
 subjects = dir;
 for folder = 1:length(subjects)
     if subjects(folder).name(1) == '.';
