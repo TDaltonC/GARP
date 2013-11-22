@@ -8,13 +8,20 @@
 
 % Caution: if running this for OA, need to "uncomment" script lines at two
 % locations 
+%% Directory Definitions
+%for Niree
+% preProcessedFolder = '/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/';
+% %or
+% preProcessedFolder = '/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/';
+% %for Dalton
+preProcessedFolder = '/Users/Dalton/Documents/MATLAB/GARP/GARP/YAOAExperiment/YA/preProcessedRev/';
+%or
+% preProcessedFolder = '/Users/Dalton/Documents/MATLAB/GARP/GARP/YAOAExperiment/OA/preProcessedRev/';
 
-% cd('/Users/Dalton/Documents/MATLAB/GARP/GARP/PrePilot/preProcessedRev');
-% if running for YA
-cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
 
-% if running for OA
-% cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/');
+%%
+
+cd(preProcessedFolder);
 
 subjects = dir;
 
@@ -352,14 +359,12 @@ save('violationPerChoice.mat','violationperchoice');
 save('violationCounts.mat','violationcounts');
 %%
 cd('../');
-clearvars -except 'subjects', 'folder';
+clearvars -except 'subjects' 'folder' 'preProcessedFolder';
 end
 
 % if running for YA
-cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
+cd(preProcessedFolder);
 
-% if running for OA
-% cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/');
 
 for folder = 1:length(subjects)
     if ismember((subjects(folder).name(1)), {'.','C','r','S','v','V','s'});

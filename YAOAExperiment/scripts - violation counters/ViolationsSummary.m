@@ -1,11 +1,20 @@
 %SUMMARY Summary of this function goes here
 %   Detailed explanation goes here
 
-% if running for YA
-cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/');
+%% Directory Definitions
+%for Niree
+% preProcessedFolder = '/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/YA/preProcessedRev/';
+% %or
+% preProcessedFolder = '/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/';
+% %for Dalton
+% preProcessedFolder = '/Users/Dalton/Documents/MATLAB/GARP/GARP/YAOAExperiment/YA/preProcessedRev/';
+%or
+preProcessedFolder = '/Users/Dalton/Documents/MATLAB/GARP/GARP/YAOAExperiment/OA/preProcessedRev/';
 
-% if running for OA
-% cd('/Users/Niree/Documents/GitHub/GARP/YAOAExperiment/OA/preProcessedRev/');
+
+%%
+
+cd(preProcessedFolder);
 
 subjects = dir;
 ViolationSummary = zeros(length(subjects)+1,8);
